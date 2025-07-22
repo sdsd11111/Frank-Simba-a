@@ -47,8 +47,8 @@ export default function MMAPage() {
               </div>
               <div className="relative h-80">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
-                  alt="Entrenamiento de MMA"
+                  src="/images/MMA/Que es el MMA.jpg"
+                  alt="¿Qué es el MMA?"
                   fill
                   className="object-cover rounded-lg"
                 />
@@ -177,14 +177,24 @@ export default function MMAPage() {
             <h2 className="text-3xl font-bold text-[#1A1A1A] mb-12 text-center">Galería de Entrenamientos MMA</h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3, 4, 5, 6].map((item) => (
-                <div key={item} className="relative h-64 rounded-lg overflow-hidden">
+              {[
+                { src: "/images/MMA/Galeria entrenamiento MMA 1.jpg", title: "Galería entrenamiento MMA 1" },
+                { src: "/images/MMA/Galeria entrenamiento MMA 2.jpg", title: "Galería entrenamiento MMA 2" },
+                { src: "/images/MMA/Galeria entrenamiento MMA 3.jpg", title: "Galería entrenamiento MMA 3" },
+                { src: "/images/MMA/Galeria entrenamiento MMA 4.jpg", title: "Galería entrenamiento MMA 4" },
+                { src: "/images/MMA/Galeria entrenamiento MMA 5.jpg", title: "Galería entrenamiento MMA 5" },
+                { src: "/images/MMA/Galeria entrenamiento MMA 6.jpg", title: "Galería entrenamiento MMA 6" },
+              ].map((img, idx) => (
+                <div key={idx} className="relative h-64 rounded-lg overflow-hidden flex flex-col">
                   <Image
-                    src={`/placeholder.svg?height=300&width=400&query=MMA training session ${item}`}
-                    alt={`Entrenamiento MMA ${item}`}
+                    src={img.src}
+                    alt={img.title}
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-center py-2 text-sm font-semibold">
+                    {img.title}
+                  </div>
                 </div>
               ))}
             </div>

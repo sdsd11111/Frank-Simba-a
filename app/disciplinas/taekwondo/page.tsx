@@ -35,8 +35,8 @@ export default function TaekwondoPage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="relative h-80">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
-                  alt="Entrenamiento de Taekwondo"
+                  src="/images/Taekwondo/El camino del Taekwondo.jpg"
+                  alt="El camino del Taekwondo"
                   fill
                   className="object-cover rounded-lg"
                 />
@@ -211,14 +211,24 @@ export default function TaekwondoPage() {
             <h2 className="text-3xl font-bold text-[#1A1A1A] mb-12 text-center">Galería de Entrenamientos Taekwondo</h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3, 4, 5, 6].map((item) => (
-                <div key={item} className="relative h-64 rounded-lg overflow-hidden">
+              {[
+                { src: "/images/Taekwondo/Galería de Entrenamientos Taekwondo 1.jpg", title: "Galería de Entrenamientos Taekwondo 1" },
+                { src: "/images/Taekwondo/Galería de Entrenamientos Taekwondo 2.jpg", title: "Galería de Entrenamientos Taekwondo 2" },
+                { src: "/images/Taekwondo/Galería de Entrenamientos Taekwondo 3.jpg", title: "Galería de Entrenamientos Taekwondo 3" },
+                { src: "/images/Taekwondo/Galería de Entrenamientos Taekwondo 4.jpg", title: "Galería de Entrenamientos Taekwondo 4" },
+                { src: "/images/Taekwondo/Galería de Entrenamientos Taekwondo 5.jpg", title: "Galería de Entrenamientos Taekwondo 5" },
+                { src: "/images/Taekwondo/Galería de Entrenamientos Taekwondo 6.jpg", title: "Galería de Entrenamientos Taekwondo 6" },
+              ].map((img, idx) => (
+                <div key={idx} className="relative h-64 rounded-lg overflow-hidden flex flex-col">
                   <Image
-                    src={`/placeholder.svg?height=300&width=400&query=Taekwondo training session ${item}`}
-                    alt={`Entrenamiento Taekwondo ${item}`}
+                    src={img.src}
+                    alt={img.title}
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-center py-2 text-sm font-semibold">
+                    {img.title}
+                  </div>
                 </div>
               ))}
             </div>
