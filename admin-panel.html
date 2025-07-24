@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Admin Panel | Frank Simbaña</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <script defer src="js/vendor/fontawesome/all.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta property="og:image" content="images/imagen destacada.jpg">
+    <meta property="og:description" content="Bienvenido a Golden Club Taekwondo.">
+
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <style>
+        .admin-panel {
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+        
+        .admin-header {
+            background: #343A40;
+            color: #F8F8F8;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .admin-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admin-nav h1 {
+            color: #B8860B;
+            margin: 0;
+        }
+        
+        .logout-btn {
+            background: #800020;
+            color: #F8F8F8;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #6C757D;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            color: #B8860B;
+            border-bottom-color: #B8860B;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .article-form {
+            background: #F8F8F8;
+            padding: 3rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #343A40;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+        
+        .btn-primary {
+            background: #B8860B;
+            color: #F8F8F8;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .btn-danger {
+            background: #800020;
+            color: #F8F8F8;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .articles-list {
+            background: #F8F8F8;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .article-item {
+            padding: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .article-info h4 {
+            color: #343A40;
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-meta {
+            color: #6C757D;
+            font-size: 0.9rem;
+        }
+        
+        .article-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .category-taekwondo { border-left: 4px solid #B8860B; }
+        .category-mma { border-left: 4px solid #800020; }
+        .category-desarrollo { border-left: 4px solid #4682B4; }
+        .category-tecnicas { border-left: 4px solid #6C757D; }
+    </style>
+</head>
+
+<body>
+    <div class="admin-panel">
+        <header class="admin-header">
+            <div class="row">
+                <div class="column">
+                    <div class="admin-nav">
+                        <h1><i class="fas fa-cog"></i> Panel de Administración</h1>
+                        <a href="blog.html" class="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i> Salir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="column">
+                <div class="admin-tabs">
+                    <button class="tab-btn active" onclick="showTab('new-article')">
+                        <i class="fas fa-plus"></i> Nuevo Artículo
+                    </button>
+                    <button class="tab-btn" onclick="showTab('manage-articles')">
+                        <i class="fas fa-list"></i> Gestionar Artículos
+                    </button>
+                </div>
+
+                <!-- Nuevo Artículo -->
+                <div id="new-article" class="tab-content active">
+                    <div class="article-form">
+                        <h2 style="color: #343A40; margin-bottom: 2rem;">Crear Nuevo Artículo</h2>
+                        <form id="articleForm">
+                            <div class="form-group">
+                                <label for="title">Título del Artículo:</label>
+                                <input type="text" id="title" name="title" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="category">Categoría:</label>
+                                <select id="category" name="category" required>
+                                    <option value="">Seleccionar categoría</option>
+                                    <option value="taekwondo">Taekwondo</option>
+                                    <option value="mma">MMA</option>
+                                    <option value="desarrollo">Desarrollo Personal</option>
+                                    <option value="tecnicas">Técnicas</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="excerpt">Extracto:</label>
+                                <textarea id="excerpt" name="excerpt" placeholder="Breve descripción del artículo..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="content">Contenido Completo:</label>
+                                <textarea id="content" name="content" placeholder="Contenido completo del artículo..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="image">URL de Imagen (opcional):</label>
+                                <input type="url" id="image" name="image" placeholder="https://ejemplo.com/imagen.jpg">
+                            </div>
+                            
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-save"></i> Publicar Artículo
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Gestionar Artículos -->
+                <div id="manage-articles" class="tab-content">
+                    <h2 style="color: #343A40; margin-bottom: 2rem;">Artículos Publicados</h2>
+                    <div class="articles-list" id="articlesList">
+                        <!-- Los artículos se cargarán aquí dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de ejemplo para artículos
+        let articles = [
+            {
+                id: 1,
+                title: "5 Fundamentos Esenciales del Taekwondo para Principiantes",
+                category: "taekwondo",
+                date: "2024-01-15",
+                excerpt: "El Taekwondo es mucho más que patadas espectaculares...",
+                status: "publicado"
+            },
+            {
+                id: 2,
+                title: "Preparación Mental en MMA: Forjando la Mentalidad de Campeón",
+                category: "mma",
+                date: "2024-01-10",
+                excerpt: "En las artes marciales mixtas, la preparación mental...",
+                status: "publicado"
+            },
+            {
+                id: 3,
+                title: "Cómo las Artes Marciales Transforman tu Vida Diaria",
+                category: "desarrollo",
+                date: "2024-01-05",
+                excerpt: "Las artes marciales van más allá del dojo...",
+                status: "publicado"
+            }
+        ];
+
+        // Función para cambiar entre pestañas
+        function showTab(tabName) {
+            // Ocultar todos los contenidos
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remover clase active de todos los botones
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Mostrar el contenido seleccionado
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activar el botón correspondiente
+            event.target.classList.add('active');
+            
+            if (tabName === 'manage-articles') {
+                loadArticles();
+            }
+        }
+
+        // Función para cargar artículos en la lista
+        function loadArticles() {
+            const articlesList = document.getElementById('articlesList');
+            articlesList.innerHTML = '';
+            
+            articles.forEach(article => {
+                const categoryClass = `category-${article.category}`;
+                const articleItem = document.createElement('div');
+                articleItem.className = `article-item ${categoryClass}`;
+                articleItem.innerHTML = `
+                    <div class="article-info">
+                        <h4>${article.title}</h4>
+                        <div class="article-meta">
+                            <span><i class="fas fa-calendar"></i> ${formatDate(article.date)}</span>
+                            <span style="margin-left: 1rem;"><i class="fas fa-tag"></i> ${getCategoryName(article.category)}</span>
+                            <span style="margin-left: 1rem;"><i class="fas fa-eye"></i> ${article.status}</span>
+                        </div>
+                    </div>
+                    <div class="article-actions">
+                        <button class="btn-primary" onclick="editArticle(${article.id})">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn-danger" onclick="deleteArticle(${article.id})">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </button>
+                    </div>
+                `;
+                articlesList.appendChild(articleItem);
+            });
+        }
+
+        // Función para formatear fecha
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('es-ES', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        // Función para obtener nombre de categoría
+        function getCategoryName(category) {
+            const categories = {
+                'taekwondo': 'Taekwondo',
+                'mma': 'MMA',
+                'desarrollo': 'Desarrollo Personal',
+                'tecnicas': 'Técnicas'
+            };
+            return categories[category] || category;
+        }
+
+        // Función para editar artículo
+        function editArticle(id) {
+            const article = articles.find(a => a.id === id);
+            if (article) {
+                // Cambiar a la pestaña de nuevo artículo
+                showTab('new-article');
+                
+                // Llenar el formulario con los datos del artículo
+                document.getElementById('title').value = article.title;
+                document.getElementById('category').value = article.category;
+                document.getElementById('excerpt').value = article.excerpt;
+                
+                // Cambiar el texto del botón
+                const submitBtn = document.querySelector('#articleForm button[type="submit"]');
+                submitBtn.innerHTML = '<i class="fas fa-save"></i> Actualizar Artículo';
+                submitBtn.setAttribute('data-editing', id);
+            }
+        }
+
+        // Función para eliminar artículo
+        function deleteArticle(id) {
+            if (confirm('¿Estás seguro de que quieres eliminar este artículo?')) {
+                articles = articles.filter(a => a.id !== id);
+                loadArticles();
+                alert('Artículo eliminado correctamente.');
+            }
+        }
+
+        // Manejar envío del formulario
+        document.getElementById('articleForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const articleData = {
+                title: formData.get('title'),
+                category: formData.get('category'),
+                excerpt: formData.get('excerpt'),
+                content: formData.get('content'),
+                image: formData.get('image'),
+                date: new Date().toISOString().split('T')[0],
+                status: 'publicado'
+            };
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const editingId = submitBtn.getAttribute('data-editing');
+            
+            if (editingId) {
+                // Actualizar artículo existente
+                const index = articles.findIndex(a => a.id == editingId);
+                if (index !== -1) {
+                    articles[index] = { ...articles[index], ...articleData };
+                    alert('Artículo actualizado correctamente.');
+                }
+                submitBtn.innerHTML = '<i class="fas fa-save"></i> Publicar Artículo';
+                submitBtn.removeAttribute('data-editing');
+            } else {
+                // Crear nuevo artículo
+                articleData.id = articles.length + 1;
+                articles.push(articleData);
+                alert('Artículo publicado correctamente.');
+            }
+            
+            // Limpiar formulario
+            this.reset();
+            
+            // Recargar lista si estamos en esa pestaña
+            if (document.getElementById('manage-articles').classList.contains('active')) {
+                loadArticles();
+            }
+        });
+
+        // Cargar artículos al inicio
+        loadArticles();
+    </script>
+</body>
+</html>

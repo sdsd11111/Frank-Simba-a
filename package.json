@@ -1,0 +1,14 @@
+{
+  "name": "frank-simbana-2",
+  "version": "1.0.0",
+  "description": "Sitio web estático de Frank Simbaña.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server -p 8080 --cors"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
