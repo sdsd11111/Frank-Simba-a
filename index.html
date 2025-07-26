@@ -5,7 +5,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Ceevee 2.0</title>
+    <title>Frank Simbaña</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -46,7 +46,134 @@
 
     <!-- header
     ================================================== -->
-    <header class="s-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #000000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); padding: 1rem 0; border-bottom: 1px solid #333;">
+    <style>
+        @media (max-width: 768px) {
+            .s-header {
+                display: none !important;
+            }
+            
+            /* Menú hamburguesa móvil */
+            .mobile-menu-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+                background: #000000;
+                border: none;
+                padding: 12px;
+                border-radius: 6px;
+                cursor: pointer;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            }
+            
+            .mobile-menu-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background: #FFFFFF;
+                margin: 5px 0;
+                transition: 0.3s;
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            .mobile-menu {
+                position: fixed;
+                top: 70px;
+                right: 15px;
+                left: 15px;
+                max-width: 300px;
+                margin: 0 auto;
+                background: rgba(0, 0, 0, 0.95);
+                border-radius: 12px;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+                z-index: 9998;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+                padding: 15px 0;
+                border: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .mobile-menu.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            .mobile-menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                text-align: left;
+            }
+            
+            .mobile-menu li {
+                margin: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .mobile-menu li:last-child {
+                border-bottom: none;
+            }
+            
+            .mobile-menu a {
+                color: #FFFFFF;
+                text-decoration: none;
+                font-size: 1.1rem;
+                font-weight: 500;
+                transition: all 0.3s;
+                display: block;
+                padding: 12px 20px;
+            }
+            
+            .mobile-menu a:hover {
+                color: #FFD700;
+                background: rgba(255,255,255,0.05);
+            }
+            
+            .mobile-submenu {
+                margin: 0;
+                padding: 0;
+                background: rgba(0,0,0,0.3);
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .mobile-submenu li {
+                margin: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+            
+            .mobile-submenu li:last-child {
+                border-bottom: none;
+            }
+            
+            .mobile-submenu a {
+                font-size: 1rem;
+                color: #CCCCCC;
+                padding: 10px 30px;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-menu-toggle,
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+    </style>
+    <header class="s-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #000000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); padding: 1rem 0;">
         <div class="row s-header__nav-wrap">
             <nav class="s-header__nav">
                 <ul style="margin: 0;">
@@ -67,6 +194,27 @@
         </a>
     </header> <!-- end s-header -->
 
+    <!-- Menú hamburguesa móvil -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    
+    <nav class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html" onclick="closeMobileMenu()">Inicio</a></li>
+            <li><a href="blog.html" onclick="closeMobileMenu()">Blog</a></li>
+            <li><a href="logros.html" onclick="closeMobileMenu()">Logros</a></li>
+            <li>
+                <a href="#" onclick="toggleSubmenu(event)">Disciplinas</a>
+                <ul class="mobile-submenu" id="disciplinasSubmenu" style="display: none;">
+                    <li><a href="mma.html" onclick="closeMobileMenu()">MMA</a></li>
+                    <li><a href="taekwondo.html" onclick="closeMobileMenu()">Taekwondo</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 
     <!-- hero
     ================================================== -->
@@ -592,7 +740,7 @@
                 </ul>
             </div>
             <div class="column large-7 medium-6 w-1000-stack ss-copyright">
-                <span>© Copyright Frank Simbaña 2024</span>
+                <span>© Copyright Diseñado por @Objetivo 2025</span>
                 <span>Academia Club Golden Loja</span>
             </div>
         </div>
@@ -608,6 +756,60 @@
     ================================================== -->
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- JavaScript para menú hamburguesa móvil -->
+    <script>
+        // Funcionalidad del menú hamburguesa
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (mobileMenuToggle && mobileMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mobileMenuToggle.classList.toggle('active');
+                    mobileMenu.classList.toggle('active');
+                });
+                
+                // Cerrar menú al hacer clic fuera de él
+                mobileMenu.addEventListener('click', function(e) {
+                    if (e.target === mobileMenu) {
+                        closeMobileMenu();
+                    }
+                });
+            }
+        });
+        
+        // Función para cerrar el menú móvil
+        function closeMobileMenu() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (mobileMenuToggle && mobileMenu) {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+            
+            // Cerrar submenú si está abierto
+            const submenu = document.getElementById('disciplinasSubmenu');
+            if (submenu) {
+                submenu.style.display = 'none';
+            }
+        }
+        
+        // Función para alternar submenú
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const submenu = document.getElementById('disciplinasSubmenu');
+            
+            if (submenu) {
+                if (submenu.style.display === 'none' || submenu.style.display === '') {
+                    submenu.style.display = 'block';
+                } else {
+                    submenu.style.display = 'none';
+                }
+            }
+        }
+    </script>
 
 </body>
 

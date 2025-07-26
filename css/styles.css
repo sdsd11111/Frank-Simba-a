@@ -3424,6 +3424,12 @@ input[type="button"].btn--primary:focus {
     }
 }
 
+@media screen and (max-width: 800px) {
+  body {
+    padding-top: 0 !important;
+  }
+}
+
 
 /* ===================================================================
  * # hero
@@ -4798,4 +4804,144 @@ input[type="button"].btn--primary:focus {
         box-shadow: none;
         border-radius: 0;
     }
+}
+
+@media screen and (max-width: 800px) {
+  .s-header {
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+  .s-header__nav .submenu {
+    display: block !important;
+    position: static !important;
+    background: #111 !important;
+    border: none !important;
+    margin-left: 2.8rem;
+    box-shadow: none !important;
+  }
+  .s-header__nav .has-children > a:after {
+    content: "▼";
+    float: right;
+    margin-right: 1rem;
+    font-size: 1rem;
+    color: #fff;
+  }
+  .s-header__nav .submenu li a {
+    padding-left: 3.5rem !important;
+    color: #fff !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .s-header__nav ul li {
+    border-bottom: none !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  /* Acerca de Frank Simbaña: imagen arriba y centrada */
+  #about .s-about__pic {
+    display: block;
+    margin: 0 auto 2rem auto;
+    max-width: 220px;
+    width: 70vw;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  #about .s-about__content {
+    padding-left: 0 !important;
+    text-align: center;
+  }
+  /* Contacto: menos espacio y campos más compactos */
+  #contact .huge-text {
+    font-size: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    margin-top: 0 !important;
+  }
+  #contact .form-field {
+    margin-bottom: 1.2rem !important;
+  }
+  #contact input,
+  #contact textarea {
+    font-size: 1rem !important;
+    padding: 0.7rem 1rem !important;
+  }
+  #contact button.btn {
+    font-size: 1.1rem !important;
+    padding: 1rem 0 !important;
+    margin-top: 1rem !important;
+  }
+  #contact .s-contact__content {
+    gap: 1.5rem !important;
+  }
+  
+  /* Hitos y Reconocimientos - Responsive Styles */
+  .s-hitos .timeline {
+    max-width: 100% !important;
+    margin: 1rem auto !important;
+    padding: 0 1rem !important;
+  }
+  
+  .s-hitos .resume-block {
+    background: #fff !important;
+    border-radius: 10px !important;
+    margin-bottom: 2rem !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+    display: block !important;
+    flex-wrap: nowrap !important;
+    gap: 1rem !important;
+  }
+  
+  .s-hitos .resume-block > div:first-child {
+    flex: none !important;
+    min-width: auto !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .s-hitos .resume-block img {
+    width: 100% !important;
+    max-width: 300px !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+  
+  .s-hitos .resume-block h4 {
+    font-size: 1.4rem !important;
+    margin-bottom: 1rem !important;
+    color: #343A40 !important;
+  }
+  
+  .s-hitos .resume-block p {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1rem !important;
+    color: #6C757D !important;
+  }
+  
+  .s-hitos .resume-block ul {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  
+  .s-hitos .resume-block ul li {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.9rem !important;
+    color: #6C757D !important;
+  }
+  
+  .s-hitos .resume-block .stats-tabs li {
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .s-hitos .resume-block .stats-tabs li i {
+    margin-right: 0.5rem !important;
+  }
 }
