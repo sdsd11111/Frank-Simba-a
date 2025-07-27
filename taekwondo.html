@@ -10,6 +10,10 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/vendor.css">
+    
+    <!-- Swiper CSS solo para móvil -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" media="(max-width: 768px)">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <style>
         /* Responsive gallery styles */
         @media (max-width: 768px) {
@@ -181,6 +185,74 @@
             }
         }
         
+        /* CSS para sliders responsivos solo en móvil */
+        @media (max-width: 768px) {
+            .mobile-slider {
+                display: block !important;
+            }
+            .desktop-content {
+                display: none !important;
+            }
+            
+            .swiper {
+                width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 0 20px;
+            }
+            
+            .swiper-slide {
+                background: #fff;
+                border-radius: 10px;
+                padding: 1.5rem;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+            
+            .swiper-slide img {
+                width: 100% !important;
+                height: 200px !important;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+            
+            .swiper-button-next,
+            .swiper-button-prev {
+                color: #B8860B !important;
+                background: rgba(255,255,255,0.9);
+                border-radius: 50%;
+                width: 40px !important;
+                height: 40px !important;
+                margin-top: -20px !important;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+            
+            .swiper-button-next:after,
+            .swiper-button-prev:after {
+                font-size: 16px !important;
+                font-weight: bold;
+            }
+            
+            .swiper-pagination-bullet {
+                background: #B8860B !important;
+                opacity: 0.5;
+            }
+            
+            .swiper-pagination-bullet-active {
+                opacity: 1;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-slider {
+                display: none !important;
+            }
+            .desktop-content {
+                display: block !important;
+            }
+        }
+        
         /* CSS responsivo para hero section */
         @media (max-width: 768px) {
             #hero {
@@ -324,7 +396,46 @@
             </div>
         </div>
         
-        <div class="row block-large-1-3 block-medium-1-2 block-tab-full services-list">
+        <!-- Slider para móvil -->
+        <div class="mobile-slider" style="display: none;">
+            <div class="swiper programasSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div style="color: #B8860B; font-size: 4rem; margin-bottom: 2rem;">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3 style="color: #343A40; font-size: 2rem; margin-bottom: 2rem;">Niños (4-12 años)</h3>
+                        <p style="color: #6C757D; font-size: 1.1rem; line-height: 1.6;">
+                            Desarrollo de coordinación, equilibrio y valores fundamentales como respeto y disciplina.
+                        </p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div style="color: #B8860B; font-size: 4rem; margin-bottom: 2rem;">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 style="color: #343A40; font-size: 2rem; margin-bottom: 2rem;">Jóvenes (13-17 años)</h3>
+                        <p style="color: #6C757D; font-size: 1.1rem; line-height: 1.6;">
+                            Formación de carácter, rendimiento deportivo y preparación para competiciones.
+                        </p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div style="color: #B8860B; font-size: 4rem; margin-bottom: 2rem;">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 style="color: #343A40; font-size: 2rem; margin-bottom: 2rem;">Adultos (18+ años)</h3>
+                        <p style="color: #6C757D; font-size: 1.1rem; line-height: 1.6;">
+                            Fitness, autodefensa, bienestar mental y desarrollo personal integral.
+                        </p>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        
+        <!-- Contenido desktop -->
+        <div class="desktop-content row services-list block-large-1-3 block-medium-1-2 block-tab-full"> services-list">
             
             <!-- Niños -->
             <div class="column item-service">
@@ -463,6 +574,49 @@
                 <h4 style="color:#6C757D; text-align:center;">Experimenta la disciplina y precisión del arte marcial olímpico en acción.</h4>
             </div>
         </div>
+        
+        <!-- Slider para móvil -->
+        <div class="mobile-slider" style="display: none;">
+            <div class="swiper galeriaSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 1.jpg" alt="Entrenamiento Taekwondo 1" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
+                        <h4 style="margin-bottom:0.5rem;">Técnicas de Pateo</h4>
+                        <p style="color:#6C757D; font-size:0.9rem;">Perfeccionamiento de patadas básicas y avanzadas</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 2.jpg" alt="Entrenamiento Taekwondo 2" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
+                        <h4 style="margin-bottom:0.5rem;">Poomsae (Formas)</h4>
+                        <p style="color:#6C757D; font-size:0.9rem;">Práctica de secuencias técnicas tradicionales</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 3.jpg" alt="Entrenamiento Taekwondo 3" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
+                        <h4 style="margin-bottom:0.5rem;">Combate Deportivo</h4>
+                        <p style="color:#6C757D; font-size:0.9rem;">Entrenamiento para competiciones oficiales</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 4.jpg" alt="Entrenamiento Taekwondo 4" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
+                        <h4 style="margin-bottom:0.5rem;">Acondicionamiento Físico</h4>
+                        <p style="color:#6C757D; font-size:0.9rem;">Desarrollo de fuerza y flexibilidad</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 5.jpg" alt="Entrenamiento Taekwondo 5" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
+                        <h4 style="margin-bottom:0.5rem;">Defensa Personal</h4>
+                        <p style="color:#6C757D; font-size:0.9rem;">Aplicación práctica de técnicas de autodefensa</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 6.jpg" alt="Entrenamiento Taekwondo 6" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
+                        <h4 style="margin-bottom:0.5rem;">Meditación y Disciplina</h4>
+                        <p style="color:#6C757D; font-size:0.9rem;">Desarrollo mental y espiritual del arte marcial</p>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        
+        <!-- Contenido desktop -->
         <!-- Primera fila - 3 imágenes -->
         <div class="row collapse block-large-1-3 block-medium-1-3 block-tab-1-2 block-500-stack folio-list" style="flex-wrap: wrap;">
             <div class="column folio-item">
@@ -558,6 +712,47 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const mobileMenu = document.getElementById('mobileMenu');
+            
+            // Inicializar sliders Swiper solo en móvil
+            if (window.innerWidth <= 768) {
+                // Slider de Programas de Taekwondo
+                const programasSwiper = new Swiper('.programasSwiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    loop: true,
+                    autoplay: {
+                        delay: 4500,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                });
+                
+                // Slider de Galería de Entrenamientos Taekwondo
+                const galeriaSwiper = new Swiper('.galeriaSwiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    loop: true,
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                });
+            }
             
             if (mobileMenuToggle && mobileMenu) {
                 mobileMenuToggle.addEventListener('click', function() {

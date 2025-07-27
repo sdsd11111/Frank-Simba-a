@@ -236,6 +236,7 @@
                     <div class="s-hero__content-social">
                         <a href="https://www.facebook.com/share/16Foo7m463/" target="_blank"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
                         <a href="https://www.instagram.com/club_golden2020?igsh=MXR0YzBuMjRnOGI0bw==" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" onclick="shareOnWhatsApp()" title="Compartir en WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                     </div>
 
                 </div> <!-- end s-hero__content-about -->
@@ -808,6 +809,17 @@
                     submenu.style.display = 'none';
                 }
             }
+        }
+        
+        // Función para compartir en WhatsApp
+        function shareOnWhatsApp() {
+            const message = "Bienvenido, disfruta de mis Servicios Frank Simbaña";
+            const url = "http://franksimbana.com/";
+            const fullMessage = encodeURIComponent(message + " - " + url);
+            const whatsappUrl = `https://wa.me/?text=${fullMessage}`;
+            
+            // Abrir WhatsApp en una nueva ventana/pestaña
+            window.open(whatsappUrl, '_blank');
         }
     </script>
 
