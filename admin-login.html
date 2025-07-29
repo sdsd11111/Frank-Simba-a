@@ -129,19 +129,36 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // Credenciales de ejemplo (en producción usar autenticación real)
-            if (username === 'frank' && password === 'admin2024') {
-                alert('¡Acceso concedido! Redirigiendo al panel de administración...');
-                window.location.href = 'admin-panel.html';
-            } else {
-                alert('Credenciales incorrectas. Inténtalo de nuevo.');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar si ya está autenticado
+            if (localStorage.getItem('isAdmin') === 'true') {
+                window.location.href = 'blog.html';
             }
+            
+            // Manejar el envío del formulario
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                // Credenciales de ejemplo (en producción usar autenticación real)
+                if (username === 'frank' && password === 'admin2024') {
+                    // Marcar como administrador
+                    localStorage.setItem('isAdmin', 'true');
+                    
+                    // Redirigir al blog donde se mostrará el panel de administración
+                    window.location.href = 'blog.html';
+                } else {
+                    alert('Credenciales incorrectas. Inténtalo de nuevo.');
+                }
+            });
+            
+            // Configurar el enlace de volver
+            document.querySelector('.back-link a').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.history.back();
+            });
         });
     </script>
 </body>

@@ -10,11 +10,23 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/vendor.css">
+    <!-- Swiper CSS para móvil -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" media="(max-width: 768px)">
     
-    <!-- Swiper CSS solo para móvil -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" media="(max-width: 768px)">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
     <style>
+        /* Prevenir scroll horizontal en desktop */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .row {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
         /* Responsive gallery styles */
         @media (max-width: 768px) {
             .row[style*="flex-wrap"] .folio-item {
@@ -62,6 +74,11 @@
         @media (max-width: 768px) {
             .s-header {
                 display: none !important;
+            }
+            
+            /* Eliminar línea horizontal en galería de Taekwondo */
+            .s-portfolio {
+                border-bottom: none !important;
             }
             
             /* Menú hamburguesa móvil */
@@ -183,71 +200,6 @@
             .mobile-menu {
                 display: none !important;
             }
-        }
-        
-        /* CSS para sliders responsivos solo en móvil */
-        @media (max-width: 768px) {
-            .mobile-slider {
-                display: block !important;
-            }
-            .desktop-content {
-                display: none !important;
-            }
-            
-            .swiper {
-                width: 100%;
-                height: auto;
-                margin: 0;
-                padding: 0 20px;
-            }
-            
-            .swiper-slide {
-                background: #fff;
-                border-radius: 10px;
-                padding: 1.5rem;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                margin-bottom: 2rem;
-                text-align: center;
-            }
-            
-            .swiper-slide img {
-                width: 100% !important;
-                height: 200px !important;
-                object-fit: cover;
-                border-radius: 8px;
-            }
-            
-            .swiper-button-next,
-            .swiper-button-prev {
-                color: #B8860B !important;
-                background: rgba(255,255,255,0.9);
-                border-radius: 50%;
-                width: 40px !important;
-                height: 40px !important;
-                margin-top: -20px !important;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            }
-            
-            .swiper-button-next:after,
-            .swiper-button-prev:after {
-                font-size: 16px !important;
-                font-weight: bold;
-            }
-            
-            .swiper-pagination-bullet {
-                background: #B8860B !important;
-                opacity: 0.5;
-            }
-            
-            .swiper-pagination-bullet-active {
-                opacity: 1;
-            }
-        }
-        
-        @media (min-width: 769px) {
-            .mobile-slider {
-                display: none !important;
-            }
             .desktop-content {
                 display: block !important;
             }
@@ -307,21 +259,19 @@
     <header class="s-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #000000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); padding: 1rem 0;">
         <div class="row s-header__nav-wrap">
             <nav class="s-header__nav">
-                <ul>
-                    <li><a class="smoothscroll" href="index.html" style="color: #FFFFFF !important;">Inicio</a></li>
+                <ul style="margin: 0;">
+                    <li><a href="index.html" style="color: #FFFFFF !important;">Inicio</a></li>
                     <li><a href="blog.html" style="color: #FFFFFF !important;">Blog</a></li>
                     <li><a href="logros.html" style="color: #FFFFFF !important;">Logros</a></li>
-                    <li class="has-children"><a href="#" style="color: #FFFFFF !important;">Disciplinas</a>
+                    <li class="has-children"><a href="#" style="color: #B8860B !important;">Disciplinas</a>
                         <ul class="submenu" style="background: #000000; border: 1px solid #333;">
                             <li><a href="mma.html" style="color: #FFFFFF !important;">MMA</a></li>
-                            <li class="current"><a href="taekwondo.html" style="color: #FFFFFF !important;">Taekwondo</a></li>
+                            <li class="current"><a href="taekwondo.html" style="color: #B8860B !important;">Taekwondo</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
-        <a class="s-header__menu-toggle" href="#0" title="Menu">
-            <span class="s-header__menu-icon"></span>
         </a>
     </header>
 
@@ -335,7 +285,6 @@
     <nav class="mobile-menu" id="mobileMenu">
         <ul>
             <li><a href="index.html" onclick="closeMobileMenu()">Inicio</a></li>
-            <li><a href="blog.html" onclick="closeMobileMenu()">Blog</a></li>
             <li><a href="logros.html" onclick="closeMobileMenu()">Logros</a></li>
             <li>
                 <a href="#" onclick="toggleSubmenu(event)">Disciplinas</a>
@@ -344,6 +293,7 @@
                     <li><a href="taekwondo.html" onclick="closeMobileMenu()">Taekwondo</a></li>
                 </ul>
             </li>
+            <li><a href="contact.html" onclick="closeMobileMenu()">Contacto</a></li>
         </ul>
     </nav>
 
@@ -397,6 +347,53 @@
         </div>
         
         <!-- Slider para móvil -->
+        <style>
+            @media (max-width: 768px) {
+                .mobile-slider {
+                    display: block !important;
+                    padding: 0 20px 40px;
+                    margin-top: 2rem;
+                }
+                .mobile-slider .swiper {
+                    width: 100%;
+                    padding: 20px 0;
+                }
+                .mobile-slider .swiper-slide {
+                    background: #F8F8F8;
+                    border-radius: 12px;
+                    padding: 2.5rem 2rem;
+                    text-align: center;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .mobile-slider .swiper-button-next,
+                .mobile-slider .swiper-button-prev {
+                    color: #B8860B;
+                    width: 40px;
+                    height: 40px;
+                    background: rgba(255,255,255,0.9);
+                    border-radius: 50%;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+                .mobile-slider .swiper-button-next:after,
+                .mobile-slider .swiper-button-prev:after {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                }
+                .mobile-slider .swiper-pagination-bullet {
+                    background: #B8860B;
+                    opacity: 0.3;
+                }
+                .mobile-slider .swiper-pagination-bullet-active {
+                    opacity: 1;
+                    background: #B8860B;
+                }
+            }
+        </style>
         <div class="mobile-slider" style="display: none;">
             <div class="swiper programasSwiper">
                 <div class="swiper-wrapper">
@@ -404,8 +401,8 @@
                         <div style="color: #B8860B; font-size: 4rem; margin-bottom: 2rem;">
                             <i class="fas fa-child"></i>
                         </div>
-                        <h3 style="color: #343A40; font-size: 2rem; margin-bottom: 2rem;">Niños (4-12 años)</h3>
-                        <p style="color: #6C757D; font-size: 1.1rem; line-height: 1.6;">
+                        <h3 style="color: #343A40; font-size: 1.8rem; margin-bottom: 1.5rem;">Niños (4-12 años)</h3>
+                        <p style="color: #6C757D; font-size: 1.1rem; line-height: 1.6; margin: 0 auto; max-width: 90%;">
                             Desarrollo de coordinación, equilibrio y valores fundamentales como respeto y disciplina.
                         </p>
                     </div>
@@ -413,8 +410,8 @@
                         <div style="color: #B8860B; font-size: 4rem; margin-bottom: 2rem;">
                             <i class="fas fa-star"></i>
                         </div>
-                        <h3 style="color: #343A40; font-size: 2rem; margin-bottom: 2rem;">Jóvenes (13-17 años)</h3>
-                        <p style="color: #6C757D; font-size: 1.1rem; line-height: 1.6;">
+                        <h3 style="color: #343A40; font-size: 1.8rem; margin-bottom: 1.5rem;">Jóvenes (13-17 años)</h3>
+                        <p style="color: #6C757D; font-size: 1.1rem; line-height: 1.6; margin: 0 auto; max-width: 90%;">
                             Formación de carácter, rendimiento deportivo y preparación para competiciones.
                         </p>
                     </div>
@@ -422,57 +419,104 @@
                         <div style="color: #B8860B; font-size: 4rem; margin-bottom: 2rem;">
                             <i class="fas fa-heart"></i>
                         </div>
-                        <h3 style="color: #343A40; font-size: 2rem; margin-bottom: 2rem;">Adultos (18+ años)</h3>
-                        <p style="color: #6C757D; font-size: 1.1rem; line-height: 1.6;">
+                        <h3 style="color: #343A40; font-size: 1.8rem; margin-bottom: 1.5rem;">Adultos (18+ años)</h3>
+                        <p style="color: #6C757D; font-size: 1.1rem; line-height: 1.6; margin: 0 auto; max-width: 90%;">
                             Fitness, autodefensa, bienestar mental y desarrollo personal integral.
                         </p>
                     </div>
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
+                <div class="swiper-pagination" style="position: relative; margin-top: 1.5rem;"></div>
+                <div class="swiper-button-next" style="right: 10px;"></div>
+                <div class="swiper-button-prev" style="left: 10px;"></div>
             </div>
         </div>
         
         <!-- Contenido desktop -->
-        <div class="desktop-content row services-list block-large-1-3 block-medium-1-2 block-tab-full"> services-list">
-            
-            <!-- Niños -->
-            <div class="column item-service">
-                <div style="background: #F8F8F8; padding: 4rem 3rem; border-radius: 8px; text-align: center; height: 100%; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
-                    <div style="color: #B8860B; font-size: 4rem; margin-bottom: 2rem;">
-                        <i class="fas fa-child"></i>
+        <style>
+            @media (min-width: 769px) {
+                .horizontal-cards {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    gap: 2rem;
+                    margin: 0 -15px;
+                }
+                .horizontal-cards .card {
+                    flex: 1;
+                    min-width: 0;
+                    padding: 0 15px;
+                    display: flex;
+                }
+                .horizontal-cards .card-content {
+                    background: #F8F8F8;
+                    padding: 3rem 2.5rem;
+                    border-radius: 8px;
+                    text-align: center;
+                    width: 100%;
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                    display: flex;
+                    flex-direction: column;
+                }
+                .horizontal-cards .card-icon {
+                    color: #B8860B;
+                    font-size: 3.5rem;
+                    margin-bottom: 1.5rem;
+                }
+                .horizontal-cards h3 {
+                    color: #343A40;
+                    font-size: 1.8rem;
+                    margin-bottom: 1.5rem;
+                    line-height: 1.3;
+                }
+                .horizontal-cards p {
+                    color: #6C757D;
+                    font-size: 1.1rem;
+                    line-height: 1.6;
+                    margin-bottom: 0;
+                }
+            }
+            @media (max-width: 768px) {
+                .desktop-content {
+                    display: none !important;
+                }
+                .mobile-slider {
+                    display: block !important;
+                }
+            }
+        </style>
+        
+        <div class="desktop-content">
+            <div class="horizontal-cards" style="margin-top: 2rem;">
+                <!-- Niños -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3>Niños (4-12 años)</h3>
+                        <p>Desarrollo de coordinación, equilibrio y valores fundamentales como respeto y disciplina.</p>
                     </div>
-                    <h3 style="color: #343A40; font-size: 2rem; margin-bottom: 2rem;">Niños (4-12 años)</h3>
-                    <p style="color: #6C757D; font-size: 1.1rem; line-height: 1.6;">
-                        Desarrollo de coordinación, equilibrio y valores fundamentales como respeto y disciplina.
-                    </p>
                 </div>
-            </div>
 
-            <!-- Jóvenes -->
-            <div class="column item-service">
-                <div style="background: #F8F8F8; padding: 4rem 3rem; border-radius: 8px; text-align: center; height: 100%; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
-                    <div style="color: #B8860B; font-size: 4rem; margin-bottom: 2rem;">
-                        <i class="fas fa-star"></i>
+                <!-- Jóvenes -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Jóvenes (13-17 años)</h3>
+                        <p>Formación de carácter, rendimiento deportivo y preparación para competiciones.</p>
                     </div>
-                    <h3 style="color: #343A40; font-size: 2rem; margin-bottom: 2rem;">Jóvenes (13-17 años)</h3>
-                    <p style="color: #6C757D; font-size: 1.1rem; line-height: 1.6;">
-                        Formación de carácter, rendimiento deportivo y preparación para competiciones.
-                    </p>
                 </div>
-            </div>
 
-            <!-- Adultos -->
-            <div class="column item-service">
-                <div style="background: #F8F8F8; padding: 4rem 3rem; border-radius: 8px; text-align: center; height: 100%; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
-                    <div style="color: #B8860B; font-size: 4rem; margin-bottom: 2rem;">
-                        <i class="fas fa-heart"></i>
+                <!-- Adultos -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Adultos (18+ años)</h3>
+                        <p>Fitness, autodefensa, bienestar mental y desarrollo personal integral.</p>
                     </div>
-                    <h3 style="color: #343A40; font-size: 2rem; margin-bottom: 2rem;">Adultos (18+ años)</h3>
-                    <p style="color: #6C757D; font-size: 1.1rem; line-height: 1.6;">
-                        Fitness, autodefensa, bienestar mental y desarrollo personal integral.
-                    </p>
                 </div>
             </div>
         </div>
@@ -574,82 +618,310 @@
                 <h4 style="color:#6C757D; text-align:center;">Experimenta la disciplina y precisión del arte marcial olímpico en acción.</h4>
             </div>
         </div>
-        
         <!-- Slider para móvil -->
-        <div class="mobile-slider" style="display: none;">
-            <div class="swiper galeriaSwiper">
+        <div class="mobile-gallery-slider" style="display: none;">
+            <div class="swiper trainingSwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 1.jpg" alt="Entrenamiento Taekwondo 1" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
-                        <h4 style="margin-bottom:0.5rem;">Técnicas de Pateo</h4>
-                        <p style="color:#6C757D; font-size:0.9rem;">Perfeccionamiento de patadas básicas y avanzadas</p>
+                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 1.jpg" alt="Entrenamiento Taekwondo 1" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 2.jpg" alt="Entrenamiento Taekwondo 2" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
-                        <h4 style="margin-bottom:0.5rem;">Poomsae (Formas)</h4>
-                        <p style="color:#6C757D; font-size:0.9rem;">Práctica de secuencias técnicas tradicionales</p>
+                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 2.jpg" alt="Entrenamiento Taekwondo 2" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 3.jpg" alt="Entrenamiento Taekwondo 3" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
-                        <h4 style="margin-bottom:0.5rem;">Combate Deportivo</h4>
-                        <p style="color:#6C757D; font-size:0.9rem;">Entrenamiento para competiciones oficiales</p>
+                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 3.jpg" alt="Entrenamiento Taekwondo 3" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 4.jpg" alt="Entrenamiento Taekwondo 4" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
-                        <h4 style="margin-bottom:0.5rem;">Acondicionamiento Físico</h4>
-                        <p style="color:#6C757D; font-size:0.9rem;">Desarrollo de fuerza y flexibilidad</p>
+                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 4.jpg" alt="Entrenamiento Taekwondo 4" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 5.jpg" alt="Entrenamiento Taekwondo 5" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
-                        <h4 style="margin-bottom:0.5rem;">Defensa Personal</h4>
-                        <p style="color:#6C757D; font-size:0.9rem;">Aplicación práctica de técnicas de autodefensa</p>
+                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 5.jpg" alt="Entrenamiento Taekwondo 5" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 6.jpg" alt="Entrenamiento Taekwondo 6" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
-                        <h4 style="margin-bottom:0.5rem;">Meditación y Disciplina</h4>
-                        <p style="color:#6C757D; font-size:0.9rem;">Desarrollo mental y espiritual del arte marcial</p>
+                        <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 6.jpg" alt="Entrenamiento Taekwondo 6" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
                     </div>
                 </div>
+                <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
             </div>
         </div>
         
+
+        
         <!-- Contenido desktop -->
-        <!-- Primera fila - 3 imágenes -->
-        <div class="row collapse block-large-1-3 block-medium-1-3 block-tab-1-2 block-500-stack folio-list" style="flex-wrap: wrap;">
-            <div class="column folio-item">
-                <a href="images/Taekwondo/Galería de Entrenamientos Taekwondo 1.jpg" class="folio-item__thumb" target="_blank">
+        <style>
+            .taekwondo-gallery {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0;
+                will-change: transform;
+                backface-visibility: hidden;
+                transform: translateZ(0);
+                -webkit-backface-visibility: hidden;
+                -webkit-transform: translateZ(0);
+                -webkit-font-smoothing: subpixel-antialiased;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .taekwondo-gallery .gallery-item {
+                position: relative;
+                overflow: hidden;
+                padding-bottom: 100%;
+                will-change: transform;
+                transform: translateZ(0);
+                -webkit-transform: translateZ(0);
+                -webkit-backface-visibility: hidden;
+                padding-bottom: 100%;
+            }
+            .taekwondo-gallery .gallery-item img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease-in-out;
+                transform-origin: center;
+                transform: translateZ(0);
+                -webkit-transform: translateZ(0);
+                -webkit-backface-visibility: hidden;
+                -webkit-perspective: 1000;
+                -webkit-transform-style: preserve-3d;
+                backface-visibility: hidden;
+                perspective: 1000;
+                transform-style: preserve-3d;
+            }
+            .taekwondo-gallery .gallery-item:hover img {
+                transform: scale(1.03);
+            }
+            @media (max-width: 900px) {
+                .taekwondo-gallery {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            @media (max-width: 768px) {
+                .mobile-gallery-slider {
+                    display: block !important;
+                    padding: 0 20px 40px;
+                }
+                .taekwondo-gallery {
+                    display: none !important;
+                }
+                .swiper {
+                    width: 100%;
+                    padding: 20px 0 40px;
+                }
+                .swiper-slide {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .swiper-slide img {
+                    width: 100%;
+                    max-width: 400px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                }
+                .swiper-button-next,
+                .swiper-button-prev {
+                    color: #B8860B;
+                    background: rgba(255,255,255,0.9);
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+                }
+                .swiper-button-next:after,
+                .swiper-button-prev:after {
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+                .swiper-pagination-bullet {
+                    background: #B8860B;
+                    opacity: 0.5;
+                }
+                .swiper-pagination-bullet-active {
+                    opacity: 1;
+                }
+            }
+        </style>
+        
+        <div class="taekwondo-gallery">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
                     <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 1.jpg" alt="Entrenamiento Taekwondo 1">
                 </a>
             </div>
-            <div class="column folio-item">
-                <a href="images/Taekwondo/Galería de Entrenamientos Taekwondo 2.jpg" class="folio-item__thumb" target="_blank">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
                     <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 2.jpg" alt="Entrenamiento Taekwondo 2">
                 </a>
             </div>
-            <div class="column folio-item">
-                <a href="images/Taekwondo/Galería de Entrenamientos Taekwondo 3.jpg" class="folio-item__thumb" target="_blank">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
                     <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 3.jpg" alt="Entrenamiento Taekwondo 3">
                 </a>
             </div>
-        </div>
-        <!-- Segunda fila - 3 imágenes -->
-        <div class="row collapse block-large-1-3 block-medium-1-3 block-tab-1-2 block-500-stack folio-list" style="flex-wrap: wrap;">
-            <div class="column folio-item">
-                <a href="images/Taekwondo/Galería de Entrenamientos Taekwondo 4.jpg" class="folio-item__thumb" target="_blank">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
                     <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 4.jpg" alt="Entrenamiento Taekwondo 4">
                 </a>
             </div>
-            <div class="column folio-item">
-                <a href="images/Taekwondo/Galería de Entrenamientos Taekwondo 5.jpg" class="folio-item__thumb" target="_blank">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
                     <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 5.jpg" alt="Entrenamiento Taekwondo 5">
                 </a>
             </div>
-            <div class="column folio-item">
-                <a href="images/Taekwondo/Galería de Entrenamientos Taekwondo 6.jpg" class="folio-item__thumb" target="_blank">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
                     <img src="images/Taekwondo/Galería de Entrenamientos Taekwondo 6.jpg" alt="Entrenamiento Taekwondo 6">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- galería de combate -->
+    <section class="s-portfolio target-section" style="background:#F8F8F8;">
+        <div class="row s-portfolio__header">
+            <div class="column large-12">
+                <h2 class="section-header-allcaps">Galería de Combate</h2>
+                <h4 style="color:#6C757D; text-align:center;">Capturas de intensos momentos de combate y competencia.</h4>
+            </div>
+        </div>
+        
+        <!-- Slider para móvil -->
+        <div class="mobile-gallery-slider" style="display: none;">
+            <div class="swiper combateSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Combate/Combate 1.jpg" alt="Combate Taekwondo 1" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Combate/Combate 2.jpg" alt="Combate Taekwondo 2" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Combate/Combate 3.jpg" alt="Combate Taekwondo 3" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Combate/Combate 4.jpg" alt="Combate Taekwondo 4" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Combate/Combate 5.jpg" alt="Combate Taekwondo 5" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Combate/Combate 6.jpg" alt="Combate Taekwondo 6" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+        
+        <div class="taekwondo-gallery">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img src="images/Taekwondo/Combate/Combate 1.jpg" alt="Combate Taekwondo 1">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img src="images/Taekwondo/Combate/Combate 2.jpg" alt="Combate Taekwondo 2">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img src="images/Taekwondo/Combate/Combate 3.jpg" alt="Combate Taekwondo 3">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img src="images/Taekwondo/Combate/Combate 4.jpg" alt="Combate Taekwondo 4">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img src="images/Taekwondo/Combate/Combate 5.jpg" alt="Combate Taekwondo 5">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img src="images/Taekwondo/Combate/Combate 6.jpg" alt="Combate Taekwondo 6">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- galería de pounces -->
+    <section class="s-portfolio target-section" style="background:#fff;">
+        <div class="row s-portfolio__header">
+            <div class="column large-12">
+                <h2 class="section-header-allcaps">Galería de Pounces</h2>
+                <h4 style="color:#6C757D; text-align:center;">Momento de precisión y técnica en cada movimiento.</h4>
+            </div>
+        </div>
+        
+        <!-- Slider para móvil -->
+        <div class="mobile-gallery-slider" style="display: none;">
+            <div class="swiper pouncesSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Pounces/Pounces 1.jpg" alt="Pounce Taekwondo 1" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Pounces/Pounces 2.png" alt="Pounce Taekwondo 2" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Pounces/Pounces 3.png" alt="Pounce Taekwondo 3" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Pounces/Pounces 4.jpg" alt="Pounce Taekwondo 4" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Pounces/Pounces 5.png" alt="Pounce Taekwondo 5" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/Taekwondo/Pounces/Pounces 6.png" alt="Pounce Taekwondo 6" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+        
+        <div class="taekwondo-gallery">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img loading="lazy" src="images/Taekwondo/Pounces/Pounces 1.jpg" alt="Pounce Taekwondo 1">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img loading="lazy" src="images/Taekwondo/Pounces/Pounces 2.png" alt="Pounce Taekwondo 2">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img loading="lazy" src="images/Taekwondo/Pounces/Pounces 3.png" alt="Pounce Taekwondo 3">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img loading="lazy" src="images/Taekwondo/Pounces/Pounces 4.jpg" alt="Pounce Taekwondo 4">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img loading="lazy" src="images/Taekwondo/Pounces/Pounces 5.png" alt="Pounce Taekwondo 5">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img loading="lazy" src="images/Taekwondo/Pounces/Pounces 6.png" alt="Pounce Taekwondo 6">
                 </a>
             </div>
         </div>
@@ -705,11 +977,188 @@
     <!-- scripts -->
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <!-- Swiper JS para móvil -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+        // Inicializar todos los sliders en móvil
+        function initMobileSliders() {
+            if (window.innerWidth > 768) return;
+            
+            // Configuración común para todos los sliders
+            const sliderConfig = {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                centeredSlides: true,
+                loop: true,
+                pagination: {
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    320: { slidesPerView: 1, spaceBetween: 20 },
+                    480: { slidesPerView: 1, spaceBetween: 30 }
+                }
+            };
+
+            // Inicializar cada slider si existe
+            const sliders = [
+                { selector: '.trainingSwiper', config: sliderConfig },
+                { selector: '.combateSwiper', config: sliderConfig },
+                { selector: '.pouncesSwiper', config: sliderConfig }
+            ];
+
+            sliders.forEach(slider => {
+                if (document.querySelector(slider.selector)) {
+                    new Swiper(slider.selector, slider.config);
+                }
+            });
+
+            // Mostrar los sliders móviles
+            document.querySelectorAll('.mobile-gallery-slider').forEach(slider => {
+                slider.style.display = 'block';
+            });
+            
+            // Ocultar las galerías de escritorio en móvil
+            document.querySelectorAll('.taekwondo-gallery').forEach(gallery => {
+                gallery.style.display = 'none';
+            });
+        }
+
+        // Inicializar sliders al cargar y al redimensionar
+        document.addEventListener('DOMContentLoaded', initMobileSliders);
+        window.addEventListener('resize', initMobileSliders);
+    </script>
     
     <!-- JavaScript para menú hamburguesa móvil -->
     <script>
+        // Optimización de scroll suave para galerías
+        function optimizeGalleryScrolling() {
+            const galleries = document.querySelectorAll('.taekwondo-gallery, .gallery-grid');
+            
+            // Usar requestAnimationFrame para un scroll más suave
+            let lastScrollY = window.scrollY;
+            let ticking = false;
+            
+            function update() {
+                ticking = false;
+                // Aplicar transformaciones de rendimiento
+                const currentScrollY = window.scrollY;
+                const scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+                lastScrollY = currentScrollY;
+                
+                // Optimización: Solo procesar elementos visibles
+                galleries.forEach(gallery => {
+                    const rect = gallery.getBoundingClientRect();
+                    const isVisible = (rect.top <= window.innerHeight) && (rect.bottom >= 0);
+                    
+                    if (isVisible) {
+                        // Aplicar estilos de optimización solo a galerías visibles
+                        gallery.style.willChange = 'transform';
+                        gallery.style.transform = 'translateZ(0)';
+                        gallery.style.webkitTransform = 'translateZ(0)';
+                        gallery.style.backfaceVisibility = 'hidden';
+                        gallery.style.perspective = '1000px';
+                    } else {
+                        // Limpiar estilos cuando no son necesarios
+                        gallery.style.willChange = 'auto';
+                    }
+                });
+            }
+            
+            // Configuración optimizada de Intersection Observer
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            // Carga diferida de imágenes
+                            img.src = img.dataset.src;
+                            img.onload = () => {
+                                img.style.opacity = '1';
+                                img.style.transition = 'opacity 0.3s ease';
+                            };
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '300px',
+                threshold: 0.001
+            });
+            
+            // Aplicar carga perezosa mejorada a todas las imágenes
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                if (img.complete) return;
+                
+                // Si el navegador soporta lazy loading nativo, lo usamos
+                if ('loading' in HTMLImageElement.prototype) {
+                    // Añadir transición suave para cuando se cargue la imagen
+                    img.style.opacity = '0';
+                    img.onload = () => {
+                        img.style.opacity = '1';
+                        img.style.transition = 'opacity 0.3s ease';
+                    };
+                    return;
+                }
+                
+                // Fallback para navegadores sin soporte nativo
+                if (!img.dataset.src) {
+                    img.dataset.src = img.src;
+                    img.removeAttribute('src');
+                    img.style.opacity = '0';
+                    imageObserver.observe(img);
+                }
+            });
+            
+            // Mejorar el rendimiento del scroll con throttling
+            function onScroll() {
+                if (!ticking) {
+                    window.requestAnimationFrame(update);
+                    ticking = true;
+                }
+            }
+            
+            // Configurar el evento de scroll con opciones pasivas para mejor rendimiento
+            window.addEventListener('scroll', onScroll, { passive: true });
+            
+            // Aplicar estilos iniciales para forzar la aceleración por hardware
+            galleries.forEach(gallery => {
+                gallery.style.willChange = 'transform';
+                gallery.style.transform = 'translateZ(0)';
+                gallery.style.webkitTransform = 'translateZ(0)';
+                gallery.style.backfaceVisibility = 'hidden';
+                gallery.style.perspective = '1000px';
+                
+                // Optimizar imágenes dentro de la galería
+                const images = gallery.querySelectorAll('img');
+                images.forEach(img => {
+                    img.loading = 'lazy';
+                    img.decoding = 'async';
+                    img.fetchPriority = 'low';
+                });
+            });
+            
+            // Limpiar el event listener cuando ya no sea necesario
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'hidden') {
+                    window.removeEventListener('scroll', onScroll);
+                }
+            });
+        }
+        
         // Funcionalidad del menú hamburguesa
         document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar optimizaciones de galería
+            optimizeGalleryScrolling();
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const mobileMenu = document.getElementById('mobileMenu');
             
@@ -720,6 +1169,7 @@
                     slidesPerView: 1,
                     spaceBetween: 20,
                     loop: true,
+                    centeredSlides: true,
                     autoplay: {
                         delay: 4500,
                         disableOnInteraction: false,
@@ -732,13 +1182,33 @@
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
                     },
+                    breakpoints: {
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                            centeredSlides: true
+                        },
+                        480: {
+                            slidesPerView: 1,
+                            spaceBetween: 30,
+                            centeredSlides: true
+                        }
+                    }
                 });
                 
-                // Slider de Galería de Entrenamientos Taekwondo
+                // Slider de Galería de Entrenamientos Taekwondo - Optimizado para móvil
                 const galeriaSwiper = new Swiper('.galeriaSwiper', {
                     slidesPerView: 1,
                     spaceBetween: 20,
                     loop: true,
+                    centeredSlides: true,
+                    preloadImages: false,
+                    lazy: {
+                        loadPrevNext: true,
+                        loadOnTransitionStart: true,
+                    },
+                    watchSlidesProgress: true,
+                    watchSlidesVisibility: true,
                     autoplay: {
                         delay: 3000,
                         disableOnInteraction: false,
@@ -746,11 +1216,24 @@
                     pagination: {
                         el: '.swiper-pagination',
                         clickable: true,
+                        dynamicBullets: true
                     },
                     navigation: {
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
                     },
+                    breakpoints: {
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 15,
+                            centeredSlides: true
+                        },
+                        480: {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                            centeredSlides: true
+                        }
+                    }
                 });
             }
             

@@ -155,10 +155,14 @@
                 * sectionId variable we are getting while looping through sections as 
                 * an selector
                 */
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    document.querySelector(".s-header__nav a[href*=" + sectionId + "]").parentNode.classList.add("current");
-                } else {
-                    document.querySelector(".s-header__nav a[href*=" + sectionId + "]").parentNode.classList.remove("current");
+                // Verificar si existe el enlace de navegación antes de intentar acceder a su parentNode
+                const navLink = document.querySelector(".s-header__nav a[href*=" + sectionId + "]");
+                if (navLink && navLink.parentNode) {
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        navLink.parentNode.classList.add("current");
+                    } else {
+                        navLink.parentNode.classList.remove("current");
+                    }
                 }
             });
         }

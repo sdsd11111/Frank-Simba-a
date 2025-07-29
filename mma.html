@@ -9,9 +9,7 @@
     <script defer src="js/vendor/fontawesome/all.min.js"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
-    <!-- Swiper CSS solo para móvil -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" media="(max-width: 768px)">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
     <meta property="og:image" content="images/imagen destacada.jpg">
     <meta property="og:description" content="Bienvenido a Golden Club Taekwondo.">
     <style>
@@ -185,18 +183,8 @@
         
         /* CSS para sliders responsivos solo en móvil */
         @media (max-width: 768px) {
-            .mobile-slider {
-                display: block !important;
-            }
             .desktop-content {
-                display: none !important;
-            }
-            
-            .swiper {
-                width: 100%;
-                height: auto;
-                margin: 0;
-                padding: 0 20px;
+                display: block !important;
             }
             
             .swiper-slide {
@@ -254,21 +242,19 @@
     <header class="s-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #000000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); padding: 1rem 0;">
         <div class="row s-header__nav-wrap">
             <nav class="s-header__nav">
-                <ul>
+                <ul style="margin: 0;">
                     <li><a href="index.html" style="color: #FFFFFF !important;">Inicio</a></li>
                     <li><a href="blog.html" style="color: #FFFFFF !important;">Blog</a></li>
                     <li><a href="logros.html" style="color: #FFFFFF !important;">Logros</a></li>
-                    <li class="has-children current"><a href="#" style="color: #FFFFFF !important;">Disciplinas</a>
+                    <li class="has-children current"><a href="#" style="color: #B8860B !important;">Disciplinas</a>
                         <ul class="submenu" style="background: #000000; border: 1px solid #333;">
-                            <li class="current"><a href="mma.html" style="color: #FFFFFF !important;">MMA</a></li>
+                            <li class="current"><a href="mma.html" style="color: #B8860B !important;">MMA</a></li>
                             <li><a href="taekwondo.html" style="color: #FFFFFF !important;">Taekwondo</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
-        <a class="s-header__menu-toggle" href="#0" title="Menu">
-            <span class="s-header__menu-icon"></span>
         </a>
     </header>
 
@@ -282,7 +268,6 @@
     <nav class="mobile-menu" id="mobileMenu">
         <ul>
             <li><a href="index.html" onclick="closeMobileMenu()">Inicio</a></li>
-            <li><a href="blog.html" onclick="closeMobileMenu()">Blog</a></li>
             <li><a href="logros.html" onclick="closeMobileMenu()">Logros</a></li>
             <li>
                 <a href="#" onclick="toggleSubmenu(event)">Disciplinas</a>
@@ -291,6 +276,7 @@
                     <li><a href="taekwondo.html" onclick="closeMobileMenu()">Taekwondo</a></li>
                 </ul>
             </li>
+            <li><a href="contact.html" onclick="closeMobileMenu()">Contacto</a></li>
         </ul>
     </nav>
 
@@ -328,6 +314,47 @@
         <div class="row">
             <div class="column large-12">
                 <h2 class="section-header-allcaps" style="text-align:center;">Nuestro Enfoque en MMA</h2>
+                <style>
+                    @media (min-width: 769px) {
+                        .services-list.horizontal-cards {
+                            display: flex;
+                            flex-wrap: nowrap;
+                            justify-content: space-between;
+                            margin: 0 -15px;
+                        }
+                        .services-list.horizontal-cards .item-service {
+                            flex: 1;
+                            min-width: 0;
+                            padding: 0 15px;
+                        }
+                        .services-list.horizontal-cards .item-service__content {
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        .services-list.horizontal-cards .item-service__header {
+                            flex: 1;
+                        }
+                    }
+                    @media (max-width: 768px) {
+                        .services-list.horizontal-cards .item-service {
+                            margin-bottom: 2rem;
+                            width: 100%;
+                            max-width: 100%;
+                            padding: 0 10px;
+                        }
+                        .horizontal-cards .column {
+                            flex: 0 0 100% !important;
+                            max-width: 100% !important;
+                            padding: 0 10px !important;
+                            margin-bottom: 1.5rem;
+                        }
+                        .horizontal-cards .row {
+                            flex-wrap: wrap !important;
+                            margin: 0 -10px !important;
+                        }
+                    }
+                </style>
                 
                 <!-- Slider para móvil -->
                 <div class="mobile-slider" style="display: none;">
@@ -356,29 +383,47 @@
                 </div>
                 
                 <!-- Contenido desktop -->
-                <div class="desktop-content row" style="display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; margin-top:2rem;">
-                    <div class="column large-4 tab-12" style="text-align:center;">
-                        <div style="background:#fff; border-radius:10px; padding:2rem; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-                            <i class="fas fa-bullseye" style="font-size:2.5rem; color:#B8860B;"></i>
-                            <h4>Técnica</h4>
-                            <p>Perfeccionamiento de movimientos fundamentales y técnicas avanzadas de cada disciplina.</p>
+                <div class="desktop-content" style="margin-top:3rem;">
+                    <div class="row" style="display:flex; flex-wrap:nowrap; margin:0 -15px;">
+                        <div class="column" style="flex:1; min-width:0; padding:0 15px;">
+                            <div style="background:#fff; border-radius:10px; padding:2rem; box-shadow:0 2px 8px rgba(0,0,0,0.08); height:100%;">
+                                <div style="text-align:center; margin-bottom:1.5rem;">
+                                    <i class="fas fa-bullseye" style="font-size:2.5rem; color:#B8860B; margin-bottom:1rem; display:block;"></i>
+                                    <h4 style="margin:0 0 1rem 0; font-size:1.5rem; color:#343A40;">Técnica</h4>
+                                    <p style="margin:0; color:#6C757D; line-height:1.6;">Perfeccionamiento de movimientos fundamentales y técnicas avanzadas de cada disciplina.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="column large-4 tab-12" style="text-align:center;">
-                        <div style="background:#fff; border-radius:10px; padding:2rem; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-                            <i class="fas fa-shield-alt" style="font-size:2.5rem; color:#4682B4;"></i>
-                            <h4>Seguridad</h4>
-                            <p>Entrenamiento controlado y progresivo con énfasis en la prevención de lesiones.</p>
+                        <div class="column" style="flex:1; min-width:0; padding:0 15px;">
+                            <div style="background:#fff; border-radius:10px; padding:2rem; box-shadow:0 2px 8px rgba(0,0,0,0.08); height:100%;">
+                                <div style="text-align:center; margin-bottom:1.5rem;">
+                                    <i class="fas fa-shield-alt" style="font-size:2.5rem; color:#4682B4; margin-bottom:1rem; display:block;"></i>
+                                    <h4 style="margin:0 0 1rem 0; font-size:1.5rem; color:#343A40;">Seguridad</h4>
+                                    <p style="margin:0; color:#6C757D; line-height:1.6;">Entrenamiento controlado y progresivo con énfasis en la prevención de lesiones.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="column large-4 tab-12" style="text-align:center;">
-                        <div style="background:#fff; border-radius:10px; padding:2rem; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-                            <i class="fas fa-chess-knight" style="font-size:2.5rem; color:#800020;"></i>
-                            <h4>Estrategia</h4>
-                            <p>Desarrollo del pensamiento táctico y la capacidad de adaptación en combate.</p>
+                        <div class="column" style="flex:1; min-width:0; padding:0 15px;">
+                            <div style="background:#fff; border-radius:10px; padding:2rem; box-shadow:0 2px 8px rgba(0,0,0,0.08); height:100%;">
+                                <div style="text-align:center; margin-bottom:1.5rem;">
+                                    <i class="fas fa-chess-knight" style="font-size:2.5rem; color:#800020; margin-bottom:1rem; display:block;"></i>
+                                    <h4 style="margin:0 0 1rem 0; font-size:1.5rem; color:#343A40;">Estrategia</h4>
+                                    <p style="margin:0; color:#6C757D; line-height:1.6;">Desarrollo del pensamiento táctico y la capacidad de adaptación en combate.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <style>
+                    @media (max-width: 768px) {
+                        .desktop-content .row {
+                            flex-direction: column;
+                        }
+                        .desktop-content .column {
+                            margin-bottom: 2rem;
+                        }
+                    }
+                </style>
                 <div style="text-align:center; margin-top:2rem; color:#6C757D;">Enfocamos el entrenamiento de MMA en la técnica, la estrategia y la seguridad. Frank Simbaña y su equipo te guiarán a través de ejercicios funcionales, sparring controlado y simulaciones de combate, construyendo tu confianza y habilidad paso a paso. Ideal para quienes buscan un desafío completo y una autodefensa efectiva.</div>
             </div>
         </div>
@@ -417,81 +462,95 @@
             </div>
         </div>
         
-        <!-- Slider para móvil -->
-        <div class="mobile-slider" style="display: none;">
-            <div class="swiper galeriaSwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="images/MMA/Entrenamiento de Fuerza.jpg" alt="Entrenamiento de Fuerza" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
-                        <h4 style="margin-bottom:0.5rem;">Entrenamiento de Fuerza</h4>
-                        <p style="color:#6C757D; font-size:0.9rem;">Desarrollo de potencia y resistencia muscular</p>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/MMA/Técnicas de Striking.jpg" alt="Técnicas de Striking" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
-                        <h4 style="margin-bottom:0.5rem;">Técnicas de Striking</h4>
-                        <p style="color:#6C757D; font-size:0.9rem;">Perfeccionamiento de golpes de pie</p>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/MMA/Grappling y Lucha.jpg" alt="Grappling y Lucha" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
-                        <h4 style="margin-bottom:0.5rem;">Grappling y Lucha</h4>
-                        <p style="color:#6C757D; font-size:0.9rem;">Técnicas de combate en el suelo</p>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/MMA/Sparring Controlado.jpg" alt="Sparring Controlado" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
-                        <h4 style="margin-bottom:0.5rem;">Sparring Controlado</h4>
-                        <p style="color:#6C757D; font-size:0.9rem;">Práctica segura de combate</p>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/MMA/Acondicionamiento Físico.jpg" alt="Acondicionamiento Físico" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
-                        <h4 style="margin-bottom:0.5rem;">Acondicionamiento Físico</h4>
-                        <p style="color:#6C757D; font-size:0.9rem;">Preparación física integral</p>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/MMA/Defensa Personal.jpg" alt="Defensa Personal" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
-                        <h4 style="margin-bottom:0.5rem;">Defensa Personal</h4>
-                        <p style="color:#6C757D; font-size:0.9rem;">Aplicación práctica de técnicas</p>
-                    </div>
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
+
         
         <!-- Contenido desktop -->
-        <!-- Primera fila - 3 imágenes -->
-        <div class="row collapse block-large-1-3 block-medium-1-3 block-tab-1-2 block-500-stack folio-list" style="flex-wrap: wrap;">
-            <div class="column folio-item">
-                <a href="images/MMA/Galeria entrenamiento MMA 1.jpg" class="folio-item__thumb" target="_blank">
-                    <img src="images/MMA/Galeria entrenamiento MMA 1.jpg" alt="Entrenamiento MMA 1">
+        <style>
+            .taekwondo-gallery {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0;
+                will-change: transform;
+                backface-visibility: hidden;
+                transform: translateZ(0);
+                -webkit-backface-visibility: hidden;
+                -webkit-transform: translateZ(0);
+                -webkit-font-smoothing: subpixel-antialiased;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .gallery-item {
+                position: relative;
+                overflow: hidden;
+                padding-bottom: 100%;
+                will-change: transform;
+                transform: translateZ(0);
+                -webkit-transform: translateZ(0);
+                -webkit-backface-visibility: hidden;
+            }
+            .gallery-item img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease-in-out;
+                transform-origin: center;
+                transform: translateZ(0);
+                -webkit-transform: translateZ(0);
+                -webkit-backface-visibility: hidden;
+                -webkit-perspective: 1000;
+                -webkit-transform-style: preserve-3d;
+                backface-visibility: hidden;
+                perspective: 1000;
+                transform-style: preserve-3d;
+            }
+            .gallery-item:hover img {
+                transform: scale(1.03);
+            }
+            @media (max-width: 900px) {
+                .taekwondo-gallery {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            @media (max-width: 600px) {
+                .taekwondo-gallery {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+        
+        <div class="taekwondo-gallery">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img loading="lazy" src="images/MMA/Galeria entrenamiento MMA 1.jpg" alt="Entrenamiento MMA 1">
                 </a>
             </div>
-            <div class="column folio-item">
-                <a href="images/MMA/Galeria entrenamiento MMA 2.jpg" class="folio-item__thumb" target="_blank">
-                    <img src="images/MMA/Galeria entrenamiento MMA 2.jpg" alt="Entrenamiento MMA 2">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img loading="lazy" src="images/MMA/Galeria entrenamiento MMA 2.jpg" alt="Entrenamiento MMA 2">
                 </a>
             </div>
-            <div class="column folio-item">
-                <a href="images/MMA/Galeria entrenamiento MMA 3.jpg" class="folio-item__thumb" target="_blank">
-                    <img src="images/MMA/Galeria entrenamiento MMA 3.jpg" alt="Entrenamiento MMA 3">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img loading="lazy" src="images/MMA/Galeria entrenamiento MMA 3.jpg" alt="Entrenamiento MMA 3">
                 </a>
             </div>
-        </div>
-        <!-- Segunda fila - 3 imágenes -->
-        <div class="row collapse block-large-1-3 block-medium-1-3 block-tab-1-2 block-500-stack folio-list" style="flex-wrap: wrap;">
-            <div class="column folio-item">
-                <a href="images/MMA/Galeria entrenamiento MMA 4.jpg" class="folio-item__thumb" target="_blank">
-                    <img src="images/MMA/Galeria entrenamiento MMA 4.jpg" alt="Entrenamiento MMA 4">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img loading="lazy" src="images/MMA/Galeria entrenamiento MMA 4.jpg" alt="Entrenamiento MMA 4">
                 </a>
             </div>
-            <div class="column folio-item">
-                <a href="images/MMA/Galeria entrenamiento MMA 5.jpg" class="folio-item__thumb" target="_blank">
-                    <img src="images/MMA/Galeria entrenamiento MMA 5.jpg" alt="Entrenamiento MMA 5">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img loading="lazy" src="images/MMA/Galeria entrenamiento MMA 5.jpg" alt="Entrenamiento MMA 5">
                 </a>
             </div>
-            <div class="column folio-item">
-                <a href="images/MMA/Galeria entrenamiento MMA 6.jpg" class="folio-item__thumb" target="_blank">
-                    <img src="images/MMA/Galeria entrenamiento MMA 6.jpg" alt="Entrenamiento MMA 6">
+            <div class="gallery-item">
+                <a href="#" onclick="event.preventDefault(); return false;" class="gallery-link">
+                    <img loading="lazy" src="images/MMA/Galeria entrenamiento MMA 6.jpg" alt="Entrenamiento MMA 6">
                 </a>
             </div>
         </div>
@@ -536,10 +595,74 @@
     
     <!-- JavaScript para menú hamburguesa móvil -->
     <script>
+        // Optimización de scroll suave para galerías
+        function optimizeGalleryScrolling() {
+            const galleries = document.querySelectorAll('.taekwondo-gallery');
+            
+            // Usar requestAnimationFrame para un scroll más suave
+            let ticking = false;
+            
+            function update() {
+                ticking = false;
+                // Código de animación si es necesario
+            }
+            
+            function onScroll() {
+                if (!ticking) {
+                    window.requestAnimationFrame(update);
+                    ticking = true;
+                }
+            }
+            
+            // Configuración de Intersection Observer para carga perezosa de imágenes
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '200px',
+                threshold: 0.01
+            });
+            
+            // Aplicar carga perezosa a todas las imágenes de las galerías
+            document.querySelectorAll('.taekwondo-gallery img[loading="lazy"]').forEach(img => {
+                if (img.complete) return;
+                if ('loading' in HTMLImageElement.prototype) {
+                    // El navegador soporta lazy loading nativo
+                    return;
+                }
+                // Fallback para navegadores sin soporte nativo
+                if (img.dataset.src) return;
+                img.dataset.src = img.src;
+                img.removeAttribute('src');
+                imageObserver.observe(img);
+            });
+            
+            // Mejorar el rendimiento del scroll
+            window.addEventListener('scroll', onScroll, { passive: true });
+            
+            // Forzar el hardware acceleration
+            galleries.forEach(gallery => {
+                gallery.style.transform = 'translateZ(0)';
+                gallery.style.webkitTransform = 'translateZ(0)';
+            });
+        }
+        
         // Funcionalidad del menú hamburguesa
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const mobileMenu = document.getElementById('mobileMenu');
+            
+            // Inicializar optimizaciones de galería
+            optimizeGalleryScrolling();
             
             // Inicializar sliders Swiper solo en móvil
             if (window.innerWidth <= 768) {

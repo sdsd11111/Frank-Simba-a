@@ -163,8 +163,8 @@
         <div class="row s-header__nav-wrap">
             <nav class="s-header__nav">
                 <ul style="margin: 0;">
-                    <li><a class="smoothscroll" href="index.html" style="color: #FFFFFF !important;">Inicio</a></li>
-                    <li class="current"><a href="blog.html" style="color: #FFFFFF !important;">Blog</a></li>
+                    <li><a href="index.html" style="color: #FFFFFF !important;">Inicio</a></li>
+                    <li class="current"><a href="blog.html" style="color: #B8860B !important;">Blog</a></li>
                     <li><a href="logros.html" style="color: #FFFFFF !important;">Logros</a></li>
                     <li class="has-children"><a href="#" style="color: #FFFFFF !important;">Disciplinas</a>
                         <ul class="submenu" style="background: #000000; border: 1px solid #333;">
@@ -175,8 +175,6 @@
                 </ul>
             </nav>
         </div>
-        <a class="s-header__menu-toggle" href="#0" title="Menu">
-            <span class="s-header__menu-icon"></span>
         </a>
     </header>
 
@@ -199,6 +197,7 @@
                     <li><a href="taekwondo.html" onclick="closeMobileMenu()">Taekwondo</a></li>
                 </ul>
             </li>
+            <li><a href="contact.html" onclick="closeMobileMenu()">Contacto</a></li>
         </ul>
     </nav>
 
@@ -339,13 +338,60 @@
 
                 <!-- Paginación -->
                 <div class="pagination" style="text-align: center; margin-top: 4rem;">
-                    <button id="prevBtn" onclick="changePage(-1)" style="background: #343A40; color: #F8F8F8; border: none; padding: 1rem 2rem; margin: 0 1rem; border-radius: 6px; cursor: pointer; font-size: 1rem;" disabled>
-                        <i class="fas fa-chevron-left"></i> Anterior
+                    <button id="prevBtn" onclick="changePage(-1)" style="background: #343A40; color: #F8F8F8; border: none; padding: 1rem 1.5rem; margin: 0 0.5rem; border-radius: 6px; cursor: pointer; font-size: 0.9rem; display: inline-flex; align-items: center; justify-content: center; min-width: 100px; transition: all 0.3s ease;" disabled>
+                        <i class="fas fa-chevron-left" style="margin-right: 5px;"></i> <span class="btn-text">Anterior</span>
                     </button>
-                    <span id="pageInfo" style="color: #343A40; font-weight: 600; margin: 0 2rem;">Página 1 de 2</span>
-                    <button id="nextBtn" onclick="changePage(1)" style="background: #B8860B; color: #F8F8F8; border: none; padding: 1rem 2rem; margin: 0 1rem; border-radius: 6px; cursor: pointer; font-size: 1rem;">
-                        Siguiente <i class="fas fa-chevron-right"></i>
+                    <span id="pageInfo" style="color: #343A40; font-weight: 600; margin: 0 0.5rem; display: inline-block; min-width: 100px; text-align: center; font-size: 0.9rem;">Página 1 de 2</span>
+                    <button id="nextBtn" onclick="changePage(1)" style="background: #B8860B; color: #F8F8F8; border: none; padding: 1rem 1.5rem; margin: 0 0.5rem; border-radius: 6px; cursor: pointer; font-size: 0.9rem; display: inline-flex; align-items: center; justify-content: center; min-width: 100px; transition: all 0.3s ease;">
+                        <span class="btn-text">Siguiente</span> <i class="fas fa-chevron-right" style="margin-left: 5px;"></i>
                     </button>
+                    
+                    <style>
+                        @media (max-width: 600px) {
+                            .pagination {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 1rem;
+                            }
+                            .pagination button {
+                                width: 100%;
+                                max-width: 200px;
+                                margin: 0.25rem 0 !important;
+                                padding: 0.8rem 1rem !important;
+                            }
+                            #pageInfo {
+                                margin: 0.5rem 0 !important;
+                                order: -1;
+                            }
+                        }
+                        
+                        @media (min-width: 601px) and (max-width: 768px) {
+                            .pagination button {
+                                padding: 0.9rem 1.2rem !important;
+                                font-size: 0.85rem !important;
+                                min-width: 90px !important;
+                            }
+                            #pageInfo {
+                                font-size: 0.85rem !important;
+                                margin: 0 0.75rem !important;
+                                min-width: 90px !important;
+                            }
+                        }
+                        
+                        /* Efecto hover para botones */
+                        .pagination button:not(:disabled):hover {
+                            transform: translateY(-2px);
+                            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                        }
+                        
+                        /* Estilo para botón deshabilitado */
+                        .pagination button:disabled {
+                            opacity: 0.6;
+                            cursor: not-allowed;
+                            background: #6C757D !important;
+                        }
+                    </style>
                 </div>
 
             </div>
@@ -384,13 +430,21 @@
                         </ul>
                     </div>
 
-                    <!-- Panel Admin -->
-                    <div class="widget" style="background: linear-gradient(135deg, #343A40 0%, #B8860B 100%); padding: 3rem; border-radius: 8px;">
+                    <!-- Panel Admin - Oculto por defecto -->
+                    <div id="adminPanel" class="widget" style="display: none; background: linear-gradient(135deg, #343A40 0%, #B8860B 100%); padding: 3rem; border-radius: 8px;">
                         <h4 style="color: #F8F8F8; margin-bottom: 2rem; text-align: center;">Panel de Administración</h4>
                         <p style="color: #F8F8F8; text-align: center; margin-bottom: 2rem; font-size: 0.9rem;">Acceso exclusivo para administradores</p>
                         <div style="text-align: center;">
-                            <a href="admin-login.html" class="btn" style="background: #F8F8F8; color: #343A40; border: none; padding: 1rem 2rem; border-radius: 4px; text-decoration: none; display: inline-block; font-weight: 600;">Iniciar Sesión</a>
+                            <a href="admin-login.html" class="btn" style="background: #F8F8F8; color: #343A40; border: none; padding: 1rem 2rem; border-radius: 4px; text-decoration: none; display: inline-block; font-weight: 600; margin-bottom: 1rem;">Iniciar Sesión</a>
+                            <button id="logoutBtn" style="background: transparent; color: #F8F8F8; border: 1px solid #F8F8F8; padding: 1rem 2rem; border-radius: 4px; cursor: pointer; font-weight: 600; width: 100%; display: none;">Cerrar Sesión</button>
                         </div>
+                    </div>
+                    
+                    <!-- Enlace de inicio de sesión para administradores (siempre visible) -->
+                    <div class="widget" style="background: #F8F8F8; padding: 1.5rem; margin-top: 2rem; border-radius: 8px; text-align: center;">
+                        <a href="#" id="showAdminLogin" style="color: #343A40; text-decoration: none; font-size: 0.9rem;">
+                            <i class="fas fa-lock"></i> Acceso Administrativo
+                        </a>
                     </div>
 
                 </aside>
@@ -487,9 +541,55 @@
             }
         }
         
-        // Inicializar la paginación al cargar la página
+        // Función para verificar si el usuario es administrador
+        function checkAdminStatus() {
+            return localStorage.getItem('isAdmin') === 'true';
+        }
+        
+        // Función para mostrar/ocultar el panel de administración
+        function toggleAdminPanel() {
+            const adminPanel = document.getElementById('adminPanel');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const showAdminLink = document.getElementById('showAdminLogin');
+            
+            if (checkAdminStatus()) {
+                adminPanel.style.display = 'block';
+                if (logoutBtn) logoutBtn.style.display = 'block';
+                if (showAdminLink) showAdminLink.style.display = 'none';
+            } else {
+                adminPanel.style.display = 'none';
+                if (logoutBtn) logoutBtn.style.display = 'none';
+                if (showAdminLink) showAdminLink.style.display = 'block';
+            }
+        }
+        
+        // Función para manejar el cierre de sesión
+        function handleLogout() {
+            localStorage.removeItem('isAdmin');
+            toggleAdminPanel();
+        }
+        
+        // Inicializar la paginación y el panel de administración al cargar la página
         document.addEventListener('DOMContentLoaded', function() {
             showArticles(1);
+            
+            // Configurar el panel de administración
+            toggleAdminPanel();
+            
+            // Configurar el botón de mostrar/ocultar panel de administración
+            const showAdminLink = document.getElementById('showAdminLogin');
+            if (showAdminLink) {
+                showAdminLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = 'admin-login.html';
+                });
+            }
+            
+            // Configurar el botón de cierre de sesión
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', handleLogout);
+            }
             
             // Inicializar menú hamburguesa
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
