@@ -1,11 +1,11 @@
 const nodemailer = require('nodemailer');
 
 module.exports = async (req, res) => {
-  // Configurar CORS
-  res.setHeader('Access-Control-Allow-Credentials', true);
+  // Configurar CORS para Vercel
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
 
   // Manejar solicitud OPTIONS (preflight)
   if (req.method === 'OPTIONS') {
@@ -18,13 +18,32 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { name, email, subject, message } = req.body;
+    // Verificar que el body no esté vacío
+    if (!req.body) {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'El cuerpo de la solicitud está vacío' 
+      });
+    }
+
+    // Parsear el body si es necesario
+    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    const { name, email, subject, message } = body;
 
     // Validar campos requeridos
     if (!name || !email || !message) {
       return res.status(400).json({ 
         success: false, 
         message: 'Por favor complete todos los campos requeridos.' 
+      });
+    }
+
+    // Verificar variables de entorno
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
+      console.error('Error: Faltan variables de entorno GMAIL_USER o GMAIL_PASS');
+      return res.status(500).json({ 
+        success: false, 
+        message: 'Error de configuración del servidor' 
       });
     }
 
@@ -40,7 +59,7 @@ module.exports = async (req, res) => {
     // Configurar el correo
     const mailOptions = {
       from: `"${name}" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_TO || 'centrodeportivoloja@hotmail.com',
+      to: process.env.EMAIL_TO || process.env.GMAIL_USER,
       subject: `Nuevo mensaje de contacto: ${subject || 'Sin asunto'}`,
       text: `
         Nombre: ${name}
