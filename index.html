@@ -728,7 +728,7 @@
                 <h4 class="huge-text">
                     ¿Listo para aumentar tu potencial?
                 </h4>
-                <form name="contactForm" id="contactForm" method="POST">
+                <form name="contactForm" id="contactForm" action="https://formspree.io/f/xjvqgqkp" method="POST" class="contact-form">
                     <fieldset>
                         <!-- Mensajes de estado -->
                         <div id="formAlert" class="alert" style="display: none; margin-bottom: 20px; padding: 15px; border-radius: 4px;"></div>
@@ -789,84 +789,53 @@
                         const spinner = document.getElementById('spinner');
                         
                         contactForm.addEventListener('submit', async function(e) {
-                        e.preventDefault();
-                        
-                        // Mostrar spinner y deshabilitar botón
-                        submitButton.disabled = true;
-                        submitText.textContent = 'Enviando...';
-                        spinner.style.display = 'inline-block';
-                        formAlert.style.display = 'none';
-                        
-                        try {
-                            const formData = {
-                                name: document.getElementById('contactName').value.trim(),
-                                email: document.getElementById('contactEmail').value.trim(),
-                                subject: document.getElementById('contactSubject').value.trim() || 'Sin asunto',
-                                message: document.getElementById('contactMessage').value.trim()
-                            };
-
-                            // Validación básica
-                            if (!formData.name || !formData.email || !formData.message) {
-                                throw new Error('Por favor complete todos los campos requeridos');
-                            }
-
-                            // URL del endpoint - asegurando que apunte al backend correcto
-                            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                            const protocol = isLocalhost ? 'http:' : window.location.protocol;
-                            const host = isLocalhost ? 'localhost:3000' : window.location.host;
-                            const apiUrl = `${protocol}//${host}/api/contact`;
+                            e.preventDefault();
                             
-                            console.log('Enviando datos a:', apiUrl);
+                            // Mostrar spinner y deshabilitar botón
+                            submitButton.disabled = true;
+                            submitText.textContent = 'Enviando...';
+                            spinner.style.display = 'inline-block';
+                            formAlert.style.display = 'none';
                             
-                            const response = await fetch(apiUrl, {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'Accept': 'application/json'
-                                },
-                                body: JSON.stringify(formData),
-                                credentials: 'same-origin' // Importante para manejar cookies/sesiones
-                            });
-                            
-                            console.log('Respuesta del servidor:', response);
-                            
-                            let result;
                             try {
-                                // Intentar parsear la respuesta como JSON
-                                const responseText = await response.text();
-                                result = responseText ? JSON.parse(responseText) : {};
-                            } catch (parseError) {
-                                console.error('Error al parsear respuesta:', parseError);
-                                // Si hay un error de parseo pero el status es 200, asumir éxito
+                                // Validación básica
+                                const name = document.getElementById('contactName').value.trim();
+                                const email = document.getElementById('contactEmail').value.trim();
+                                const message = document.getElementById('contactMessage').value.trim();
+                                
+                                if (!name || !email || !message) {
+                                    throw new Error('Por favor complete todos los campos requeridos');
+                                }
+                                
+                                // Crear FormData para enviar el formulario
+                                const formData = new FormData(contactForm);
+                                
+                                // Enviar el formulario a Formspree
+                                const response = await fetch(contactForm.action, {
+                                    method: 'POST',
+                                    body: formData,
+                                    headers: {
+                                        'Accept': 'application/json'
+                                    }
+                                });
+                                
                                 if (response.ok) {
                                     showAlert('¡Mensaje enviado con éxito! Pronto nos pondremos en contacto contigo.', 'success');
                                     contactForm.reset();
-                                    return;
+                                } else {
+                                    const errorData = await response.json();
+                                    throw new Error(errorData.error || 'Error al enviar el mensaje');
                                 }
-                                throw new Error('Error en la respuesta del servidor');
-                            }
-                            
-                            if (response.ok) {
-                                showAlert('¡Mensaje enviado con éxito! Pronto nos pondremos en contacto contigo.', 'success');
-                                contactForm.reset();
-                            } else {
-                                throw new Error(result.message || `Error ${response.status}: ${response.statusText}`);
-                            }
                         } catch (error) {
                             console.error('Error al enviar el formulario:', error);
                             let errorMessage = 'Hubo un error al enviar el mensaje. ';
                             
                             if (error.message.includes('Failed to fetch')) {
-                                errorMessage += 'No se pudo conectar con el servidor. ';
-                                errorMessage += 'Por favor, verifica tu conexión a internet o inténtalo de nuevo más tarde.';
-                            } else if (error.message.includes('NetworkError')) {
-                                errorMessage += 'Error de red. Por favor, verifica tu conexión.';
-                            } else if (error.message.includes('timeout')) {
-                                errorMessage += 'La solicitud ha tardado demasiado. Por favor, inténtalo de nuevo.';
+                                errorMessage = 'No se pudo conectar con el servidor. Por favor, verifica tu conexión a internet.';
                             } else if (error.message) {
                                 errorMessage = error.message;
                             } else {
-                                errorMessage += 'Por favor, inténtalo de nuevo más tarde o contáctanos directamente por teléfono.';
+                                errorMessage = 'Por favor, inténtalo de nuevo más tarde o contáctanos directamente por teléfono.';
                             }
                             
                             showAlert(errorMessage, 'error');
