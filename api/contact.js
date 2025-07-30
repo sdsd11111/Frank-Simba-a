@@ -1,7 +1,8 @@
+// @ts-check
 const nodemailer = require('nodemailer');
 
 // eslint-disable-next-line consistent-return
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Configurar CORS para Vercel
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -23,7 +24,7 @@ export default async function handler(req, res) {
     if (!req.body) {
       return res.status(400).json({
         success: false,
-        message: 'El cuerpo de la solicitud está vacío',
+        message: 'El cuerpo de la solicitud está vacío'
       });
     }
 
@@ -45,7 +46,7 @@ export default async function handler(req, res) {
       console.error('Error: Faltan variables de entorno GMAIL_USER o GMAIL_PASS');
       return res.status(500).json({
         success: false,
-        message: 'Error de configuración del servidor',
+        message: 'Error de configuración del servidor'
       });
     }
 
