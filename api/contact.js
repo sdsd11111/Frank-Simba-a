@@ -1,15 +1,16 @@
-// @ts-nocheck
+// @ts-check
 'use strict';
 
 const nodemailer = require('nodemailer');
 
 /**
  * Manejador de la API de contacto
- * @param {any} req - Objeto de solicitud
- * @param {any} res - Objeto de respuesta
+ * @param {object} req - Objeto de solicitud HTTP
+ * @param {object} res - Objeto de respuesta HTTP
+ * @returns {Promise<void>}
  */
-module.exports = async (req, res) => {
-  // Configurar CORS para Vercel
+const handler = async (req, res) => {
+  // Configurar CORS
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -17,79 +18,84 @@ module.exports = async (req, res) => {
 
   // Manejar solicitud OPTIONS (preflight)
   if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+    res.status(200).end();
+    return;
   }
 
   // Solo permitir método POST
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Método no permitido' });
+    res.status(405).json({ error: 'Método no permitido' });
+    return;
   }
 
   try {
-    // Verificar que el body no esté vacío
-    if (!req.body) {
-      return res.status(400).json({
-        success: false,
-        message: 'El cuerpo de la solicitud está vacío'
-      });
-    }
-
-    // Parsear el body si es necesario
+    // Parsear el cuerpo de la solicitud
     let body;
     try {
-      // @ts-ignore
-      const rawBody = req.body || '{}';
-      body = typeof rawBody === 'string' ? JSON.parse(rawBody) : rawBody;
+      body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body || {};
     } catch (error) {
-      return res.status(400).json({
+      res.status(400).json({
         success: false,
-        message: 'Formato de solicitud no válido: ' + error.message
+        message: 'Formato de solicitud no válido'
       });
+      return;
     }
-    
-    const { name, email, subject, message } = body;
 
     // Validar campos requeridos
+    const { name, email, message, subject = '' } = body;
     if (!name || !email || !message) {
-      return res.status(400).json({
+      res.status(400).json({
         success: false,
         message: 'Por favor complete todos los campos requeridos.'
       });
+      return;
     }
 
-    // Verificar variables de entorno
-    const { GMAIL_USER, GMAIL_PASS } = process.env;
-    if (!GMAIL_USER || !GMAIL_PASS) {
-      // eslint-disable-next-line no-console
-      console.error('Error: Faltan variables de entorno GMAIL_USER o GMAIL_PASS');
-      return res.status(500).json({
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      res.status(400).json({
         success: false,
-        message: 'Error de configuración del servidor'
+        message: 'Por favor ingrese un correo electrónico válido.'
       });
+      return;
     }
 
-    // Configurar el transporter de Nodemailer
+    // Obtener credenciales de las variables de entorno
+    const { GMAIL_USER, GMAIL_PASS, EMAIL_TO } = process.env;
+    
+    // Validar variables de entorno
+    if (!GMAIL_USER || !GMAIL_PASS) {
+      console.error('Error: Faltan variables de entorno GMAIL_USER o GMAIL_PASS');
+      res.status(500).json({
+        success: false,
+        message: 'Error de configuración del servidor.'
+      });
+      return;
+    }
+
+    // Configurar el transporte de correo
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS
+        user: GMAIL_USER,
+        pass: GMAIL_PASS
       }
     });
 
-    // Configurar el correo
+    // Configurar el correo electrónico
     const mailOptions = {
-      from: `"${name}" <${process.env.GMAIL_USER}>`,
-      to: process.env.EMAIL_TO || process.env.GMAIL_USER,
+      from: `"${name}" <${GMAIL_USER}>`,
+      to: EMAIL_TO || GMAIL_USER,
       subject: `Nuevo mensaje de contacto: ${subject || 'Sin asunto'}`,
-      text: `
-        Nombre: ${name}
-        Email: ${email}
-        Asunto: ${subject || 'No especificado'}
-        
-        Mensaje:
-        ${message}
-      `,
+      text: [
+        'Nuevo mensaje de contacto',
+        `Nombre: ${name}`,
+        `Email: ${email}`,
+        `Asunto: ${subject || 'No especificado'}`,
+        'Mensaje:',
+        message
+      ].join('\n'),
       html: `
         <h2>Nuevo mensaje de contacto</h2>
         <p><strong>Nombre:</strong> ${name}</p>
@@ -100,19 +106,23 @@ module.exports = async (req, res) => {
       `
     };
 
-    // Enviar el correo
+    // Enviar el correo electrónico
     await transporter.sendMail(mailOptions);
     
-    return res.status(200).json({ 
+    // Responder con éxito
+    res.status(200).json({ 
       success: true, 
       message: '¡Mensaje enviado con éxito! Pronto nos pondremos en contacto contigo.' 
     });
 
   } catch (error) {
-    console.error('Error al enviar el correo:', error);
-    return res.status(500).json({ 
+    console.error('Error al procesar la solicitud:', error);
+    res.status(500).json({ 
       success: false, 
-      message: 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.' 
+      message: 'Hubo un error al procesar tu solicitud. Por favor, inténtalo de nuevo más tarde.' 
     });
   }
 };
+
+// Exportar el manejador para Vercel
+module.exports = handler;
