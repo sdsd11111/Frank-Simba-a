@@ -1,7 +1,13 @@
 // @ts-check
+'use strict';
+
 const nodemailer = require('nodemailer');
 
-// eslint-disable-next-line consistent-return
+/**
+ * Manejador de la API de contacto
+ * @param {import('http').IncomingMessage} req - Objeto de solicitud
+ * @param {import('http').ServerResponse} res - Objeto de respuesta
+ */
 module.exports = async function handler(req, res) {
   // Configurar CORS para Vercel
   res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -29,7 +35,16 @@ module.exports = async function handler(req, res) {
     }
 
     // Parsear el body si es necesario
-    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    let body;
+    try {
+      body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        message: 'Formato de solicitud no válido'
+      });
+    }
+    
     const { name, email, subject, message } = body;
 
     // Validar campos requeridos
@@ -41,7 +56,8 @@ module.exports = async function handler(req, res) {
     }
 
     // Verificar variables de entorno
-    if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
+    const { GMAIL_USER, GMAIL_PASS } = process.env;
+    if (!GMAIL_USER || !GMAIL_PASS) {
       // eslint-disable-next-line no-console
       console.error('Error: Faltan variables de entorno GMAIL_USER o GMAIL_PASS');
       return res.status(500).json({
