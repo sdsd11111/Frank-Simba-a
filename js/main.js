@@ -301,10 +301,79 @@
 
 
 
+   /* Tab System for Tournament Categories
+    * ------------------------------------------------------ */
+    const ssTabs = function() {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        
+        if (!tabButtons.length) return;
+        
+        // Función para cambiar de pestaña
+        const switchTab = (tabId) => {
+            // Ocultar todos los paneles
+            document.querySelectorAll('.tab-pane').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            
+            // Desactivar todos los botones
+            tabButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Activar el panel seleccionado
+            const activePanel = document.getElementById(tabId);
+            if (activePanel) {
+                activePanel.classList.add('active');
+            }
+            
+            // Activar el botón correspondiente
+            const activeButton = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+        };
+        
+        // Manejar clics en los botones de pestaña
+        tabButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tabId = button.getAttribute('data-tab');
+                if (tabId) {
+                    switchTab(tabId);
+                    
+                    // Actualizar la URL con el hash de la pestaña
+                    if (history.pushState) {
+                        const newUrl = window.location.pathname + '#' + tabId;
+                        window.history.pushState({ path: newUrl }, '', newUrl);
+                    }
+                }
+            });
+        });
+        
+        // Manejar el botón de retroceso/avance del navegador
+        window.addEventListener('popstate', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                switchTab(hash);
+            }
+        });
+        
+        // Activar la pestaña basada en el hash de la URL al cargar la página
+        const hash = window.location.hash.replace('#', '');
+        if (hash) {
+            switchTab(hash);
+        } else {
+            // Por defecto, activar la primera pestaña
+            const firstTab = document.querySelector('.tab-btn');
+            if (firstTab) {
+                firstTab.click();
+            }
+        }
+    };
+
    /* initialize
     * ------------------------------------------------------ */
     (function ssInit() {
-
         ssPreloader();
         ssParallax();
         ssMoveHeader();
@@ -315,7 +384,7 @@
         ssAlertBoxes();
         ssSmoothScroll();
         ssBackToTop();
-
+        ssTabs();
     })();
 
 })(document.documentElement);

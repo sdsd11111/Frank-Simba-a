@@ -33,12 +33,54 @@
 
     <!-- header -->
     <style>
+        /* Estilos responsivos */
+        @media (max-width: 1024px) {
+            .s-content .row {
+                flex-direction: column;
+            }
+            
+            .s-content .column.large-8,
+            .s-content .column.large-4 {
+                width: 100%;
+                padding: 0 15px;
+            }
+            
+            .sidebar {
+                padding-left: 0 !important;
+                margin-top: 3rem;
+                position: static !important;
+            }
+            
+            .widget--categories ul {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+            
+            .entry {
+                padding: 2rem !important;
+            }
+        }
+        
         @media (max-width: 768px) {
             .s-header {
                 display: none !important;
             }
             
-            /* Menú hamburguesa móvil */
+            .widget--categories ul {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            .entry {
+                padding: 1.5rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .widget--categories ul {
+                grid-template-columns: 1fr !important;
+            }
+        }
+            
+        /* Menú hamburguesa móvil */
             .mobile-menu-toggle {
                 position: fixed;
                 top: 20px;
@@ -202,7 +244,7 @@
     </nav>
 
     <!-- blog hero -->
-    <section class="s-hero target-section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/Blog/Hero Background.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 60vh; padding: 8rem 0;">
+    <section class="s-hero target-section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/Blog/Hero Background.webp'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 60vh; padding: 8rem 0;">
         <div class="row s-hero__content">
             <div class="column">
                 <div class="s-hero__content-about" style="text-align: center;">
@@ -218,13 +260,14 @@
 
     <!-- blog content -->
     <section class="s-content" style="padding: 8rem 0;">
-        <div class="row">
-            <div class="column large-8 medium-12">
+        <div class="row" style="display: flex; flex-wrap: wrap;">
+            <!-- Main Content -->
+            <div class="column large-8 medium-12" style="order: 1;">
                 
                 <!-- Artículo 1: Taekwondo -->
                 <article class="entry" style="background: #F8F8F8; padding: 4rem; margin-bottom: 4rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
                     <div class="entry__thumb" style="margin-bottom: 2rem;">
-                        <img src="images/Blog/Blog 2.jpg" alt="Fundamentos del Taekwondo" style="width: 100%; height: 250px; object-fit: cover; border-radius: 6px;">
+                        <img src="images/Blog/Blog 2.webp" alt="Fundamentos del Taekwondo" style="width: 100%; height: 250px; object-fit: cover; border-radius: 6px;" loading="lazy">
                     </div>
                     <header class="entry__header">
                         <div class="entry__meta" style="color: #B8860B; font-weight: 600; margin-bottom: 1rem;">
@@ -247,7 +290,7 @@
                 <!-- Artículo 2: MMA -->
                 <article class="entry" style="background: #F8F8F8; padding: 4rem; margin-bottom: 4rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
                     <div class="entry__thumb" style="margin-bottom: 2rem;">
-                        <img src="images/Blog/Blog 1.jpg" alt="Preparación Mental MMA" style="width: 100%; height: 250px; object-fit: cover; border-radius: 6px;">
+                        <img src="images/Blog/Blog 1.webp" alt="Preparación Mental MMA" style="width: 100%; height: 250px; object-fit: cover; border-radius: 6px;" loading="lazy">
                     </div>
                     <header class="entry__header">
                         <div class="entry__meta" style="color: #800020; font-weight: 600; margin-bottom: 1rem;">
@@ -270,7 +313,7 @@
                 <!-- Artículo 3: Desarrollo Personal -->
                 <article class="entry" style="background: #F8F8F8; padding: 4rem; margin-bottom: 4rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
                     <div class="entry__thumb" style="margin-bottom: 2rem;">
-                        <img src="images/Blog/Blog 3.jpg" alt="Transformación Personal" style="width: 100%; height: 250px; object-fit: cover; border-radius: 6px;">
+                        <img src="images/Blog/Blog 3.webp" alt="Transformación Personal" style="width: 100%; height: 250px; object-fit: cover; border-radius: 6px;" loading="lazy">
                     </div>
                     <header class="entry__header">
                         <div class="entry__meta" style="color: #4682B4; font-weight: 600; margin-bottom: 1rem;">
@@ -293,7 +336,7 @@
                 <!-- Artículo 4: Taekwondo Avanzado -->
                 <article class="entry" style="background: #F8F8F8; padding: 4rem; margin-bottom: 4rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
                     <div class="entry__thumb" style="margin-bottom: 2rem;">
-                        <img src="images/Blog/Blog 4.jpg" alt="Taekwondo Avanzado" style="width: 100%; height: 250px; object-fit: cover; border-radius: 6px;">
+                        <img src="images/Blog/Blog 4.webp" alt="Taekwondo Avanzado" style="width: 100%; height: 250px; object-fit: cover; border-radius: 6px;" loading="lazy">
                     </div>
                     <header class="entry__header">
                         <div class="entry__meta" style="color: #B8860B; font-weight: 600; margin-bottom: 1rem;">
@@ -316,7 +359,7 @@
                 <!-- Artículo 5: MMA Estrategia -->
                 <article class="entry" id="article-5" style="background: #F8F8F8; padding: 4rem; margin-bottom: 4rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); display: none;">
                     <div class="entry__thumb" style="margin-bottom: 2rem;">
-                        <img src="images/Blog/Blog 5.jpg" alt="Estrategia MMA" style="width: 100%; height: 250px; object-fit: cover; border-radius: 6px;">
+                        <img src="images/Blog/Blog 5.webp" alt="Estrategia MMA" style="width: 100%; height: 250px; object-fit: cover; border-radius: 6px;" loading="lazy">
                     </div>
                     <header class="entry__header">
                         <div class="entry__meta" style="color: #800020; font-weight: 600; margin-bottom: 1rem;">
@@ -397,8 +440,48 @@
             </div>
 
             <!-- Sidebar -->
-            <div class="column large-4 medium-12">
-                <aside class="sidebar" style="padding-left: 4rem;">
+            <div class="column large-4 medium-12" style="order: 2;">
+                <aside class="sidebar" style="padding-left: 2rem; position: sticky; top: 100px; align-self: flex-start;">
+                    <!-- Tarjeta del Torneo - Diseño Simple -->
+                    <div class="widget" style="background: linear-gradient(135deg, #B8860B 0%, #8a5f08 100%); color: white; padding: 2rem; margin-bottom: 3rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.1);">
+                        <h3 style="color: #FFD700; margin: 0 0 1rem 0; font-size: 1.5rem; text-align: center; font-weight: 700;">
+                            Torneo Open Zamora 2025
+                        </h3>
+                        
+                        <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; text-align: center; font-size: 1rem; line-height: 1.5;">
+                            Inscríbete en este torneo de Taekwondo, no te lo pierdas
+                        </p>
+                        
+                        <a href="torneo-open-zamora-2025.html" class="btn-tournament" style="display: block; text-align: center; background: #FFD700; color: #000; font-weight: 700; padding: 12px; border-radius: 8px; text-decoration: none; transition: all 0.3s ease; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px; box-shadow: 0 4px 0 rgba(0,0,0,0.1);">
+                            Ver Detalles <i class="fas fa-arrow-right" style="margin-left: 8px; transition: transform 0.3s ease;"></i>
+                        </a>
+                    </div>
+                            
+                            <style>
+                                .torneo-card:hover {
+                                    transform: translateY(-5px);
+                                    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+                                }
+                                .torneo-card:hover img {
+                                    transform: scale(1.05);
+                                }
+                                .btn-tournament:hover {
+                                    background: #fff;
+                                    transform: translateY(-2px);
+                                    box-shadow: 0 6px 0 rgba(0,0,0,0.1);
+                                }
+                                .btn-tournament:hover i {
+                                    transform: translateX(3px);
+                                }
+                                @media (max-width: 768px) {
+                                    .torneo-card {
+                                        margin: 0 auto 2rem;
+                                        max-width: 400px;
+                                    }
+                                }
+                            </style>
+                        </div>
+                    </div>
                     
                     <!-- Categorías -->
                     <div class="widget" style="background: #F8F8F8; padding: 3rem; margin-bottom: 3rem; border-radius: 8px;">
@@ -406,8 +489,6 @@
                         <ul style="list-style: none; padding: 0;">
                             <li style="margin-bottom: 1rem;"><a href="#" style="color: #6C757D; text-decoration: none; display: flex; justify-content: space-between;"><span>Taekwondo</span><span style="color: #B8860B;">(8)</span></a></li>
                             <li style="margin-bottom: 1rem;"><a href="#" style="color: #6C757D; text-decoration: none; display: flex; justify-content: space-between;"><span>MMA</span><span style="color: #800020;">(6)</span></a></li>
-                            <li style="margin-bottom: 1rem;"><a href="#" style="color: #6C757D; text-decoration: none; display: flex; justify-content: space-between;"><span>Desarrollo Personal</span><span style="color: #4682B4;">(4)</span></a></li>
-                            <li style="margin-bottom: 1rem;"><a href="#" style="color: #6C757D; text-decoration: none; display: flex; justify-content: space-between;"><span>Técnicas</span><span style="color: #6C757D;">(12)</span></a></li>
                         </ul>
                     </div>
 
@@ -573,6 +654,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             showArticles(1);
             
+            // Inicializar cualquier funcionalidad necesaria para la tarjeta
+            // La tarjeta ahora es estática y siempre visible
+            
             // Configurar el panel de administración
             toggleAdminPanel();
             
@@ -596,17 +680,8 @@
             const mobileMenu = document.getElementById('mobileMenu');
             
             if (mobileMenuToggle && mobileMenu) {
-                mobileMenuToggle.addEventListener('click', function() {
-                    mobileMenuToggle.classList.toggle('active');
-                    mobileMenu.classList.toggle('active');
-                });
-                
-                // Cerrar menú al hacer clic fuera de él
-                mobileMenu.addEventListener('click', function(e) {
-                    if (e.target === mobileMenu) {
-                        closeMobileMenu();
-                    }
-                });
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
             }
         });
         
