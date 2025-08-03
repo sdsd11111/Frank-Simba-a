@@ -726,8 +726,7 @@
                 <h4 class="huge-text">
                     ¿Listo para aumentar tu potencial?
                 </h4>
-                <form name="contactForm" id="contactForm" action="https://ixduoqiv.formester.com/f/AfkYvVrbE" method="POST" class="contact-form">
-                    <input type="hidden" name="_redirect" value="https://franksimbana.com/gracias.html">
+                <form name="contactForm" id="contactForm" class="contact-form">
                     <fieldset>
                         <!-- Mensajes de estado -->
                         <div id="formAlert" class="alert" style="display: none; margin-bottom: 20px; padding: 15px; border-radius: 4px;"></div>
@@ -809,14 +808,27 @@
                                 // Crear FormData para enviar el formulario
                                 const formData = new FormData(contactForm);
                                 
-                                // Enviar el formulario a Formspree
-                                const response = await fetch(contactForm.action, {
+                                // Enviar el formulario a nuestro servidor
+                                const formDataObj = {
+                                    name: formData.get('name'),
+                                    email: formData.get('email'),
+                                    subject: formData.get('subject'),
+                                    message: formData.get('message')
+                                };
+
+                                const response = await fetch('/api/contact', {
                                     method: 'POST',
-                                    body: formData,
                                     headers: {
+                                        'Content-Type': 'application/json',
                                         'Accept': 'application/json'
-                                    }
+                                    },
+                                    body: JSON.stringify(formDataObj)
                                 });
+
+                                if (!response.ok) {
+                                    const errorData = await response.json();
+                                    throw new Error(errorData.message || 'Error al enviar el mensaje');
+                                }
                                 
                                 if (response.ok) {
                                     showAlert('¡Mensaje enviado con éxito! Pronto nos pondremos en contacto contigo.', 'success');
