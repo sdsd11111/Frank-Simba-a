@@ -59,11 +59,21 @@ function loadBlogData() {
 
 // Renderizar artículos en la página
 function renderArticles(articles) {
-    const container = document.querySelector('.entries');
+    const container = document.getElementById('articlesContainer');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    
     if (!container) {
         console.error('No se encontró el contenedor de artículos');
         return;
     }
+    
+    // Ocultar indicador de carga si existe
+    if (loadingIndicator) {
+        loadingIndicator.style.display = 'none';
+    }
+    
+    // Mostrar el contenedor de artículos
+    container.style.opacity = '1';
     
     if (!Array.isArray(articles) || articles.length === 0) {
         container.innerHTML = `
@@ -87,7 +97,8 @@ function renderArticles(articles) {
                 <div class="blog-item__thumb">
                     <a href="${article.url}">
                         <img src="${article.image_url || 'images/placeholder.jpg'}" 
-                             alt="${article.title || 'Imagen del artículo'}">
+                             alt="${article.title || 'Imagen del artículo'}"
+                             onerror="this.onerror=null; this.src='images/placeholder.jpg';">
                     </a>
                 </div>
                 <div class="blog-item__text">
