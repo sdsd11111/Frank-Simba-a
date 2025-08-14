@@ -1,5 +1,6 @@
 // Blog functionality - Versión estática
-const API_BASE_URL = 'posts'; // Removed leading slash for relative path
+const API_BASE_URL = ''; // Usando ruta relativa al directorio actual
+const BLOG_JSON_PATH = 'js/data/blog-posts.json'; // Ruta relativa al archivo JSON
 let currentPage = 1;
 let currentCategory = null;
 const itemsPerPage = 6;
@@ -86,15 +87,23 @@ function getLocalArticles() {
 async function fetchStaticArticles() {
     try {
         setLoading(true);
+        console.log('Iniciando carga de artículos...');
         
         // 1. Cargar artículos del archivo JSON estático
         let staticArticles = [];
         try {
-            const response = await fetch(`${API_BASE_URL}/index.json`);
+            const jsonUrl = BLOG_JSON_PATH;
+            console.log('Intentando cargar desde:', jsonUrl);
+            const response = await fetch(jsonUrl);
+            console.log('Respuesta del servidor:', response.status, response.statusText);
+            
             if (response.ok) {
                 staticArticles = await response.json();
+                console.log('Artículos cargados del JSON:', staticArticles.length);
             } else {
                 console.warn('No se pudo cargar el archivo JSON estático de artículos');
+                console.warn('URL intentada:', jsonUrl);
+                console.warn('Estado de la respuesta:', response.status, response.statusText);
             }
         } catch (error) {
             console.warn('Error al cargar artículos estáticos:', error);
