@@ -1,0 +1,309 @@
+// Blog functionality
+const API_BASE_URL = '/api';
+let currentPage = 1;
+let currentCategory = null;
+const itemsPerPage = 3;
+let categories = [];
+
+// DOM Elements
+const articlesContainer = document.querySelector('.entries');
+const paginationContainer = document.createElement('div');
+paginationContainer.className = 'pagination';
+const loadingIndicator = document.getElementById('loadingIndicator');
+
+// Format date
+function formatDate(dateString) {
+    if (!dateString) return '';
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString('es-ES', options);
+}
+
+// Show loading state
+function setLoading(isLoading) {
+    if (loadingIndicator) {
+        loadingIndicator.style.display = isLoading ? 'block' : 'none';
+    }
+    if (articlesContainer) {
+        articlesContainer.style.opacity = isLoading ? '0.5' : '1';
+    }
+}
+
+// Datos de ejemplo para mostrar temporalmente
+const sampleArticles = [
+    {
+        id: 1,
+        title: 'Bienvenido al Blog de Frank Simbaña',
+        content: 'Este es un artículo de ejemplo mientras configuramos la base de datos. Pronto encontrarás contenido sobre Taekwondo, MMA y artes marciales.',
+        published_at: new Date().toISOString(),
+        category_id: 1,
+        image_url: 'images/Logo.jpg'
+    },
+    {
+        id: 2,
+        title: 'Técnicas Básicas de Taekwondo',
+        content: 'Aprende las técnicas fundamentales del Taekwondo que todo practicante debe dominar.',
+        published_at: new Date(Date.now() - 86400000).toISOString(), // Ayer
+        category_id: 1,
+        image_url: 'images/sample-image.jpg'
+    },
+    {
+        id: 3,
+        title: 'Entrenamiento de MMA',
+        content: 'Descubre los secretos del entrenamiento de artes marciales mixtas con nuestro equipo de expertos.',
+        published_at: new Date(Date.now() - 2 * 86400000).toISOString(),
+        category_id: 2,
+        image_url: 'images/MMA/Hero Background.jpg'
+    }
+];
+
+// Datos de ejemplo para categorías
+const sampleCategories = [
+    { id: 1, name: 'Taekwondo', slug: 'taekwondo' },
+    { id: 2, name: 'MMA', slug: 'mma' },
+    { id: 3, name: 'Entrenamiento', slug: 'entrenamiento' }
+];
+
+// Fetch articles with pagination and filtering - Versión temporal con datos de ejemplo
+async function fetchArticles(page = 1, categoryId = null) {
+    try {
+        setLoading(true);
+        
+        // Simular retraso de red
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Filtrar por categoría si se especifica
+        let articles = [...sampleArticles];
+        if (categoryId) {
+            articles = articles.filter(article => article.category_id == categoryId);
+        }
+        
+        // Paginación
+        const start = (page - 1) * itemsPerPage;
+        const paginatedItems = articles.slice(start, start + itemsPerPage);
+        
+        return {
+            articles: paginatedItems,
+            pagination: {
+                current_page: page,
+                total_pages: Math.ceil(articles.length / itemsPerPage),
+                total_items: articles.length
+            }
+        };
+    } catch (error) {
+        console.error('Error:', error);
+        showError('No se pudieron cargar los artículos. Por favor, inténtalo de nuevo más tarde.');
+        throw error;
+    } finally {
+        setLoading(false);
+    }
+}
+
+// Fetch categories - Versión temporal con datos de ejemplo
+async function fetchCategories() {
+    try {
+        // Simular retraso de red
+        await new Promise(resolve => setTimeout(resolve, 300));
+        return sampleCategories;
+    } catch (error) {
+        console.error('Error:', error);
+        return sampleCategories; // Devolver datos de ejemplo incluso si hay error
+    }
+}
+
+// Render articles with proper styling
+function renderArticles(articles) {
+    if (!articlesContainer) return;
+
+    if (!articles?.length) {
+        articlesContainer.innerHTML = `
+            <div class="no-articles" style="text-align: center; padding: 4rem; background: #F8F8F8; border-radius: 8px;">
+                <h3 style="color: #343A40; margin-bottom: 1rem;">No se encontraron artículos</h3>
+                <p style="color: #6C757D;">No hay artículos publicados en este momento. Por favor, vuelve más tarde.</p>
+            </div>`;
+        return;
+    }
+
+    articlesContainer.innerHTML = articles.map(article => {
+        const category = categories.find(cat => cat.id === article.category_id) || {};
+        const formattedDate = formatDate(article.published_at);
+        
+        return `
+            <article class="entry" style="background: #F8F8F8; padding: 3rem; margin-bottom: 3rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                ${article.image_url ? `
+                    <div class="entry__thumb" style="margin-bottom: 2rem;">
+                        <img src="${article.image_url}" alt="${article.title}" 
+                             style="width: 100%; height: 300px; object-fit: cover; border-radius: 6px;">
+                    </div>` : ''}
+                
+                <header class="entry__header">
+                    <div class="entry__meta" style="display: flex; align-items: center; margin-bottom: 1.5rem; color: #6C757D; font-size: 0.9rem;">
+                        <span class="entry__date" style="margin-right: 1.5rem;">
+                            <i class="far fa-calendar" style="margin-right: 5px; color: #B8860B;"></i> ${formattedDate}
+                        </span>
+                        ${category.name ? `
+                            <span class="entry__category" style="display: inline-flex; align-items: center;">
+                                <i class="fas fa-folder" style="margin-right: 5px; color: #B8860B;"></i> ${category.name}
+                            </span>
+                        ` : ''}
+                    </div>
+                    
+                    <h2 class="entry__title" style="margin: 0 0 1.5rem 0; color: #343A40; font-size: 2rem; line-height: 1.3;">
+                        <a href="#" style="color: inherit; text-decoration: none;">${article.title}</a>
+                    </h2>
+                </header>
+                
+                <div class="entry__content" style="margin-bottom: 2rem; color: #495057; line-height: 1.8;">
+                    <p>${article.excerpt || ''}</p>
+                    <a href="#" class="read-more" style="color: #B8860B; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; margin-top: 1rem;">
+                        Leer más <i class="fas fa-arrow-right" style="margin-left: 8px; transition: transform 0.3s ease;"></i>
+                    </a>
+                </div>
+            </article>
+        `;
+    }).join('');
+}
+
+// Render pagination controls
+function renderPagination(pagination) {
+    if (!pagination || !paginationContainer) return;
+    
+    const { page, total, totalPages } = pagination;
+    currentPage = parseInt(page);
+    
+    let paginationHTML = `
+        <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 3rem;">
+            <button id="prevBtn" class="pagination-btn" ${currentPage <= 1 ? 'disabled' : ''}
+                style="background: #343A40; color: #F8F8F8; border: none; padding: 0.8rem 1.5rem; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;"
+                ${currentPage <= 1 ? 'disabled' : ''}>
+                <i class="fas fa-chevron-left"></i> Anterior
+            </button>
+            
+            <span class="page-info" style="color: #343A40; font-weight: 600; min-width: 120px; text-align: center;">
+                Página ${currentPage} de ${totalPages}
+            </span>
+            
+            <button id="nextBtn" class="pagination-btn" ${currentPage >= totalPages ? 'disabled' : ''}
+                style="background: #B8860B; color: #F8F8F8; border: none; padding: 0.8rem 1.5rem; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;"
+                ${currentPage >= totalPages ? 'disabled' : ''}>
+                Siguiente <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    `;
+    
+    paginationContainer.innerHTML = paginationHTML;
+    
+    // Add event listeners
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => changePage(-1));
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => changePage(1));
+    }
+    
+    // Insert pagination after articles
+    if (articlesContainer) {
+        articlesContainer.insertAdjacentElement('afterend', paginationContainer);
+    }
+}
+
+// Change page
+async function changePage(direction) {
+    const newPage = currentPage + direction;
+    if (newPage < 1) return;
+    
+    try {
+        const data = await fetchArticles(newPage, currentCategory);
+        if (data.articles?.length) {
+            renderArticles(data.articles);
+            renderPagination(data.pagination);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    } catch (error) {
+        console.error('Error changing page:', error);
+    }
+}
+
+// Show error message
+function showError(message) {
+    if (!articlesContainer) return;
+    articlesContainer.innerHTML = `
+        <div class="error-message" style="text-align: center; padding: 2rem; background: #FFF5F5; border-left: 4px solid #F56565; margin: 2rem 0;">
+            <p style="color: #E53E3E; margin: 0;">${message}</p>
+        </div>
+    `;
+}
+
+// Initialize blog with all necessary data
+async function initBlog() {
+    console.log('Inicializando blog...');
+    try {
+        console.log('Cargando categorías...');
+        categories = await fetchCategories();
+        console.log('Categorías cargadas:', categories);
+        
+        console.log('Cargando artículos...');
+        const data = await fetchArticles(currentPage);
+        console.log('Datos de artículos recibidos:', data);
+        
+        if (data) {
+            console.log('Renderizando artículos...');
+            renderArticles(data.articles || []);
+            if (data.pagination) {
+                console.log('Renderizando paginación...');
+                renderPagination(data.pagination);
+            }
+        } else {
+            console.error('No se recibieron datos de artículos');
+            showError('No se pudieron cargar los artículos. Por favor, recarga la página.');
+        }
+    } catch (error) {
+        console.error('Error al inicializar el blog:', error);
+        showError('Ocurrió un error al cargar el blog. Por favor, inténtalo de nuevo más tarde.');
+    }
+}
+
+// Add CSS animations
+function addStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .entry {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .entry:nth-child(1) { animation-delay: 0.1s; }
+        .entry:nth-child(2) { animation-delay: 0.2s; }
+        .entry:nth-child(3) { animation-delay: 0.3s; }
+        
+        .pagination-btn:not(:disabled):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .pagination-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: #6C757D !important;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(3px);
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    addStyles();
+    initBlog();
+});

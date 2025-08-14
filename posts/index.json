@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Mi primer artículo de prueba",
+    "slug": "mi-primer-articulo",
+    "excerpt": "Este es un resumen corto del primer artículo de prueba que aparecerá en los resultados de búsqueda.",
+    "image_url": "/images/hero-bg.jpg",
+    "category": {
+      "id": 1,
+      "name": "Taekwondo",
+      "slug": "taekwondo"
+    },
+    "published_at": "2025-08-13T10:00:00.000Z",
+    "url": "/posts/mi-primer-articulo/"
+  },
+  {
+    "title": "Consejos para entrenar MMA",
+    "slug": "consejos-mma",
+    "excerpt": "Aprende los conceptos básicos para comenzar en el mundo de las artes marciales mixtas.",
+    "image_url": "/images/hero-bg-2.jpg",
+    "category": {
+      "id": 2,
+      "name": "MMA",
+      "slug": "mma"
+    },
+    "published_at": "2025-08-12T15:30:00.000Z",
+    "url": "/posts/consejos-mma/"
+  }
+]
