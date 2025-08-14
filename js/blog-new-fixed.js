@@ -201,10 +201,12 @@ async function initBlog() {
             articles = FALLBACK_ARTICLES;
         }
         
+        console.log('Artículos cargados:', articles.length);
+        
         // 3. Procesar artículos
         processArticles(articles);
         
-        // 4. Renderizar artículos
+        // 4. Renderizar artículos (mostrar todos)
         renderArticles(allArticles);
         
         // 5. Actualizar widgets del sidebar
@@ -214,11 +216,51 @@ async function initBlog() {
     } catch (error) {
         console.error('Error al inicializar el blog:', error);
         // Usar datos de respaldo en caso de error
+        console.warn('Usando datos de respaldo debido a un error');
         processArticles(FALLBACK_ARTICLES);
         renderArticles(allArticles);
+        updateRecentPosts(FALLBACK_ARTICLES);
     } finally {
         setLoading(false);
     }
+}
+
+// Función para actualizar los artículos recientes
+function updateRecentPosts(articles) {
+    const recentPostsContainer = document.querySelector('.widget__recent');
+    if (!recentPostsContainer) return;
+    
+    // Ordenar artículos por fecha (más recientes primero)
+    const sortedArticles = [...articles].sort((a, b) => 
+        new Date(b.published_at) - new Date(a.published_at)
+    );
+    
+    // Tomar los 3 artículos más recientes
+    const recentArticles = sortedArticles.slice(0, 3);
+    
+    // Generar el HTML de los artículos recientes
+    const recentPostsHTML = recentArticles.map(article => `
+        <div class="recent__item">
+            <div class="recent__item__image">
+                <a href="${article.url}" class="recent__item__url">
+                    <img src="${article.image_url}" alt="${article.title}" class="cover">
+                </a>
+            </div>
+            <div class="recent__item__text">
+                <h4 class="recent__item__title">
+                    <a href="${article.url}">${article.title}</a>
+                </h4>
+                <div class="recent__item__meta">
+                    <time class="recent__item__date">
+                        ${new Date(article.published_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </time>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    // Actualizar el contenedor
+    recentPostsContainer.innerHTML = recentPostsHTML;
 }
 
 // Inicializar cuando el DOM esté listo
