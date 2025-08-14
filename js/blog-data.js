@@ -16,7 +16,7 @@ const BLOG_ARTICLES = [
             "slug": "taekwondo"
         },
         "published_at": "2025-08-10T10:00:00.000Z",
-        "url": "blog/mas-alla-de-la-romeria-vive-una-experiencia-autentica-de-taekwondo-o-mma-en-loja-con-frank-simbana.html"
+        "url": "blog/más-allá-de-la-romería-vive-una-experiencia-auténtica-de-taekwondo-o-mma-en-loja-con-frank-simbana.html"
     },
     {
         "id": 2,

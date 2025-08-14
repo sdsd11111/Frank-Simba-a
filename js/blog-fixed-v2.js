@@ -103,15 +103,19 @@ function renderArticles(articles) {
                 </div>
                 <div class="blog-item__text">
                     <div class="blog-item__cat">
-                        <a href="#">${article.category?.name || 'General'}</a>
+                        <a href="#" style="color: ${article.category?.name === 'MMA' ? '#800020' : '#B8860B'};">
+                            ${article.category?.name || 'General'}
+                        </a>
                     </div>
                     <h3 class="blog-item__title">
-                        <a href="${article.url}">${article.title || 'Sin título'}</a>
+                        <a href="${article.url}" style="color: #333; text-decoration: none;">
+                            ${article.title || 'Sin título'}
+                        </a>
                     </h3>
                     <div class="blog-item__excerpt">
                         ${article.excerpt || ''}
                     </div>
-                    <a href="${article.url}" class="blog-item__link">Leer más</a>
+                    <a href="${article.url}" class="blog-item__link">Leer más →</a>
                 </div>
             </div>
         </article>
