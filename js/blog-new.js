@@ -1,5 +1,5 @@
 // Blog functionality - Versión estática
-const API_BASE_URL = '/posts';
+const API_BASE_URL = 'posts'; // Removed leading slash for relative path
 let currentPage = 1;
 let currentCategory = null;
 const itemsPerPage = 6;
