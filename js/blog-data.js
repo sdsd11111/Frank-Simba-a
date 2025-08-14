@@ -16,7 +16,7 @@ const BLOG_ARTICLES = [
             "slug": "taekwondo"
         },
         "published_at": "2025-08-10T10:00:00.000Z",
-        "url": "/blog/más-allá-de-la-romería-vive-una-experiencia-auténtica-de-taekwondo-o-mma-en-loja-con-frank-simbana.html"
+        "url": "blog/mas-alla-de-la-romeria-vive-una-experiencia-autentica-de-taekwondo-o-mma-en-loja-con-frank-simbana.html"
     },
     {
         "id": 2,
@@ -30,7 +30,7 @@ const BLOG_ARTICLES = [
             "slug": "taekwondo"
         },
         "published_at": "2025-08-12T15:30:00.000Z",
-        "url": "/blog/de-turista-a-atleta-claves-para-no-perder-tu-rutina-de-taekwondo-o-mma-en-loja.html"
+        "url": "blog/de-turista-a-atleta-claves-para-no-perder-tu-rutina-de-taekwondo-o-mma-en-loja.html"
     },
     {
         "id": 3,
@@ -44,7 +44,7 @@ const BLOG_ARTICLES = [
             "slug": "taekwondo"
         },
         "published_at": "2025-08-08T09:15:00.000Z",
-        "url": "/blog/guia-rapida-para-visitantes-donde-encontrar-las-mejores-clases-de-taekwondo-y-mma-en-loja.html"
+        "url": "blog/guia-rapida-para-visitantes-donde-encontrar-las-mejores-clases-de-taekwondo-y-mma-en-loja.html"
     },
     {
         "id": 4,
@@ -58,7 +58,7 @@ const BLOG_ARTICLES = [
             "slug": "mma"
         },
         "published_at": "2025-08-05T14:20:00.000Z",
-        "url": "/blog/por-que-entrenar-taekwondo-o-mma-es-el-antidoto-perfecto-para-el-estres-del-viaje-a-loja.html"
+        "url": "blog/por-que-entrenar-taekwondo-o-mma-es-el-antidoto-perfecto-para-el-estres-del-viaje-a-loja.html"
     },
     {
         "id": 5,
@@ -72,7 +72,7 @@ const BLOG_ARTICLES = [
             "slug": "taekwondo"
         },
         "published_at": "2025-08-03T11:45:00.000Z",
-        "url": "/blog/como-mantener-tu-disciplina-o-encontrarla-con-taekwondo-y-mma-en-tu-viaje-a-loja.html"
+        "url": "blog/como-mantener-tu-disciplina-o-encontrarla-con-taekwondo-y-mma-en-tu-viaje-a-loja.html"
     }
 ];
 

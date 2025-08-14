@@ -1,6 +1,39 @@
-// Blog functionality - Versión estática
-const API_BASE_URL = ''; // Usando ruta relativa al directorio actual
-const BLOG_JSON_PATH = 'js/data/blog-posts.json'; // Ruta relativa al archivo JSON
+// Blog functionality - Versión mejorada
+const BLOG_JSON_PATHS = [
+    'js/data/blog-posts.json',        // Ruta relativa al directorio actual
+    '/js/data/blog-posts.json',       // Ruta relativa a la raíz del sitio
+    'https://raw.githubusercontent.com/sdsd11111/Frank-Simba-a/main/js/data/blog-posts.json'  // URL absoluta como respaldo
+];
+
+// Datos de respaldo en caso de que falle la carga del JSON
+const FALLBACK_ARTICLES = [
+    {
+        "title": "Más allá de la Romería: Vive una experiencia auténtica de Taekwondo o MMA en Loja con Frank Simbaña",
+        "slug": "mas-alla-de-la-romeria",
+        "excerpt": "Descubre cómo el Taekwondo y el MMA pueden transformar tu viaje a Loja en una experiencia inolvidable de superación personal y conexión cultural.",
+        "image_url": "images/Blog/Blog 1.webp",
+        "category": {
+            "id": 1,
+            "name": "Taekwondo",
+            "slug": "taekwondo"
+        },
+        "published_at": "2025-08-10T10:00:00.000Z",
+        "url": "blog/mas-alla-de-la-romeria-vive-una-experiencia-autentica-de-taekwondo-o-mma-en-loja-con-frank-simbana.html"
+    },
+    {
+        "title": "De turista a atleta: Claves para no perder tu rutina de Taekwondo o MMA en Loja",
+        "slug": "de-turista-a-atleta",
+        "excerpt": "Mantén tu entrenamiento de artes marciales mientras viajas por Ecuador con estos consejos prácticos.",
+        "image_url": "images/Blog/Blog 2.webp",
+        "category": {
+            "id": 1,
+            "name": "Taekwondo",
+            "slug": "taekwondo"
+        },
+        "published_at": "2025-08-12T15:30:00.000Z",
+        "url": "blog/de-turista-a-atleta-claves-para-no-perder-tu-rutina-de-taekwondo-o-mma-en-loja.html"
+    }
+];
 let currentPage = 1;
 let currentCategory = null;
 const itemsPerPage = 6;
@@ -83,63 +116,69 @@ function getLocalArticles() {
     return [];
 }
 
-// Fetch articles from both static JSON and localStorage
+// Función para intentar cargar desde múltiples fuentes
+async function tryFetchFromSources(sources) {
+    for (const source of sources) {
+        try {
+            console.log('Intentando cargar desde:', source);
+            const response = await fetch(source);
+            console.log('Respuesta de', source, ':', response.status, response.statusText);
+            
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Datos cargados correctamente desde:', source);
+                return data;
+            }
+        } catch (error) {
+            console.warn('Error al cargar desde', source, ':', error);
+        }
+    }
+    return null;
+}
+
+// Cargar artículos desde múltiples fuentes con respaldo
 async function fetchStaticArticles() {
     try {
         setLoading(true);
         console.log('Iniciando carga de artículos...');
         
-        // 1. Cargar artículos del archivo JSON estático
-        let staticArticles = [];
-        try {
-            const jsonUrl = BLOG_JSON_PATH;
-            console.log('Intentando cargar desde:', jsonUrl);
-            const response = await fetch(jsonUrl);
-            console.log('Respuesta del servidor:', response.status, response.statusText);
-            
-            if (response.ok) {
-                staticArticles = await response.json();
-                console.log('Artículos cargados del JSON:', staticArticles.length);
-            } else {
-                console.warn('No se pudo cargar el archivo JSON estático de artículos');
-                console.warn('URL intentada:', jsonUrl);
-                console.warn('Estado de la respuesta:', response.status, response.statusText);
-            }
-        } catch (error) {
-            console.warn('Error al cargar artículos estáticos:', error);
+        // 1. Intentar cargar desde múltiples fuentes
+        let staticArticles = await tryFetchFromSources(BLOG_JSON_PATHS);
+        
+        // 2. Si falla, intentar cargar desde localStorage
+        if (!staticArticles || staticArticles.length === 0) {
+            console.log('No se pudieron cargar artículos desde fuentes externas, intentando localStorage...');
+            staticArticles = getLocalArticles();
         }
         
-        // 2. Cargar artículos del localStorage
-        const localArticles = getLocalArticles();
+        // 3. Si aún no hay artículos, usar datos de respaldo
+        if (!staticArticles || staticArticles.length === 0) {
+            console.warn('Usando datos de respaldo (fallback)');
+            staticArticles = FALLBACK_ARTICLES;
+        }
         
-        // 3. Combinar artículos, dando prioridad a los del localStorage
-        // (útil para sobrescribir artículos estáticos con versiones editadas)
-        const articleMap = new Map();
+        console.log('Total de artículos cargados:', staticArticles.length);
         
-        // Primero agregar artículos estáticos
-        staticArticles.forEach(article => {
-            if (article && article.id) {
-                articleMap.set(article.id, article);
-            }
-        });
+        // 4. Procesar los artículos cargados
+        processArticles(staticArticles);
         
-        // Luego sobrescribir con artículos del localStorage
-        localArticles.forEach(article => {
-            if (article && article.id) {
-                articleMap.set(article.id, article);
-            }
-        });
-        
-        // Convertir el Map de vuelta a un array
-        allArticles = Array.from(articleMap.values());
-        
-        // Extraer categorías únicas
-        const categoryMap = new Map();
-        allArticles.forEach(article => {
-            if (article && article.category) {
-                // Asegurarse de que la categoría sea un objeto con id y name
-                if (typeof article.category === 'string') {
-                    const categoryId = article.category.toLowerCase().replace(/\s+/g, '-');
+        return allArticles;
+    } catch (error) {
+        console.warn('Error al cargar artículos estáticos:', error);
+        // Usar datos de respaldo en caso de error
+        console.warn('Usando datos de respaldo debido a un error');
+        processArticles(FALLBACK_ARTICLES);
+        return FALLBACK_ARTICLES;
+    } finally {
+        setLoading(false);
+    }
+}
+
+// Procesar artículos cargados
+function processArticles(articles) {
+    if (!Array.isArray(articles)) {
+        console.error('Los artículos no son un array:', articles);
+        articles = [];
                     categoryMap.set(categoryId, {
                         id: categoryId,
                         name: article.category

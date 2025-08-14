@@ -324,19 +324,8 @@
                     <!-- Artículos Recientes -->
                     <div class="widget" style="background: #F8F8F8; padding: 3rem; margin-bottom: 3rem; border-radius: 8px;">
                         <h4 style="color: #343A40; margin-bottom: 2rem; border-bottom: 2px solid #B8860B; padding-bottom: 1rem;">Artículos Recientes</h4>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0;">
-                                <h6 style="margin-bottom: 0.5rem;"><a href="#" style="color: #343A40; text-decoration: none;">Técnicas de Pateo en Taekwondo</a></h6>
-                                <span style="color: #B8860B; font-size: 0.9rem;">12 Enero 2024</span>
-                            </li>
-                            <li style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0;">
-                                <h6 style="margin-bottom: 0.5rem;"><a href="#" style="color: #343A40; text-decoration: none;">Nutrición para Atletas de MMA</a></h6>
-                                <span style="color: #800020; font-size: 0.9rem;">8 Enero 2024</span>
-                            </li>
-                            <li style="margin-bottom: 2rem;">
-                                <h6 style="margin-bottom: 0.5rem;"><a href="#" style="color: #343A40; text-decoration: none;">Meditación y Artes Marciales</a></h6>
-                                <span style="color: #4682B4; font-size: 0.9rem;">3 Enero 2024</span>
-                            </li>
+                        <ul id="recent-posts-list" style="list-style: none; padding: 0;">
+                            <!-- Los artículos recientes se cargarán aquí dinámicamente -->
                         </ul>
                     </div>
 
@@ -413,6 +402,14 @@
             100% { transform: rotate(360deg); }
         }
         
+        /* Contenedor principal de artículos */
+        #articlesContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
         /* Estilos para las tarjetas de artículos */
         .entry {
             opacity: 0;
@@ -421,9 +418,12 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid #eaeaea;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .entry:hover {
@@ -439,6 +439,9 @@
         
         .entry__content {
             padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .entry__title {

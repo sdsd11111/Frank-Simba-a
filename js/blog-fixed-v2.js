@@ -122,45 +122,51 @@ function renderArticles(articles) {
 
 // Actualizar la sección de artículos recientes
 function updateRecentPosts(articles) {
-    const recentContainer = document.querySelector('.widget__recent');
-    if (!recentContainer) return;
-    
-    if (!Array.isArray(articles) || articles.length === 0) {
-        recentContainer.innerHTML = '<p>No hay artículos recientes</p>';
-        return;
-    }
-    
+    const recentPostsContainer = document.getElementById('recent-posts-list');
+    if (!recentPostsContainer) return;
+
+    // Ordenar artículos por fecha (más recientes primero)
+    const sortedArticles = [...articles].sort((a, b) => 
+        new Date(b.published_at) - new Date(a.published_at)
+    );
+
     // Tomar los 3 artículos más recientes
-    const recentArticles = [...articles]
-        .sort((a, b) => new Date(b.published_at || 0) - new Date(a.published_at || 0))
-        .slice(0, 3);
-    
-    const recentHTML = recentArticles.map(article => `
-        <div class="recent__item">
-            <div class="recent__item__image">
-                <a href="${article.url}" class="recent__item__url">
-                    <img src="${article.image_url || 'images/placeholder.jpg'}" 
-                         alt="${article.title || ''}" class="cover">
+    const recentArticles = sortedArticles.slice(0, 3);
+
+    // Limpiar el contenedor
+    recentPostsContainer.innerHTML = '';
+
+    // Agregar cada artículo reciente
+    recentArticles.forEach((article, index) => {
+        const listItem = document.createElement('li');
+        listItem.style.marginBottom = '2rem';
+        listItem.style.paddingBottom = '2rem';
+        listItem.style.borderBottom = index < recentArticles.length - 1 ? '1px solid #e0e0e0' : 'none';
+        
+        // Formatear fecha
+        const date = new Date(article.published_at);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = date.toLocaleDateString('es-ES', options);
+        
+        // Determinar color de la fecha según la categoría
+        let dateColor = '#B8860B'; // Color por defecto (dorado)
+        if (article.category && article.category.name === 'MMA') {
+            dateColor = '#800020'; // Borgoña para MMA
+        }
+
+        listItem.innerHTML = `
+            <h6 style="margin-bottom: 0.5rem;">
+                <a href="${article.url}" style="color: #343A40; text-decoration: none;">
+                    ${article.title}
                 </a>
-            </div>
-            <div class="recent__item__text">
-                <h4 class="recent__item__title">
-                    <a href="${article.url}">${article.title || 'Sin título'}</a>
-                </h4>
-                <div class="recent__item__meta">
-                    <time class="recent__item__date">
-                        ${article.published_at ? new Date(article.published_at).toLocaleDateString('es-ES', { 
-                            day: 'numeric', 
-                            month: 'long', 
-                            year: 'numeric' 
-                        }) : ''}
-                    </time>
-                </div>
-            </div>
-        </div>
-    `).join('');
-    
-    recentContainer.innerHTML = recentHTML;
+            </h6>
+            <span style="color: ${dateColor}; font-size: 0.9rem;">
+                ${formattedDate}
+            </span>
+        `;
+        
+        recentPostsContainer.appendChild(listItem);
+    });
 }
 
 // Inicializar el blog
