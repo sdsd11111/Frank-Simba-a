@@ -1,0 +1,149 @@
+<!-- Mobile Menu HTML -->
+<button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<nav class="mobile-menu" id="mobileMenu">
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="taekwondo.html">Taekwondo</a></li>
+        <li><a href="mma.html">MMA</a></li>
+        <li><a href="logros.html">Logros</a></li>
+    </ul>
+</nav>
+
+<style>
+/* Mobile Menu Styles */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: #000;
+    border: 1px solid #FFD700;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1001;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #FFD700;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: #000;
+    border: 1px solid #FFD700;
+    border-radius: 4px;
+    padding: 10px 0;
+    z-index: 1000;
+    min-width: 200px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.mobile-menu li {
+    margin: 0;
+    border-bottom: 1px solid #333;
+}
+
+.mobile-menu li:last-child {
+    border-bottom: none;
+}
+
+.mobile-menu li a {
+    color: #FFD700 !important;
+    font-size: 14px !important;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.mobile-menu li a:hover {
+    background: #333;
+    color: #FFD700 !important;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu-toggle,
+    .mobile-menu {
+        display: none !important;
+    }
+}
+</style>
+
+<script>
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const button = document.getElementById('mobileMenuToggle');
+    
+    button.classList.toggle('active');
+    
+    if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    } else {
+        menu.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('mobileMenu');
+    const button = document.getElementById('mobileMenuToggle');
+    
+    if (menu && button && 
+        !menu.contains(event.target) && 
+        !button.contains(event.target) &&
+        menu.style.display === 'block') {
+        toggleMobileMenu();
+    }
+});
+</script>

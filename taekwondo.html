@@ -69,39 +69,42 @@
         <div id="loader"></div>
     </div>
 
-    <!-- header -->
+    <!-- header
+    ================================================== -->
     <style>
         @media (max-width: 768px) {
             .s-header {
                 display: none !important;
             }
             
-            /* Eliminar línea horizontal en galería de Taekwondo */
-            .s-portfolio {
-                border-bottom: none !important;
-            }
-            
-            /* Menú hamburguesa móvil */
+            /* Mobile Menu Styles */
             .mobile-menu-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 position: fixed;
                 top: 20px;
                 right: 20px;
-                z-index: 9999;
+                width: 44px;
+                height: 44px;
                 background: #000000;
                 border: none;
-                padding: 12px;
-                border-radius: 6px;
+                border-radius: 8px;
                 cursor: pointer;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                z-index: 1001;
+                padding: 12px 10px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                transition: all 0.3s ease;
             }
             
             .mobile-menu-toggle span {
                 display: block;
-                width: 25px;
-                height: 3px;
-                background: #FFFFFF;
-                margin: 5px 0;
-                transition: 0.3s;
+                width: 20px;
+                height: 2px;
+                background: #FFD700; /* Amarillo dorado */
+                margin: 2px 0;
+                transition: all 0.3s ease;
             }
             
             .mobile-menu-toggle.active span:nth-child(1) {
@@ -117,28 +120,18 @@
             }
             
             .mobile-menu {
+                display: none;
                 position: fixed;
                 top: 70px;
-                right: 15px;
-                left: 15px;
-                max-width: 300px;
-                margin: 0 auto;
-                background: rgba(0, 0, 0, 0.95);
-                border-radius: 12px;
-                box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-                z-index: 9998;
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-10px);
-                transition: all 0.3s ease;
-                padding: 15px 0;
-                border: 1px solid rgba(255,255,255,0.1);
-            }
-            
-            .mobile-menu.active {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
+                right: 20px;
+                width: auto;
+                min-width: 200px;
+                background: #000000;
+                z-index: 1000;
+                padding: 10px 0;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                border: 1px solid #333;
             }
             
             .mobile-menu ul {
@@ -150,33 +143,64 @@
             
             .mobile-menu li {
                 margin: 0;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .mobile-menu li a {
+                color: #FFD700 !important; /* Amarillo dorado */
+                font-size: 14px !important;
+                font-weight: 500;
+                padding: 12px 20px !important;
+                display: block;
+                transition: all 0.2s ease;
+                text-decoration: none;
+                white-space: nowrap;
+            }
+            
+            .mobile-menu li a:hover {
+                background: #f8f8f8;
+                color: #B8860B !important;
             }
             
             .mobile-menu li:last-child {
                 border-bottom: none;
             }
             
-            .mobile-menu a {
-                color: #FFFFFF;
-                text-decoration: none;
-                font-size: 1.1rem;
-                font-weight: 500;
-                transition: all 0.3s;
-                display: block;
-                padding: 12px 20px;
+            .menu-item-has-children > .menu-link {
+                position: relative;
+                padding-right: 30px !important;
             }
             
-            .mobile-menu a:hover {
-                color: #FFD700;
-                background: rgba(255,255,255,0.05);
+            .menu-item-has-children > .menu-link:after {
+                content: '+';
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 1.5rem;
+            }
+            
+            .menu-item-has-children.active > .menu-link:after {
+                content: '-';
             }
             
             .mobile-submenu {
+                display: none;
+                background: #1a1a1a;
                 margin: 0;
                 padding: 0;
-                background: rgba(0,0,0,0.3);
-                border-top: 1px solid rgba(255,255,255,0.1);
+                border-left: 2px solid #FFD700;
+            }
+            
+            .mobile-submenu li a {
+                padding-left: 30px !important;
+                font-size: 13px !important;
+                color: #FFD799 !important; /* Amarillo más claro para submenús */
+            }
+            
+            .mobile-submenu li a:hover {
+                background: #f0f0f0;
+                color: #B8860B !important;
             }
             
             .mobile-submenu li {
@@ -200,83 +224,31 @@
             .mobile-menu {
                 display: none !important;
             }
-            .desktop-content {
-                display: block !important;
-            }
-        }
-        
-        /* CSS responsivo para hero section */
-        @media (max-width: 768px) {
-            #hero {
-                padding: 8rem 0 6rem !important;
-                min-height: 100vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            #hero h1 {
-                font-size: 2.2rem !important;
-                line-height: 1.2 !important;
-                margin-bottom: 1.5rem !important;
-                padding: 0 1rem;
-            }
-            
-            #hero h3 {
-                font-size: 1.3rem !important;
-                line-height: 1.4 !important;
-                margin-bottom: 2rem !important;
-                padding: 0 1rem;
-            }
-            
-            #hero .btn {
-                font-size: 1rem !important;
-                padding: 1.2rem 2rem !important;
-                margin: 0 1rem;
-            }
-            
-            #hero .row {
-                padding: 0 1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            #hero h1 {
-                font-size: 1.8rem !important;
-                line-height: 1.1 !important;
-            }
-            
-            #hero h3 {
-                font-size: 1.1rem !important;
-            }
-            
-            #hero .btn {
-                font-size: 0.9rem !important;
-                padding: 1rem 1.5rem !important;
-            }
         }
     </style>
     <header class="s-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #000000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); padding: 1rem 0;">
         <div class="row s-header__nav-wrap">
             <nav class="s-header__nav">
                 <ul style="margin: 0;">
-                    <li><a href="index.html" style="color: #FFFFFF !important;">Inicio</a></li>
+                    <li class="current"><a class="smoothscroll" href="index.html" style="color: #FFFFFF !important;">Inicio</a></li>
                     <li><a href="blog.html" style="color: #FFFFFF !important;">Blog</a></li>
                     <li><a href="logros.html" style="color: #FFFFFF !important;">Logros</a></li>
-                    <li class="has-children"><a href="#" style="color: #B8860B !important;">Disciplinas</a>
+                    <li class="has-children"><a href="#" style="color: #FFFFFF !important;">Disciplinas</a>
                         <ul class="submenu" style="background: #000000; border: 1px solid #333;">
                             <li><a href="mma.html" style="color: #FFFFFF !important;">MMA</a></li>
-                            <li class="current"><a href="taekwondo.html" style="color: #B8860B !important;">Taekwondo</a></li>
+                            <li><a href="taekwondo.html" style="color: #FFFFFF !important;">Taekwondo</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
+        <a class="s-header__menu-toggle" href="#0" title="Menu">
+            <span class="s-header__menu-icon"></span>
         </a>
-    </header>
+    </header> <!-- end s-header -->
 
     <!-- Menú hamburguesa móvil -->
-    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()">
         <span></span>
         <span></span>
         <span></span>
@@ -284,25 +256,69 @@
     
     <nav class="mobile-menu" id="mobileMenu">
         <ul>
-            <li><a href="index.html" onclick="closeMobileMenu()">Inicio</a></li>
-            <li><a href="logros.html" onclick="closeMobileMenu()">Logros</a></li>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="logros.html">Logros</a></li>
             <li>
                 <a href="#" onclick="toggleSubmenu(event)">Disciplinas</a>
                 <ul class="mobile-submenu" id="disciplinasSubmenu" style="display: none;">
-                    <li><a href="mma.html" onclick="closeMobileMenu()">MMA</a></li>
-                    <li><a href="taekwondo.html" onclick="closeMobileMenu()">Taekwondo</a></li>
+                    <li><a href="taekwondo.html">Taekwondo</a></li>
+                    <li><a href="mma.html">MMA</a></li>
                 </ul>
             </li>
-            <li><a href="contact.html" onclick="closeMobileMenu()">Contacto</a></li>
         </ul>
     </nav>
 
+
+
     <!-- hero -->
-    <section id="hero" class="s-hero target-section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/Taekwondo/Hero Background.webp'); background-size: cover; background-position: center; background-attachment: fixed; padding: 12rem 0 8rem; text-align: center; color: #F8F8F8;">
-        <div class="row s-hero__content">
+    <style>
+        @media (max-width: 768px) {
+            .s-hero {
+                padding: 8rem 0 4rem !important;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-attachment: scroll !important;
+            }
+            .s-hero h1 {
+                font-size: 2.2rem !important;
+                line-height: 1.2 !important;
+                margin: 0 1rem 1.5rem !important;
+                padding: 0 1rem;
+            }
+            .s-hero h3 {
+                font-size: 1.3rem !important;
+                line-height: 1.4 !important;
+                margin: 0 1rem 2rem !important;
+                padding: 0 1rem;
+            }
+            .s-hero .btn {
+                font-size: 1rem !important;
+                padding: 1rem 1.5rem !important;
+                margin: 0 0.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .s-hero h1 {
+                font-size: 1.8rem !important;
+                line-height: 1.1 !important;
+            }
+            .s-hero h3 {
+                font-size: 1.1rem !important;
+            }
+            .s-hero .btn {
+                font-size: 0.9rem !important;
+                padding: 0.8rem 1.2rem !important;
+            }
+        }
+    </style>
+    <section id="hero" class="s-hero target-section" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/Taekwondo/Hero Background.webp'); background-size: cover; background-position: center; background-attachment: fixed; padding: 12rem 0; text-align: center; color: #F8F8F8; min-height: 100vh; display: flex; align-items: center;">
+        <div class="row s-hero__content" style="width: 100%;">
             <div class="column">
-                <div class="s-hero__content-about" style="text-align: center;">
-                    <h1 style="color: #F8F8F8; font-size: 4.5rem; margin-bottom: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                <div class="s-hero__content-about" style="text-align: center; padding: 0 1rem;">
+                    <h1 style="color: #F8F8F8; font-size: 4.5rem; margin-bottom: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); line-height: 1.2;">
                         Taekwondo: Disciplina, Respeto y Poder con Frank Simbaña
                     </h1>
                     <h3 style="color: #F8F8F8; font-weight: 300; margin-bottom: 3rem; font-size: 1.8rem;">
@@ -656,9 +672,9 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 0;
                 will-change: transform;
+                -webkit-backface-visibility: hidden;
                 backface-visibility: hidden;
                 transform: translateZ(0);
-                -webkit-backface-visibility: hidden;
                 -webkit-transform: translateZ(0);
                 -webkit-font-smoothing: subpixel-antialiased;
                 width: 100%;
@@ -670,9 +686,10 @@
                 overflow: hidden;
                 padding-bottom: 100%;
                 will-change: transform;
-                transform: translateZ(0);
                 -webkit-transform: translateZ(0);
+                transform: translateZ(0);
                 -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
                 padding-bottom: 100%;
             }
             .taekwondo-gallery .gallery-item img {
@@ -684,13 +701,13 @@
                 object-fit: cover;
                 transition: transform 0.3s ease-in-out;
                 transform-origin: center;
-                transform: translateZ(0);
                 -webkit-transform: translateZ(0);
+                transform: translateZ(0);
                 -webkit-backface-visibility: hidden;
-                -webkit-perspective: 1000;
-                -webkit-transform-style: preserve-3d;
                 backface-visibility: hidden;
+                -webkit-perspective: 1000;
                 perspective: 1000;
+                -webkit-transform-style: preserve-3d;
                 transform-style: preserve-3d;
             }
             .taekwondo-gallery .gallery-item:hover img {
@@ -974,9 +991,79 @@
         </div>
     </footer>
 
+    <script>
+        // Función para alternar el menú móvil
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            
+            if (mobileMenu.style.display === 'block') {
+                mobileMenu.style.display = 'none';
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            } else {
+                mobileMenu.style.display = 'block';
+                menuToggle.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        // Función para alternar submenús
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const submenu = event.target.nextElementSibling;
+            if (submenu && submenu.classList.contains('mobile-submenu')) {
+                submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+            }
+        }
+        
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            
+            if (!menuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.style.display = 'none';
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                // Cerrar todos los submenús
+                document.querySelectorAll('.mobile-submenu').forEach(submenu => {
+                    submenu.style.display = 'none';
+                });
+            }
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.mobile-menu > ul > li > a:not([href="#"])').forEach(menuItem => {
+            menuItem.addEventListener('click', function() {
+                const mobileMenu = document.getElementById('mobileMenu');
+                const menuToggle = document.getElementById('mobileMenuToggle');
+                if (mobileMenu) {
+                    mobileMenu.style.display = 'none';
+                    menuToggle.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Cerrar el menú al cambiar el tamaño de la ventana
+        window.addEventListener('resize', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            
+            if (window.innerWidth >= 769) {
+                mobileMenu.style.display = 'none';
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+    
     <!-- scripts -->
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+
     <!-- Swiper JS para móvil -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script>

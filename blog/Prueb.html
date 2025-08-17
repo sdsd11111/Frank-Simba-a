@@ -14,6 +14,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/vendor.css">
+    <link rel="stylesheet" href="../css/mobile-menu.css">
 
     <!-- script -->
     <script defer src="../js/vendor/fontawesome/all.min.js"></script>
@@ -230,7 +231,34 @@
     </div>
 
     <!-- Contenido del Artículo -->
-    <article class="s-content" style="padding: 8rem 0 4rem 0;">
+    <!-- Botón del menú móvil -->
+    
+
+
+    <!-- Botón del menú móvil -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    
+    <!-- Menú móvil -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../logros.html">Logros</a></li>
+            <li class="current"><a href="../blog.html">Blog</a></li>
+            <li class="has-submenu">
+                <a href="#" onclick="toggleSubmenu(event)">Disciplinas</a>
+                <ul class="submenu">
+                    <li><a href="../mma.html">MMA</a></li>
+                    <li><a href="../taekwondo.html">Taekwondo</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+<article class="s-content" style="padding: 8rem 0 4rem 0;">
         <div class="row">
             <div class="column large-12">
                 <h1 class="page-title" style="text-align: center; margin-bottom: 3rem; color: #343A40;">
@@ -301,6 +329,7 @@
 
     <!-- Scripts -->
     <script src="../js/plugins.js"></script>
+    <script src="../js/mobile-menu.js"></script>
     <script src="../js/main.js"></script>
     
     <!-- JavaScript para menú móvil -->

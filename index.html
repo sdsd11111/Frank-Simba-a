@@ -64,27 +64,34 @@
                 display: none !important;
             }
             
-            /* Menú hamburguesa móvil */
+            /* Mobile Menu Styles */
             .mobile-menu-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 position: fixed;
                 top: 20px;
                 right: 20px;
-                z-index: 9999;
+                width: 44px;
+                height: 44px;
                 background: #000000;
                 border: none;
-                padding: 12px;
-                border-radius: 6px;
+                border-radius: 8px;
                 cursor: pointer;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                z-index: 1001;
+                padding: 12px 10px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                transition: all 0.3s ease;
             }
             
             .mobile-menu-toggle span {
                 display: block;
-                width: 25px;
-                height: 3px;
-                background: #FFFFFF;
-                margin: 5px 0;
-                transition: 0.3s;
+                width: 20px;
+                height: 2px;
+                background: #FFD700; /* Amarillo dorado */
+                margin: 2px 0;
+                transition: all 0.3s ease;
             }
             
             .mobile-menu-toggle.active span:nth-child(1) {
@@ -100,28 +107,18 @@
             }
             
             .mobile-menu {
+                display: none;
                 position: fixed;
                 top: 70px;
-                right: 15px;
-                left: 15px;
-                max-width: 300px;
-                margin: 0 auto;
-                background: rgba(0, 0, 0, 0.95);
-                border-radius: 12px;
-                box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-                z-index: 9998;
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-10px);
-                transition: all 0.3s ease;
-                padding: 15px 0;
-                border: 1px solid rgba(255,255,255,0.1);
-            }
-            
-            .mobile-menu.active {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
+                right: 20px;
+                width: auto;
+                min-width: 200px;
+                background: #000000;
+                z-index: 1000;
+                padding: 10px 0;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                border: 1px solid #333;
             }
             
             .mobile-menu ul {
@@ -133,33 +130,64 @@
             
             .mobile-menu li {
                 margin: 0;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .mobile-menu li a {
+                color: #FFD700 !important; /* Amarillo dorado */
+                font-size: 14px !important;
+                font-weight: 500;
+                padding: 12px 20px !important;
+                display: block;
+                transition: all 0.2s ease;
+                text-decoration: none;
+                white-space: nowrap;
+            }
+            
+            .mobile-menu li a:hover {
+                background: #f8f8f8;
+                color: #B8860B !important;
             }
             
             .mobile-menu li:last-child {
                 border-bottom: none;
             }
             
-            .mobile-menu a {
-                color: #FFFFFF;
-                text-decoration: none;
-                font-size: 1.1rem;
-                font-weight: 500;
-                transition: all 0.3s;
-                display: block;
-                padding: 12px 20px;
+            .menu-item-has-children > .menu-link {
+                position: relative;
+                padding-right: 30px !important;
             }
             
-            .mobile-menu a:hover {
-                color: #FFD700;
-                background: rgba(255,255,255,0.05);
+            .menu-item-has-children > .menu-link:after {
+                content: '+';
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 1.5rem;
+            }
+            
+            .menu-item-has-children.active > .menu-link:after {
+                content: '-';
             }
             
             .mobile-submenu {
+                display: none;
+                background: #1a1a1a;
                 margin: 0;
                 padding: 0;
-                background: rgba(0,0,0,0.3);
-                border-top: 1px solid rgba(255,255,255,0.1);
+                border-left: 2px solid #FFD700;
+            }
+            
+            .mobile-submenu li a {
+                padding-left: 30px !important;
+                font-size: 13px !important;
+                color: #FFD799 !important; /* Amarillo más claro para submenús */
+            }
+            
+            .mobile-submenu li a:hover {
+                background: #f0f0f0;
+                color: #B8860B !important;
             }
             
             .mobile-submenu li {
@@ -207,7 +235,7 @@
     </header> <!-- end s-header -->
 
     <!-- Menú hamburguesa móvil -->
-    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()">
         <span></span>
         <span></span>
         <span></span>
@@ -215,16 +243,16 @@
     
     <nav class="mobile-menu" id="mobileMenu">
         <ul>
-            <li><a href="index.html" onclick="closeMobileMenu()">Inicio</a></li>
-            <li><a href="logros.html" onclick="closeMobileMenu()">Logros</a></li>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="logros.html">Logros</a></li>
             <li>
                 <a href="#" onclick="toggleSubmenu(event)">Disciplinas</a>
                 <ul class="mobile-submenu" id="disciplinasSubmenu" style="display: none;">
-                    <li><a href="mma.html" onclick="closeMobileMenu()">MMA</a></li>
-                    <li><a href="taekwondo.html" onclick="closeMobileMenu()">Taekwondo</a></li>
+                    <li><a href="taekwondo.html">Taekwondo</a></li>
+                    <li><a href="mma.html">MMA</a></li>
                 </ul>
             </li>
-            <li><a href="contact.html" onclick="closeMobileMenu()">Contacto</a></li>
         </ul>
     </nav>
 
@@ -946,7 +974,7 @@
                 </ul>
             </div>
             <div class="column large-7 medium-6 w-1000-stack ss-copyright">
-                <span>© Copyright Diseñado por @Objetivo 2025</span>
+                <span>Copyright Diseñado por @Objetivo 2025</span>
                 <span>Academia Club Golden Loja</span>
             </div>
         </div>
@@ -965,44 +993,19 @@
     
     <!-- JavaScript para menú hamburguesa móvil -->
     <script>
-        // Funcionalidad del menú hamburguesa
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        // Función para alternar el menú móvil
+        function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
-            
-            if (mobileMenuToggle && mobileMenu) {
-                mobileMenuToggle.addEventListener('click', function() {
-                    mobileMenuToggle.classList.toggle('active');
-                    mobileMenu.classList.toggle('active');
-                });
-                
-                // Cerrar menú al hacer clic fuera de él
-                mobileMenu.addEventListener('click', function(e) {
-                    if (e.target === mobileMenu) {
-                        closeMobileMenu();
-                    }
-                });
-            }
-        });
-        
-        // Función para cerrar el menú móvil
-        function closeMobileMenu() {
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            const mobileMenu = document.getElementById('mobileMenu');
-            
-            if (mobileMenuToggle && mobileMenu) {
-                mobileMenuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            }
-            
-            // Cerrar submenú si está abierto
-            const submenu = document.getElementById('disciplinasSubmenu');
-            if (submenu) {
-                submenu.style.display = 'none';
+            if (mobileMenu.style.display === 'block') {
+                mobileMenu.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            } else {
+                mobileMenu.style.display = 'block';
+                document.body.style.overflow = 'hidden';
             }
         }
-        
-        // Función para alternar submenú
+
+        // Función para alternar submenús
         function toggleSubmenu(event) {
             event.preventDefault();
             const submenu = document.getElementById('disciplinasSubmenu');
