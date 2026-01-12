@@ -1,0 +1,6 @@
+/* Ocultar menú hamburguesa en escritorio */
+@media (min-width: 769px) {
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+}

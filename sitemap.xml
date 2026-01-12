@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Homepage -->
+    <url>
+        <loc>https://www.franksimbana.com/</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- Blog -->
+    <url>
+        <loc>https://www.franksimbana.com/blog.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Artículos del Blog -->
+    <url>
+        <loc>https://www.franksimbana.com/blog/como-mantener-tu-disciplina-o-encontrarla-con-taekwondo-y-mma-en-tu-viaje-a-loja.html</loc>
+        <lastmod>2025-08-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.franksimbana.com/blog/de-turista-a-atleta-claves-para-no-perder-tu-rutina-de-taekwondo-o-mma-en-loja.html</loc>
+        <lastmod>2025-08-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.franksimbana.com/blog/guia-rapida-para-visitantes-donde-encontrar-las-mejores-clases-de-taekwondo-y-mma-en-loja.html</loc>
+        <lastmod>2025-08-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.franksimbana.com/blog/mas-alla-de-la-romeria-vive-una-experiencia-autentica-de-taekwondo-o-mma-en-loja-con-frank-simbana.html</loc>
+        <lastmod>2025-08-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.franksimbana.com/blog/por-que-entrenar-taekwondo-o-mma-es-el-antidoto-perfecto-para-el-estres-del-viaje-a-loja.html</loc>
+        <lastmod>2025-08-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Logros -->
+    <url>
+        <loc>https://www.franksimbana.com/logros.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- MMA -->
+    <url>
+        <loc>https://www.franksimbana.com/mma.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Taekwondo -->
+    <url>
+        <loc>https://www.franksimbana.com/taekwondo.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Contacto -->
+    <url>
+        <loc>https://www.franksimbana.com/contact.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <!-- Torneo Open Zamora 2025 -->
+    <url>
+        <loc>https://www.franksimbana.com/torneo-open-zamora-2025.html</loc>
+        <lastmod>2025-08-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+</urlset>

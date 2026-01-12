@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Admin Panel | Frank Simbaña</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <script defer src="js/vendor/fontawesome/all.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta property="og:image" content="images/imagen destacada.jpg">
+    <meta property="og:description" content="Bienvenido a Golden Club Taekwondo.">
+
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <style>
+        .admin-panel {
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+        
+        .admin-header {
+            background: #343A40;
+            color: #F8F8F8;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .admin-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admin-nav h1 {
+            color: #B8860B;
+            margin: 0;
+        }
+        
+        .logout-btn {
+            background: #800020;
+            color: #F8F8F8;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #6C757D;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            color: #B8860B;
+            border-bottom-color: #B8860B;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .article-form {
+            background: #F8F8F8;
+            padding: 3rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #343A40;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+        
+        .btn-primary {
+            background: #B8860B;
+            color: #F8F8F8;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .btn-danger {
+            background: #800020;
+            color: #F8F8F8;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .articles-list {
+            background: #F8F8F8;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .article-item {
+            padding: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .article-info h4 {
+            color: #343A40;
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-meta {
+            color: #6C757D;
+            font-size: 0.9rem;
+        }
+        
+        .article-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .category-taekwondo { border-left: 4px solid #B8860B; }
+        .category-mma { border-left: 4px solid #800020; }
+        .category-desarrollo { border-left: 4px solid #4682B4; }
+        .category-tecnicas { border-left: 4px solid #6C757D; }
+    </style>
+</head>
+
+<body>
+    <div class="admin-panel">
+        <header class="admin-header">
+            <div class="row">
+                <div class="column">
+                    <div class="admin-nav">
+                        <h1><i class="fas fa-cog"></i> Panel de Administración</h1>
+                        <a href="blog.html" class="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i> Salir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="column">
+                <div class="admin-tabs">
+                    <button class="tab-btn active" onclick="showTab('new-article')">
+                        <i class="fas fa-plus"></i> Nuevo Artículo
+                    </button>
+                    <button class="tab-btn" onclick="showTab('manage-articles')">
+                        <i class="fas fa-list"></i> Gestionar Artículos
+                    </button>
+                </div>
+
+                <!-- Nuevo Artículo -->
+                <div id="new-article" class="tab-content active">
+                    <div class="article-form">
+                        <h2 style="color: #343A40; margin-bottom: 2rem;">Crear Nuevo Artículo</h2>
+                        <form id="articleForm">
+                            <div class="form-group">
+                                <label for="title">Título del Artículo:</label>
+                                <input type="text" id="title" name="title" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="category">Categoría:</label>
+                                <select id="category" name="category" required>
+                                    <option value="">Seleccionar categoría</option>
+                                    <option value="taekwondo">Taekwondo</option>
+                                    <option value="mma">MMA</option>
+                                    <option value="desarrollo">Desarrollo Personal</option>
+                                    <option value="tecnicas">Técnicas</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="excerpt">Extracto:</label>
+                                <textarea id="excerpt" name="excerpt" placeholder="Breve descripción del artículo..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="content">Contenido Completo:</label>
+                                <textarea id="content" name="content" placeholder="Contenido completo del artículo..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="image">URL de Imagen (opcional):</label>
+                                <input type="url" id="image" name="image" placeholder="https://ejemplo.com/imagen.jpg">
+                            </div>
+                            
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-save"></i> Publicar Artículo
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Gestionar Artículos -->
+                <div id="manage-articles" class="tab-content">
+                    <h2 style="color: #343A40; margin-bottom: 2rem;">Artículos Publicados</h2>
+                    <div class="articles-list" id="articlesList">
+                        <!-- Los artículos se cargarán aquí dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluir la utilidad de la API -->
+    <script type="module">
+        import { auth, articles, categories, uploadFile } from '../js/api.js';
+
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                await auth.verify();
+                // Si la verificación es exitosa, cargar los datos
+                loadCategories();
+                loadArticles();
+            } catch (error) {
+                console.error('Error de autenticación:', error);
+                window.location.href = 'admin-login.html';
+            }
+        });
+
+        // Manejar cierre de sesión
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            auth.logout();
+        });
+
+        // Variables globales
+        let currentArticleId = null;
+        let currentPage = 1;
+        const itemsPerPage = 10;
+
+        // Datos de categorías
+        let categoriesList = [];
+
+        // Cargar categorías desde la API
+        async function loadCategories() {
+            try {
+                const data = await categories.getAll();
+                categoriesList = data.categories || [];
+                updateCategorySelects();
+            } catch (error) {
+                console.error('Error al cargar categorías:', error);
+                alert('Error al cargar las categorías. Por favor, recarga la página.');
+            }
+        }
+
+        // Actualizar los selects de categorías en los formularios
+        function updateCategorySelects() {
+            const selects = document.querySelectorAll('select[name="category_id"]');
+            selects.forEach(select => {
+                // Guardar el valor seleccionado actual
+                const selectedValue = select.value;
+                
+                // Limpiar opciones existentes
+                select.innerHTML = '';
+                
+                // Agregar opción por defecto
+                const defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.textContent = 'Selecciona una categoría';
+                defaultOption.disabled = true;
+                defaultOption.selected = true;
+                select.appendChild(defaultOption);
+                
+                // Agregar categorías
+                categoriesList.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category.id;
+                    option.textContent = category.name;
+                    select.appendChild(option);
+                });
+                
+                // Restaurar el valor seleccionado si existe
+                if (selectedValue) {
+                    select.value = selectedValue;
+                }
+            });
+        }
+
+        // Cargar artículos desde la API
+        async function loadArticles(page = 1) {
+            try {
+                currentPage = page;
+                const data = await articles.getAll({
+                    page: currentPage,
+                    limit: itemsPerPage,
+                    status: 'all' // Para obtener tanto borradores como publicados
+                });
+                
+                displayArticles(data.articles || []);
+                updatePagination(data.pagination);
+            } catch (error) {
+                console.error('Error al cargar artículos:', error);
+                alert('Error al cargar los artículos. Por favor, inténtalo de nuevo.');
+            }
+        }
+
+        // Mostrar artículos en la tabla
+        function displayArticles(articles) {
+            const tbody = document.querySelector('#articlesTable tbody');
+            tbody.innerHTML = '';
+
+            if (articles.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td colspan="5" class="text-center">
+                        No hay artículos disponibles. Crea tu primer artículo para comenzar.
+                    </td>
+                `;
+                tbody.appendChild(row);
+                return;
+            }
+
+            articles.forEach(article => {
+                const row = document.createElement('tr');
+                const category = categoriesList.find(cat => cat.id === article.category_id) || {};
+                
+                row.innerHTML = `
+                    <td>${article.title}</td>
+                    <td>${category.name || 'Sin categoría'}</td>
+                    <td>${formatDate(article.published_at) || 'Borrador'}</td>
+                    <td>
+                        <span class="status-badge ${article.status}">
+                            ${article.status === 'published' ? 'Publicado' : 'Borrador'}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <button class="btn-edit" onclick="editArticle(${article.id})">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn-delete" onclick="deleteArticle(${article.id})">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Actualizar la paginación
+        function updatePagination(pagination) {
+            const paginationContainer = document.querySelector('.pagination');
+            if (!pagination || !paginationContainer) return;
+
+            const { total, page, totalPages } = pagination;
+            
+            let paginationHTML = `
+                <button class="btn-prev" ${page <= 1 ? 'disabled' : ''} 
+                    onclick="loadArticles(${page - 1})">
+                    <i class="fas fa-chevron-left"></i> Anterior
+                </button>
+                <span class="page-info">
+                    Página ${page} de ${totalPages}
+                </span>
+                <button class="btn-next" ${page >= totalPages ? 'disabled' : ''} 
+                    onclick="loadArticles(${page + 1})">
+                    Siguiente <i class="fas fa-chevron-right"></i>
+                </button>
+                <span class="total-items">
+                    Total: ${total} artículos
+                </span>
+            `;
+
+            paginationContainer.innerHTML = paginationHTML;
+        }
+
+        // Formatear fecha
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('es-ES', options);
+        }
+
+        // Mostrar/ocultar pestañas
+        function showTab(tabName) {
+            // Ocultar todas las pestañas
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+
+            // Desactivar todos los enlaces de pestaña
+            document.querySelectorAll('.tab-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Mostrar la pestaña seleccionada
+            document.getElementById(tabName).style.display = 'block';
+            document.querySelector(`[onclick="showTab('${tabName}')"]`).classList.add('active');
+
+            // Si es la pestaña de artículos, recargar la lista
+            if (tabName === 'articlesTab') {
+                loadArticles(currentPage);
+            }
+        }
+
+        // Cargar categorías en los selects
+        function loadCategoriesInForms() {
+            const categorySelects = document.querySelectorAll('select[name="category_id"]');
+            categorySelects.forEach(select => {
+                // Guardar el valor seleccionado actual
+                const selectedValue = select.value;
+                
+                // Limpiar opciones
+                select.innerHTML = '';
+                
+                // Agregar opción por defecto
+                const defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.textContent = 'Selecciona una categoría';
+                defaultOption.disabled = true;
+                defaultOption.selected = true;
+                select.appendChild(defaultOption);
+                
+                // Agregar categorías
+                categoriesList.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category.id;
+                    option.textContent = category.name;
+                    select.appendChild(option);
+                    
+                    // Seleccionar la opción si coincide con el valor guardado
+                    if (selectedValue && selectedValue == category.id) {
+                        option.selected = true;
+                        defaultOption.selected = false;
+                    }
+                });
+            });
+        }
+        // Función para manejar la edición de un artículo
+        async function editArticle(id) {
+            try {
+                // Mostrar el formulario de edición
+                showTab('editArticleTab');
+                
+                // Limpiar el formulario
+                const form = document.getElementById('articleForm');
+                form.reset();
+                
+                // Cargar los datos del artículo
+                const article = await articles.getById(id);
+                currentArticleId = id;
+                
+                // Rellenar el formulario con los datos del artículo
+                form.querySelector('[name="title"]').value = article.title || '';
+                form.querySelector('[name="excerpt"]').value = article.excerpt || '';
+                
+                // Usar textarea para el contenido
+                const contentTextarea = form.querySelector('[name="content"]');
+                if (contentTextarea) {
+                    contentTextarea.value = article.content || '';
+                }
+                
+                // Establecer la categoría
+                const categorySelect = form.querySelector('[name="category_id"]');
+                if (categorySelect) {
+                    categorySelect.value = article.category_id || '';
+                }
+                
+                // Establecer el estado
+                const statusRadio = form.querySelector(`[name="status"][value="${article.status || 'draft'}"]`);
+                if (statusRadio) {
+                    statusRadio.checked = true;
+                }
+                
+                // Mostrar la imagen actual si existe
+                const imagePreview = document.getElementById('imagePreview');
+                const currentImage = document.getElementById('currentImage');
+                const removeImageBtn = document.getElementById('removeImageBtn');
+                
+                if (article.image_url) {
+                    currentImage.src = article.image_url;
+                    imagePreview.style.display = 'block';
+                    removeImageBtn.style.display = 'inline-block';
+                } else {
+                    imagePreview.style.display = 'none';
+                    removeImageBtn.style.display = 'none';
+                }
+                
+                // Desplazarse al formulario
+                document.getElementById('editArticleTab').scrollIntoView({ behavior: 'smooth' });
+                
+            } catch (error) {
+                console.error('Error al cargar el artículo:', error);
+                alert('No se pudo cargar el artículo. Por favor, inténtalo de nuevo.');
+            }
+        }
+        
+        // Función para manejar la eliminación de un artículo
+        async function deleteArticle(id) {
+            if (!confirm('¿Estás seguro de que deseas eliminar este artículo? Esta acción no se puede deshacer.')) {
+                return;
+            }
+            
+            try {
+                await articles.delete(id);
+                alert('Artículo eliminado correctamente');
+                loadArticles(currentPage);
+            } catch (error) {
+                console.error('Error al eliminar el artículo:', error);
+                alert('No se pudo eliminar el artículo. Por favor, inténtalo de nuevo.');
+            }
+        }
+        
+        // Función para manejar la carga de imágenes
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            const imagePreview = document.getElementById('imagePreview');
+            const currentImage = document.getElementById('currentImage');
+            const removeImageBtn = document.getElementById('removeImageBtn');
+            
+            reader.onload = function(e) {
+                currentImage.src = e.target.result;
+                imagePreview.style.display = 'block';
+                removeImageBtn.style.display = 'inline-block';
+            };
+            
+            reader.readAsDataURL(file);
+        }
+        
+        // Función para eliminar la imagen actual
+        function removeImage() {
+            const imageInput = document.querySelector('input[type="file"]');
+            const imagePreview = document.getElementById('imagePreview');
+            const currentImage = document.getElementById('currentImage');
+            const removeImageBtn = document.getElementById('removeImageBtn');
+            
+            // Resetear el input de archivo
+            if (imageInput) {
+                imageInput.value = '';
+            }
+            
+            // Ocultar la previsualización
+            currentImage.src = '';
+            imagePreview.style.display = 'none';
+            removeImageBtn.style.display = 'none';
+            
+            // Agregar un campo oculto para indicar que se debe eliminar la imagen
+            let removeImageInput = document.querySelector('input[name="remove_image"]');
+            if (!removeImageInput) {
+                removeImageInput = document.createElement('input');
+                removeImageInput.type = 'hidden';
+                removeImageInput.name = 'remove_image';
+                removeImageInput.value = '1';
+                document.getElementById('articleForm').appendChild(removeImageInput);
+            } else {
+                removeImageInput.value = '1';
+            }
+        }
+        
+        // Inicializar eventos del formulario
+        document.addEventListener('DOMContentLoaded', function() {
+            // Manejar envío del formulario de artículo
+            const articleForm = document.getElementById('articleForm');
+            if (articleForm) {
+                articleForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(this);
+                    const submitButton = this.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.innerHTML;
+                    
+                    try {
+                        // Mostrar indicador de carga
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
+                        
+                        // Si hay una imagen para subir, manejarla primero
+                        const imageInput = this.querySelector('input[type="file"]');
+                        if (imageInput && imageInput.files.length > 0) {
+                            const uploadResponse = await uploadFile(imageInput.files[0]);
+                            formData.set('image_url', uploadResponse.imageUrl);
+                        }
+                        
+                        // Convertir FormData a objeto para poder modificarlo
+                        const data = {};
+                        formData.forEach((value, key) => {
+                            // Si el valor es 'on' para checkboxes/radios, convertirlo a booleano
+                            if (value === 'on') {
+                                data[key] = true;
+                            } else if (value === 'draft' || value === 'published') {
+                                data['status'] = value;
+                            } else {
+                                data[key] = value;
+                            }
+                        });
+                        
+                        // Si es una edición, actualizar el artículo existente
+                        if (currentArticleId) {
+                            await articles.update(currentArticleId, data);
+                            alert('Artículo actualizado correctamente');
+                        } else {
+                            // Crear un nuevo artículo
+                            await articles.create(data);
+                            alert('Artículo creado correctamente');
+                        }
+                        
+                        // Recargar la lista de artículos y volver a la pestaña de lista
+                        loadArticles(currentPage);
+                        showTab('articlesTab');
+                        
+                        // Limpiar el formulario
+                        this.reset();
+                        currentArticleId = null;
+                        
+                        // Ocultar la previsualización de la imagen
+                        document.getElementById('imagePreview').style.display = 'none';
+                        document.getElementById('removeImageBtn').style.display = 'none';
+                        
+                    } catch (error) {
+                        console.error('Error al guardar el artículo:', error);
+                        alert('Error al guardar el artículo: ' + (error.message || 'Inténtalo de nuevo más tarde.'));
+                    } finally {
+                        // Restaurar el botón
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
+                    }
+                });
+            }
+            
+            // Manejar clic en el botón de nuevo artículo
+            const newArticleBtn = document.getElementById('newArticleBtn');
+            if (newArticleBtn) {
+                newArticleBtn.addEventListener('click', function() {
+                    currentArticleId = null;
+                    document.getElementById('articleForm').reset();
+                    document.getElementById('imagePreview').style.display = 'none';
+                    document.getElementById('removeImageBtn').style.display = 'none';
+                    showTab('editArticleTab');
+                });
+            }
+            
+            // Inicializar la previsualización de imágenes
+            const imageInput = document.querySelector('input[type="file"]');
+            if (imageInput) {
+                imageInput.addEventListener('change', handleImageUpload);
+            }
+            
+            // Manejar clic en el botón de eliminar imagen
+            const removeImageBtn = document.getElementById('removeImageBtn');
+            if (removeImageBtn) {
+                removeImageBtn.addEventListener('click', removeImage);
+            }
+            
+            // Cargar categorías al iniciar
+            loadCategories();
+            
+            // Mostrar la pestaña de artículos por defecto
+            showTab('articlesTab');
+        });
+                category: "mma",
+                date: "2024-01-10",
+                excerpt: "En las artes marciales mixtas, la preparación mental...",
+                status: "publicado"
+            },
+            {
+                id: 3,
+                title: "Cómo las Artes Marciales Transforman tu Vida Diaria",
+                category: "desarrollo",
+                date: "2024-01-05",
+                excerpt: "Las artes marciales van más allá del dojo...",
+                status: "publicado"
+            }
+        ];
+
+        // Función para cambiar entre pestañas
+        function showTab(tabName) {
+            // Ocultar todos los contenidos
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remover clase active de todos los botones
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Mostrar el contenido seleccionado
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activar el botón correspondiente
+            event.target.classList.add('active');
+            
+            if (tabName === 'manage-articles') {
+                loadArticles();
+            }
+        }
+
+        // Función para cargar artículos en la lista
+        function loadArticles() {
+            const articlesList = document.getElementById('articlesList');
+            articlesList.innerHTML = '';
+            
+            articles.forEach(article => {
+                const categoryClass = `category-${article.category}`;
+                const articleItem = document.createElement('div');
+                articleItem.className = `article-item ${categoryClass}`;
+                articleItem.innerHTML = `
+                    <div class="article-info">
+                        <h4>${article.title}</h4>
+                        <div class="article-meta">
+                            <span><i class="fas fa-calendar"></i> ${formatDate(article.date)}</span>
+                            <span style="margin-left: 1rem;"><i class="fas fa-tag"></i> ${getCategoryName(article.category)}</span>
+                            <span style="margin-left: 1rem;"><i class="fas fa-eye"></i> ${article.status}</span>
+                        </div>
+                    </div>
+                    <div class="article-actions">
+                        <button class="btn-primary" onclick="editArticle(${article.id})">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn-danger" onclick="deleteArticle(${article.id})">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </button>
+                    </div>
+                `;
+                articlesList.appendChild(articleItem);
+            });
+        }
+
+        // Función para formatear fecha
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('es-ES', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        // Función para obtener nombre de categoría
+        function getCategoryName(category) {
+            const categories = {
+                'taekwondo': 'Taekwondo',
+                'mma': 'MMA',
+                'desarrollo': 'Desarrollo Personal',
+                'tecnicas': 'Técnicas'
+            };
+            return categories[category] || category;
+        }
+
+        // Función para editar artículo
+        function editArticle(id) {
+            const article = articles.find(a => a.id === id);
+            if (article) {
+                // Cambiar a la pestaña de nuevo artículo
+                showTab('new-article');
+                
+                // Llenar el formulario con los datos del artículo
+                document.getElementById('title').value = article.title;
+                document.getElementById('category').value = article.category;
+                document.getElementById('excerpt').value = article.excerpt;
+                
+                // Cambiar el texto del botón
+                const submitBtn = document.querySelector('#articleForm button[type="submit"]');
+                submitBtn.innerHTML = '<i class="fas fa-save"></i> Actualizar Artículo';
+                submitBtn.setAttribute('data-editing', id);
+            }
+        }
+
+        // Función para eliminar artículo
+        function deleteArticle(id) {
+            if (confirm('¿Estás seguro de que quieres eliminar este artículo?')) {
+                articles = articles.filter(a => a.id !== id);
+                loadArticles();
+                alert('Artículo eliminado correctamente.');
+            }
+        }
+
+        // Manejar envío del formulario
+        document.getElementById('articleForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const articleData = {
+                title: formData.get('title'),
+                category: formData.get('category'),
+                excerpt: formData.get('excerpt'),
+                content: formData.get('content'),
+                image: formData.get('image'),
+                date: new Date().toISOString().split('T')[0],
+                status: 'publicado'
+            };
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const editingId = submitBtn.getAttribute('data-editing');
+            
+            if (editingId) {
+                // Actualizar artículo existente
+                const index = articles.findIndex(a => a.id == editingId);
+                if (index !== -1) {
+                    articles[index] = { ...articles[index], ...articleData };
+                    alert('Artículo actualizado correctamente.');
+                }
+                submitBtn.innerHTML = '<i class="fas fa-save"></i> Publicar Artículo';
+                submitBtn.removeAttribute('data-editing');
+            } else {
+                // Crear nuevo artículo
+                articleData.id = articles.length + 1;
+                articles.push(articleData);
+                alert('Artículo publicado correctamente.');
+            }
+            
+            // Limpiar formulario
+            this.reset();
+            
+            // Recargar lista si estamos en esa pestaña
+            if (document.getElementById('manage-articles').classList.contains('active')) {
+                loadArticles();
+            }
+        });
+
+        // Cargar artículos al inicio
+        loadArticles();
+    </script>
+</body>
+</html>

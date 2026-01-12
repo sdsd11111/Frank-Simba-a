@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+<head>
+    <!--- basic page needs -->
+    <meta charset="utf-8">
+    <title>{{title}} | Frank Simbaña</title>
+    <meta name="description" content="{{excerpt}}">
+    <meta name="author" content="Frank Simbaña">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/vendor.css">
+
+    <!-- script -->
+    <script defer src="/js/vendor/fontawesome/all.min.js"></script>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Open Graph Meta Tags para compartir en redes sociales -->
+    <meta property="og:title" content="{{title}} | Frank Simbaña">
+    <meta property="og:description" content="{{excerpt}}">
+    {{#image_url}}
+    <meta property="og:image" content="{{image_url}}">
+    {{/image_url}}
+    <meta property="og:url" content="{{current_url}}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Frank Simbaña - Club Golden Loja">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{title}} | Frank Simbaña">
+    <meta name="twitter:description" content="{{excerpt}}">
+    {{#image_url}}
+    <meta name="twitter:image" content="{{image_url}}">
+    {{/image_url}}
+    
+    <style>
+        /* Estilos específicos para artículos */
+        .s-content {
+            padding-top: 120px;
+            padding-bottom: 72px;
+        }
+        .article-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            line-height: 1.8;
+            color: #333;
+        }
+        .article-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+        .article-title {
+            font-size: 3.2rem;
+            color: #B8860B;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        .article-meta {
+            color: #6c757d;
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        .article-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 3rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .article-body {
+            font-size: 1.8rem;
+            line-height: 1.8;
+        }
+        .article-body p {
+            margin-bottom: 2.4rem;
+        }
+        .article-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        @media screen and (max-width: 768px) {
+            .article-title {
+                font-size: 2.4rem;
+            }
+            .article-body {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body id="top" class="ss-preload" style="padding-top: 80px;">
+
+    <!-- preloader -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+    <!-- header -->
+    <header class="s-header">
+        <div class="header-logo">
+            <a class="site-logo" href="/index.html">
+                <img src="/images/logo.png" alt="Frank Simbaña">
+            </a>
+        </div>
+
+        <div class="row s-header__nav-wrap">
+            <nav class="s-header__nav">
+                <ul>
+                    <li><a href="/index.html">Inicio</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/index.html#disciplinas">Disciplinas</a></li>
+                    <li><a href="/index.html#galeria">Galería</a></li>
+                    <li><a href="/index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <a class="header-menu-toggle" href="#0" title="Menu">
+            <span class="header-menu-icon"></span>
+        </a>
+    </header>
+
+    <!-- Contenido del artículo -->
+    <main class="s-content">
+        <article class="article-content">
+            <header class="article-header">
+                <h1 class="article-title">{{title}}</h1>
+                <div class="article-meta">
+                    Publicado el <time datetime="{{published_at}}">{{formatted_date}}</time>
+                    {{#category}} | Categoría: <a href="/categoria/{{slug}}.html">{{name}}</a>{{/category}}
+                </div>
+            </header>
+            
+            {{#image_url}}
+            <img src="{{image_url}}" alt="{{title}}" class="article-image">
+            {{/image_url}}
+            
+            <div class="article-body">
+                {{{content}}}
+            </div>
+        </article>
+    </main>
+
+    <!-- footer -->
+    <footer class="s-footer">
+        <div class="row">
+            <div class="column large-4 medium-6 w-1000-stack s-footer__social-block">
+                <ul class="s-footer__social">
+                    <li><a href="https://www.facebook.com/share/16Foo7m463/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.instagram.com/club_golden2020/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="column large-7 medium-6 w-1000-stack ss-copyright">
+                <span>© Copyright Diseñado por @Objetivo 2025</span>
+                <span>Academia Club Golden Loja</span>
+            </div>
+        </div>
+        <div class="ss-go-top">
+            <a class="smoothscroll" title="Volver arriba" href="#top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Java Script -->
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+    
+    <!-- Script para compartir en redes sociales -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Botón para compartir en WhatsApp
+        const shareButtons = document.querySelectorAll('.share-button');
+        
+        shareButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const url = window.location.href;
+                const title = document.title;
+                
+                if (navigator.share) {
+                    navigator.share({
+                        title: title,
+                        url: url
+                    }).catch(console.error);
+                } else {
+                    // Fallback para navegadores que no soportan Web Share API
+                    window.open(`https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`, '_blank');
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

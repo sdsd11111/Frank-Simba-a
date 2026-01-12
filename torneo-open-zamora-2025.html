@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Torneo Open Zamora 2025 | Frank Simbaña - Entrenador de Taekwondo y Artes Marciales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <script defer src="js/vendor/fontawesome/all.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
+    <!-- Estilos adicionales para la página del torneo -->
+    <style>
+        /* Base typography settings */
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Card typography standardization */
+        .info-card,
+        .card,
+        .modalidad-slide>div,
+        .feature-box {
+            font-size: 1.5rem;
+            /* Increased from 1.1rem */
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .info-card h3,
+        .card h3,
+        .modalidad-slide h4,
+        .feature-box h4 {
+            font-size: 1.7rem;
+            /* Increased from 1.25rem */
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* Standardize lead text */
+        .lead {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: #444;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-weight: 400;
+        }
+
+        .info-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .section-header-allcaps {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            line-height: 1.3;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .info-card h3 {
+            color: #B8860B;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.7rem;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .info-card p {
+            color: #333;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        /* Info list styles */
+        .tab-button {
+            font-size: 1.1rem;
+            padding: 0.7rem 1.5rem;
+            margin: 0 0.5rem 1rem;
+            font-weight: 500;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+            flex-grow: 1;
+        }
+
+        .info-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            color: #333;
+            font-size: 1.4rem;
+            line-height: 1.6;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list i {
+            margin-right: 0.8rem;
+            color: #B8860B;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Bullet list styles */
+        .list-bullets {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0 0 1rem 0;
+            flex-grow: 1;
+        }
+
+        .list-bullets li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            font-size: 1.4rem;
+            color: #333;
+        }
+
+        .list-bullets li:before {
+            content: "•";
+            color: #B8860B;
+            font-weight: bold;
+            position: absolute;
+            left: 0.5rem;
+            font-size: 1.2em;
+        }
+
+        /* Card grid system */
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -1rem;
+        }
+
+        .card-grid .column {
+            padding: 0 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                font-size: 1.1rem;
+            }
+
+            .info-card {
+                padding: 1.5rem;
+                font-size: 1.3rem;
+            }
+
+            .info-card h3 {
+                font-size: 1.6rem;
+            }
+
+            .info-card p,
+            .info-list li,
+            .list-bullets li {
+                font-size: 1.3rem;
+            }
+
+            .card-grid .column {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+
+        .btn-primary {
+            background: #B8860B;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary:hover {
+            background: #9a6f0a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Frank Simbaña - Entrenador de Taekwondo">
+    <meta property="og:url" content="https://franksimbana.com/torneo-open-zamora-2025.html">
+    <meta property="og:title" content="Torneo Open Zamora 2025 | Frank Simbaña - Entrenador de Taekwondo">
+    <meta property="og:description"
+        content="Participa en el Torneo Open Zamora 2025, un evento de categoría nacional que reúne a los mejores exponentes del Taekwondo del Ecuador.">
+    <meta property="og:image" content="https://franksimbana.com/images/Blog/Open%20Zamora%202025.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Torneo Open Zamora 2025 - Taekwondo">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://franksimbana.com/torneo-open-zamora-2025.html">
+    <meta name="twitter:title" content="Torneo Open Zamora 2025 | Frank Simbaña - Entrenador de Taekwondo">
+    <meta name="twitter:description"
+        content="Participa en el Torneo Open Zamora 2025, un evento de categoría nacional que reúne a los mejores exponentes del Taekwondo del Ecuador.">
+    <meta name="twitter:image" content="https://franksimbana.com/images/Blog/Open%20Zamora%202025.webp">
+    <meta name="twitter:image:alt" content="Torneo Open Zamora 2025 - Taekwondo">
+
+    <!-- Additional Meta Tags for Better Sharing -->
+    <meta name="description"
+        content="Participa en el Torneo Open Zamora 2025, un evento de categoría nacional que reúne a los mejores exponentes del Taekwondo del Ecuador.">
+    <link rel="canonical" href="https://franksimbana.com/torneo-open-zamora-2025.html" />
+</head>
+
+<body style="padding-top: 80px;">
+    <!-- Header -->
+    <style>
+        /* Estilos para los sliders */
+        .info-slider,
+        .modalidades-slider {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .info-slide,
+        .modalidad-slide {
+            outline: none;
+            padding: 0 10px;
+        }
+
+        .slick-prev,
+        .slick-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            border: none;
+            color: #2c3e50;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .slick-prev:hover,
+        .slick-next:hover {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .slick-prev {
+            left: -15px;
+        }
+
+        .slick-next {
+            right: -15px;
+        }
+
+        .slick-dots {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .slick-dots li {
+            margin: 0 5px;
+        }
+
+        .slick-dots button {
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            border: none;
+            border-radius: 50%;
+            background: #ccc;
+            text-indent: -9999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slick-dots li.slick-active button {
+            background: #B8860B;
+            transform: scale(1.2);
+        }
+
+        /* Efecto hover para las tarjetas */
+        .info-card,
+        .modalidad-slide>div {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover,
+        .modalidad-slide>div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        @media (max-width: 768px) {
+            .s-header {
+                display: none !important;
+            }
+
+            /* Menú hamburguesa móvil */
+            .mobile-menu-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+                background: #000000;
+                border: none;
+                padding: 12px;
+                border-radius: 6px;
+                cursor: pointer;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .mobile-menu-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background: #FFFFFF;
+                margin: 5px 0;
+                transition: 0.3s;
+            }
+
+            .mobile-menu-toggle.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .mobile-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-toggle.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .mobile-menu {
+                position: fixed;
+                top: 70px;
+                right: 15px;
+                left: 15px;
+                max-width: 300px;
+                margin: 0 auto;
+                background: rgba(0, 0, 0, 0.95);
+                border-radius: 12px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+                z-index: 9998;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+                padding: 15px 0;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .mobile-menu.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .mobile-menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                text-align: left;
+            }
+
+            .mobile-menu li {
+                margin: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .mobile-menu li:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-menu a {
+                color: #FFFFFF;
+                text-decoration: none;
+                font-size: 1.1rem;
+                font-weight: 500;
+                transition: all 0.3s;
+                display: block;
+                padding: 12px 20px;
+            }
+
+            .mobile-menu a:hover {
+                color: #FFD700;
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            .mobile-submenu {
+                margin: 0;
+                padding: 0;
+                background: rgba(0, 0, 0, 0.3);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .mobile-submenu li {
+                margin: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .mobile-submenu li:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-submenu a {
+                font-size: 1rem;
+                color: #CCCCCC;
+                padding: 10px 30px;
+            }
+        }
+
+        @media (min-width: 769px) {
+
+            .mobile-menu-toggle,
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+
+        /* CSS para sliders responsivos solo en móvil */
+        @media (max-width: 768px) {
+            .mobile-slider {
+                display: block !important;
+            }
+
+            .desktop-content {
+                display: none !important;
+            }
+
+            /* Asegurar que la galería de campeones sea visible en móvil */
+            .champions-grid {
+                display: none !important;
+            }
+
+            .swiper {
+                width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 0 20px;
+            }
+
+            .swiper-slide {
+                background: #fff;
+                border-radius: 10px;
+                padding: 1.5rem;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                margin-bottom: 2rem;
+            }
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                color: #B8860B !important;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 50%;
+                width: 40px !important;
+                height: 40px !important;
+                margin-top: -20px !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .swiper-button-next:after,
+            .swiper-button-prev:after {
+                font-size: 16px !important;
+                font-weight: bold;
+            }
+
+            .swiper-pagination-bullet {
+                background: #B8860B !important;
+                opacity: 0.5;
+            }
+
+            .swiper-pagination-bullet-active {
+                opacity: 1;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-slider {
+                display: none !important;
+            }
+
+            .desktop-content {
+                display: block !important;
+            }
+        }
+    </style>
+    <header class="s-header"
+        style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #000000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); padding: 1rem 0;">
+        <div class="row s-header__nav-wrap">
+            <nav class="s-header__nav">
+                <ul style="margin: 0;">
+                    <li><a href="index.html" style="color: #FFFFFF !important;">Inicio</a></li>
+                    <li><a href="blog.html" style="color: #FFFFFF !important;">Blog</a></li>
+                    <li class="current"><a href="logros.html" style="color: #B8860B !important;">Logros</a></li>
+                    <li class="has-children"><a href="#" style="color: #FFFFFF !important;">Disciplinas</a>
+                        <ul class="submenu" style="background: #000000; border: 1px solid #333;">
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 8px;"><a
+                                    href="mma.html" style="color: #FFFFFF !important;">MMA</a></li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 8px;"><a
+                                    href="taekwondo.html" style="color: #FFFFFF !important;">Taekwondo</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        </a>
+    </header>
+
+    <!-- Menú hamburguesa móvil -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html" onclick="closeMobileMenu()">Inicio</a></li>
+            <li><a href="logros.html" onclick="closeMobileMenu()">Logros</a></li>
+            <li>
+                <a href="#" onclick="toggleSubmenu(event)">Disciplinas</a>
+                <ul class="mobile-submenu" id="disciplinasSubmenu" style="display: none;">
+                    <li><a href="mma.html" onclick="closeMobileMenu()">MMA</a></li>
+                    <li><a href="taekwondo.html" onclick="closeMobileMenu()">Taekwondo</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html" onclick="closeMobileMenu()">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="s-hero"
+        style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('images/Open%20Zamora%202025.webp'); background-size: cover; background-position: center; background-attachment: fixed; color: #FFFFFF; padding: 12rem 0 8rem; text-align: center; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div class="row s-hero__content" style="padding-top: 5vh;">
+            <div class="column">
+                <div class="s-hero__content-about" style="text-align: center;">
+                    <h1
+                        style="color: #F8F8F8; font-size: 4rem; margin-bottom: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">
+                        Torneo Open Zamora 2025</h1>
+                    <h3
+                        style="color: #F8F8F8; font-weight: 300; font-size: 1.6rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.7); margin-bottom: 1.5rem;">
+                        ¡Bienvenidos al torneo de Taekwondo más importante de la región!</h3>
+                    <div
+                        style="background: rgba(0,0,0,0.7); padding: 1.5rem; border-radius: 8px; max-width: 800px; margin: 0 auto 2rem auto;">
+                        <p style="color: #FFFFFF; font-size: 1.2rem; margin-bottom: 1rem;"><strong
+                                style="color: #FFFFFF;">📅 Fecha:</strong> 9-15 de Agosto, 2025</p>
+                        <p style="color: #FFFFFF; font-size: 1.2rem; margin-bottom: 1rem;"><strong
+                                style="color: #FFFFFF;">📍 Lugar:</strong> Coliseo Ciudad de Zamora, Ecuador</p>
+                        <p style="color: #FFFFFF; font-size: 1.2rem; margin-bottom: 0;"><strong
+                                style="color: #FFFFFF;">🏆 Categorías:</strong> Infantiles, Juveniles y Mayores</p>
+                    </div>
+                    <a href="#inscripciones" class="btn btn--primary"
+                        style="font-size: 1.1rem; padding: 1rem 2rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-right: 1rem;">Inscríbete
+                        Ahora</a>
+                    <a href="#categorias" class="btn btn--stroke"
+                        style="font-size: 1.1rem; padding: 1rem 2rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Ver
+                        Categorías</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestros Números -->
+    <!-- Sección de Información del Torneo -->
+    <section id="informacion" class="s-about target-section" style="padding: 6rem 0; background: #fff;">
+        <div class="row">
+            <div class="column large-12" style="text-align: center; margin-bottom: 3rem;">
+                <h2 class="section-header-allcaps">Sobre el Torneo</h2>
+                <p class="lead"
+                    style="max-width: 800px; margin: 0 auto 2rem auto; font-size: 1.2rem; line-height: 1.6; color: #000000;">
+                    El Torneo Open Zamora 2025 es un evento de categoría nacional que reúne a los mejores exponentes del
+                    Taekwondo del Ecuador.
+                    Organizado por la Academia Club Golden Loja bajo la dirección del Maestro Frank Simbaña, este torneo
+                    promete dos días de
+                    competencia de alto nivel, camaradería y promoción de los valores del Taekwondo.
+                </p>
+                <div
+                    style="max-width: 800px; margin: 0 auto; background: #f8f9fa; padding: 1.5rem; border-radius: 8px; text-align: center; color: #000000;">
+                    <h4 style="color: #000000; margin: 0 0 1.5rem 0; font-weight: 600; font-size: 1.4rem;">📅 Fechas
+                        Importantes</h4>
+                    <ul style="margin: 0 auto; padding: 0; list-style: none; max-width: 600px;">
+                        <li style="margin-bottom: 1rem; padding: 0.8rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <strong
+                                style="display: block; color: #B8860B; margin-bottom: 0.3rem; font-size: 1.1rem;">Cierre
+                                de Inscripciones</strong>
+                            <span style="font-size: 1.3rem;">1 de agosto de 2025</span>
+                        </li>
+                        <li style="margin-bottom: 1rem; padding: 0.8rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <strong
+                                style="display: block; color: #B8860B; margin-bottom: 0.3rem; font-size: 1.1rem;">Días
+                                de Competencia</strong>
+                            <span style="font-size: 1.3rem;">9-15 de Agosto 2025</span>
+                        </li>
+                        <li style="padding: 0.8rem 0;">
+                            <strong
+                                style="display: block; color: #B8860B; margin-bottom: 0.3rem; font-size: 1.1rem;">Ceremonia
+                                de Premiación</strong>
+                            <span style="font-size: 1.3rem;">15 de Agosto 2025</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 3rem;">
+            <div class="column large-4 medium-6 tab-12">
+                <div class="feature-box"
+                    style="background: #f8f8f8; padding: 2.5rem 2rem; border-radius: 8px; height: 100%; text-align: center; color: #000000; display: flex; flex-direction: column; align-items: center;">
+                    <div style="font-size: 3.5rem; margin-bottom: 1.5rem; color: #B8860B; line-height: 1;">🏆</div>
+                    <h4 style="color: #000000; margin: 0 0 1.2rem 0; font-size: 1.7rem;">Excelencia Deportiva</h4>
+                    <p
+                        style="color: #000000; margin: 0; font-size: 1.5rem; line-height: 1.6; flex-grow: 1; display: flex; align-items: center;">
+                        Competencia de alto nivel con atletas calificados de todo el país, siguiendo los estándares de
+                        la Federación Ecuatoriana de Taekwondo.</p>
+                </div>
+            </div>
+            <div class="column large-4 medium-6 tab-12">
+                <div class="feature-box"
+                    style="background: #f8f8f8; padding: 2.5rem 2rem; border-radius: 8px; height: 100%; text-align: center; color: #000000; display: flex; flex-direction: column; align-items: center;">
+                    <div style="font-size: 3.5rem; margin-bottom: 1.5rem; color: #B8860B; line-height: 1;">👥</div>
+                    <h4 style="color: #000000; margin: 0 0 1.2rem 0; font-size: 1.7rem;">Categorías Inclusivas</h4>
+                    <p
+                        style="color: #000000; margin: 0; font-size: 1.5rem; line-height: 1.6; flex-grow: 1; display: flex; align-items: center;">
+                        Diferentes categorías por edades y niveles, desde infantiles hasta adultos mayores, garantizando
+                        una competencia justa y emocionante para todos.</p>
+                </div>
+            </div>
+            <div class="column large-4 medium-6 tab-12">
+                <div class="feature-box"
+                    style="background: #f8f8f8; padding: 2.5rem 2rem; border-radius: 8px; height: 100%; text-align: center; color: #000000; display: flex; flex-direction: column; align-items: center;">
+                    <div style="font-size: 3.5rem; margin-bottom: 1.5rem; color: #B8860B; line-height: 1;">🏅</div>
+                    <h4 style="color: #000000; margin: 0 0 1.2rem 0; font-size: 1.7rem;">Reconocimientos</h4>
+                    <p
+                        style="color: #000000; margin: 0; font-size: 1.5rem; line-height: 1.6; flex-grow: 1; display: flex; align-items: center;">
+                        Medallas, trofeos y reconocimientos especiales para los primeros lugares de cada categoría,
+                        además de premios especiales al mejor deportista del torneo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Inscripciones -->
+    <section id="inscripciones" class="s-services target-section" style="background: #f8f8f8; padding: 6rem 0;">
+        <div class="row">
+            <div class="column large-12" style="text-align: center; margin-bottom: 3rem;">
+                <h2 class="section-header-allcaps">Inscripciones</h2>
+                <p class="lead"
+                    style="max-width: 800px; margin: 0 auto 2rem auto; font-size: 1.2rem; line-height: 1.6;">
+                    No pierdas la oportunidad de ser parte de este gran evento. Las inscripciones están abiertas hasta
+                    el 1 de noviembre de 2025.
+                </p>
+                <a href="https://combatesport.com/" class="btn btn--primary"
+                    style="font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;"
+                    target="_blank">Inscríbete Ahora</a>
+            </div>
+        </div>
+    </section>
+
+
+    </ul>
+    </div>
+    </div>
+
+
+
+    </div>
+    </section>
+    </div>
+    </div>
+    </div>
+    </section>
+
+    <!-- Sección de Información del Torneo -->
+    <section class="s-content target-section" style="background:#f8f8f8; padding: 6rem 0;">
+        <div class="row" style="text-align: center;">
+            <div class="column" style="grid-column: 1 / -1;">
+                <h2 class="section-header-allcaps" style="text-align: center;">Información del Torneo</h2>
+                <p class="lead" style="text-align:center; max-width: 800px; margin: 0 auto 3rem auto; color: #000000;">
+                    Toda la información que necesitas para participar en el Torneo Open Zamora 2025
+                </p>
+
+                <!-- Botón de Instagram -->
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <a href="https://www.facebook.com/profile.php?id=100038545512449&locale=es_LA" target="_blank"
+                        rel="noopener noreferrer" class="btn btn--primary"
+                        style="font-size: 1.1rem; padding: 0.8rem 2rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <i class="fab fa-instagram" style="font-size: 1.3rem;"></i> Síguenos en Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Información del Torneo en Slider -->
+        <div class="row" style="max-width: 1200px; margin: 0 auto; padding: 0 15px;">
+            <div class="info-slider" style="width: 100%;">
+                <!-- Fechas y Lugar -->
+                <div class="info-slide" style="padding: 10px;">
+                    <div class="info-card"
+                        style="width: 100%; background: #fff; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 0; box-sizing: border-box; height: 100%; display: flex; flex-direction: column; min-height: 300px;">
+                        <h3
+                            style="font-size: 1.5rem; margin: 0 0 1.25rem 0; color: #2c3e50; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-calendar-day"></i> Fechas y Lugar</h3>
+                        <ul class="info-list" style="margin: 0; padding: 0; list-style: none; flex: 1;">
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 8px;"><i
+                                    class="far fa-calendar-alt"></i> <strong style="color: #000000;">Fecha:</strong> 9 a
+                                15 de agosto 2025</li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 8px;"><i
+                                    class="far fa-clock"></i> <strong style="color: #000000;">Horario:</strong> Desde
+                                las 08:00 AM</li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 8px;"><i
+                                    class="fas fa-map-marker-alt"></i> <strong style="color: #000000;">Lugar:</strong>
+                                Coliseo Ciudad de Zamora</li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 8px;"><i
+                                    class="fas fa-map-marked-alt"></i> <strong
+                                    style="color: #000000;">Dirección:</strong> Av. Amazonas y Juan Montalvo, Zamora,
+                                Ecuador</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Participantes -->
+                <div class="info-slide" style="padding: 10px;">
+                    <div class="info-card"
+                        style="width: 100%; background: #fff; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 0; box-sizing: border-box; height: 100%; display: flex; flex-direction: column; min-height: 300px;">
+                        <h3
+                            style="font-size: 1.5rem; margin: 0 0 1.25rem 0; color: #2c3e50; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-users"></i> Participantes</h3>
+                        <ul class="info-list" style="margin: 0; padding: 0; list-style: none; flex: 1;">
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 8px;"><i
+                                    class="fas fa-user-friends"></i> <strong style="color: #000000;">Cupo:</strong>
+                                Máximo 2 atletas por categoría por academia</li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 8px;"><i
+                                    class="fas fa-id-card"></i> <strong style="color: #000000;">Identificación:</strong>
+                                Presentar cédula de identidad o pasaporte</li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 8px;"><i
+                                    class="fas fa-file-alt"></i> <strong style="color: #000000;">Documentos:</strong>
+                                Copia de certificado de afiliación a la FETKD</li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 8px;"><i
+                                    class="fas fa-shield-alt"></i> <strong style="color: #000000;">Seguro:</strong>
+                                Seguro médico personal vigente</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        <!-- Sección de Modalidades de Competencia -->
+        <div class="row" style="max-width: 1200px; margin: 3rem auto 0; padding: 0 15px;">
+            <div class="column" style="grid-column: 1 / -1;">
+                <div class="info-card"
+                    style="width: 100%; background: #fff; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 0; box-sizing: border-box; height: 100%; display: flex; flex-direction: column;">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 2rem; text-align: center; color: #2c3e50;"><i
+                            class="fas fa-trophy"></i> Modalidades de Competencia</h3>
+
+                    <div class="modalidades-slider" style="margin: 0 -10px;">
+                        <!-- Tarjeta 1: Poomsae -->
+                        <div class="modalidad-slide" style="padding: 0 10px;">
+                            <div
+                                style="background: #fff; border-radius: 8px; padding: 25px; border-top: 4px solid #B8860B; height: 100%; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+                                <div
+                                    style="background: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                    <i class="fas fa-chess" style="font-size: 1.5rem; color: #B8860B;"></i>
+                                </div>
+                                <h4
+                                    style="color: #2c3e50; text-align: center; margin: 0 0 20px 0; font-size: 1.3rem; font-weight: 600;">
+                                    Poomsae</h4>
+                                <ul style="margin: 0; padding: 0; list-style-type: none;">
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px; padding: 0.4rem 0.8rem; background: #f8f9fa; border-radius: 4px;">
+                                        <i class="fas fa-check"
+                                            style="color: #B8860B; margin-top: 3px; min-width: 20px;"></i> Individual
+                                        (M/F)</li>
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px; padding: 0.4rem 0.8rem; background: #f8f9fa; border-radius: 4px;">
+                                        <i class="fas fa-check"
+                                            style="color: #B8860B; margin-top: 3px; min-width: 20px;"></i> Parejas
+                                        (Mixto)</li>
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px; padding: 0.4rem 0.8rem; background: #f8f9fa; border-radius: 4px;">
+                                        <i class="fas fa-check"
+                                            style="color: #B8860B; margin-top: 3px; min-width: 20px;"></i> Equipos (3-5)
+                                    </li>
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px; padding: 0.4rem 0.8rem; background: #f8f9fa; border-radius: 4px;">
+                                        <i class="fas fa-check"
+                                            style="color: #B8860B; margin-top: 3px; min-width: 20px;"></i> Por edades y
+                                        cinturones</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta 2: Kyorugi -->
+                        <div class="modalidad-slide" style="padding: 0 10px;">
+                            <div
+                                style="background: #f8fafc; border-radius: 8px; padding: 25px; border-left: 4px solid #B8860B; height: 100%; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
+                                <div
+                                    style="background: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                    <i class="fas fa-fist-raised" style="font-size: 1.5rem; color: #B8860B;"></i>
+                                </div>
+                                <h4
+                                    style="color: #2c3e50; text-align: center; margin: 0 0 20px 0; font-size: 1.3rem; font-weight: 600;">
+                                    Kyorugi (Combate)</h4>
+                                <ul style="margin: 0; padding: 0 0 0 1rem; list-style-type: none;">
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px;">
+                                        <i class="fas fa-check" style="color: #B8860B; margin-top: 3px;"></i> Individual
+                                        (M/F)</li>
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px;">
+                                        <i class="fas fa-check" style="color: #B8860B; margin-top: 3px;"></i>
+                                        Eliminación directa</li>
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px;">
+                                        <i class="fas fa-check" style="color: #B8860B; margin-top: 3px;"></i> Peso
+                                        oficial</li>
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px;">
+                                        <i class="fas fa-check" style="color: #B8860B; margin-top: 3px;"></i>
+                                        Protecciones obligatorias</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta 3: Breaking -->
+                        <div class="modalidad-slide" style="padding: 0 10px;">
+                            <div
+                                style="background: #f8fafc; border-radius: 8px; padding: 25px; border-left: 4px solid #B8860B; height: 100%; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
+                                <div
+                                    style="background: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                    <i class="fas fa-dumbbell" style="font-size: 1.5rem; color: #B8860B;"></i>
+                                </div>
+                                <h4
+                                    style="color: #2c3e50; text-align: center; margin: 0 0 20px 0; font-size: 1.3rem; font-weight: 600;">
+                                    Breaking</h4>
+                                <ul style="margin: 0; padding: 0 0 0 1rem; list-style-type: none;">
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px;">
+                                        <i class="fas fa-check" style="color: #B8860B; margin-top: 3px;"></i> Individual
+                                        (M/F)</li>
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px;">
+                                        <i class="fas fa-check" style="color: #B8860B; margin-top: 3px;"></i> Batallas 1
+                                        vs 1</li>
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px;">
+                                        <i class="fas fa-check" style="color: #B8860B; margin-top: 3px;"></i> Música en
+                                        vivo</li>
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px;">
+                                        <i class="fas fa-check" style="color: #B8860B; margin-top: 3px;"></i> Categorías
+                                        por edades</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta 4: Exhibición -->
+                        <div class="modalidad-slide" style="padding: 0 10px;">
+                            <div
+                                style="background: #f8fafc; border-radius: 8px; padding: 25px; border-left: 4px solid #B8860B; height: 100%; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
+                                <div
+                                    style="background: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                    <i class="fas fa-star" style="font-size: 1.5rem; color: #B8860B;"></i>
+                                </div>
+                                <h4
+                                    style="color: #2c3e50; text-align: center; margin: 0 0 20px 0; font-size: 1.3rem; font-weight: 600;">
+                                    Exhibición</h4>
+                                <ul style="margin: 0; padding: 0 0 0 1rem; list-style-type: none;">
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px;">
+                                        <i class="fas fa-check" style="color: #B8860B; margin-top: 3px;"></i>
+                                        Demostraciones especiales</li>
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px;">
+                                        <i class="fas fa-check" style="color: #B8860B; margin-top: 3px;"></i> Equipos de
+                                        exhibición</li>
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px;">
+                                        <i class="fas fa-check" style="color: #B8860B; margin-top: 3px;"></i>
+                                        Coreografías</li>
+                                    <li
+                                        style="color: #2c3e50; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: flex-start; gap: 8px;">
+                                        <i class="fas fa-check" style="color: #B8860B; margin-top: 3px;"></i> Rutinas
+                                        especiales</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contacto -->
+        <div class="column" style="grid-column: 1 / -1;">
+            <div class="info-card"
+                style="background: #fff; border-radius: 10px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin: 0 auto; box-sizing: border-box; border-top: 4px solid #B8860B; max-width: 1000px; width: 100%;">
+                <h3
+                    style="font-size: 1.5rem; margin: 0 0 1.5rem 0; color: #2c3e50; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i class="fas fa-phone-alt"></i> Contacto para Inscripciones</h3>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div
+                        style="background: #f8fafc; border-radius: 8px; padding: 20px; border-left: 4px solid #B8860B; height: 100%; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                        <div
+                            style="background: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                            <i class="fas fa-phone-alt" style="color: #B8860B; font-size: 1.2rem;"></i>
+                        </div>
+                        <ul class="info-list" style="margin: 0; padding: 0; list-style: none;">
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 8px;">
+                                <i class="fab fa-whatsapp"
+                                    style="color: #25D366; font-size: 1.2rem; min-width: 20px;"></i>
+                                <div><strong>WhatsApp:</strong> <a href="https://wa.me/593999271397" target="_blank"
+                                        style="color: #2c3e50; text-decoration: none;">+593 99 927 1397</a></div>
+                            </li>
+                            <li style="margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-phone" style="color: #B8860B; font-size: 1.1rem; min-width: 20px;"></i>
+                                <div><strong>Teléfono:</strong> <a href="tel:+593999271397"
+                                        style="color: #2c3e50; text-decoration: none;">+593 99 927 1397</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div
+                        style="background: #f8fafc; border-radius: 8px; padding: 20px; border-left: 4px solid #B8860B; height: 100%; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                        <div
+                            style="background: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                            <i class="fas fa-envelope" style="color: #B8860B; font-size: 1.2rem;"></i>
+                        </div>
+                        <ul class="info-list" style="margin: 0; padding: 0; list-style: none;">
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-envelope"
+                                    style="color: #B8860B; font-size: 1.1rem; min-width: 20px;"></i>
+                                <div><strong>Email:</strong> <a href="mailto:info@franksimbana.com"
+                                        style="color: #2c3e50; text-decoration: none;">info@franksimbana.com</a></div>
+                            </li>
+                            <li style="margin-bottom: 0; display: flex; align-items: flex-start; gap: 8px;">
+                                <i class="fas fa-map-marker-alt"
+                                    style="color: #B8860B; font-size: 1.1rem; min-width: 20px; margin-top: 2px;"></i>
+                                <div><strong>Dirección:</strong> Av. Amazonas y Juan Montalvo, Zamora, Ecuador</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-card"
+            style="background: #fff; border-radius: 10px; padding: 2.5rem; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+            <h3 style="color: #B8860B; margin: 0 0 1rem 0; text-align: center; font-size: 2rem;">Categorías por Edad y
+                Niveles</h3>
+            <p style="text-align: center; margin: 0 auto 2.5rem; max-width: 800px; color: #555; line-height: 1.6;">El
+                torneo está estructurado para asegurar una competencia justa y desafiante para todos los participantes,
+                desde los más jóvenes hasta los más experimentados.</p>
+
+            <!-- Tabs Container -->
+            <div class="tabs-container" style="max-width: 1000px; margin: 0 auto;">
+                <div class="tabs-header"
+                    style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 2rem;">
+                    <button class="tab-button active" data-tab="infantil"
+                        style="background: #B8860B; color: white; border: none; padding: 0.8rem 1.8rem; border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; margin: 0.3rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px;">Infantil</button>
+                    <button class="tab-button" data-tab="juvenil"
+                        style="background: #2c3e50; color: white; border: none; padding: 0.8rem 1.8rem; border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; margin: 0.3rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px;">Juvenil</button>
+                    <button class="tab-button" data-tab="mayores"
+                        style="background: #2c3e50; color: white; border: none; padding: 0.8rem 1.8rem; border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; margin: 0.3rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px;">Mayores</button>
+                    <button class="tab-button" data-tab="especial"
+                        style="background: #2c3e50; color: white; border: none; padding: 0.8rem 1.8rem; border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; margin: 0.3rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px;">Especial</button>
+                    <a href="#inscripciones" class="smoothscroll btn btn--primary"
+                        style="background: #B8860B; color: white; border: 2px solid #B8860B; padding: 0.8rem 1.8rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; border-radius: 4px; transition: all 0.3s ease; display: inline-block; text-decoration: none; margin: 0.3rem;">
+                        ¡Inscríbete Ahora!
+                    </a>
+                </div>
+
+                <div class="tab-content"
+                    style="background: #fff; border-radius: 8px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+                    <!-- Tab Infantil -->
+                    <div class="tab-pane active" id="infantil" style="display: block;">
+                        <h4
+                            style="color: #2c3e50; text-align: center; margin-bottom: 1.5rem; font-size: 1.3rem; font-weight: 600;">
+                            🔵 Categoría Infantil</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; text-align: center;">
+                            <li
+                                style="padding: 0.8rem 0; border-bottom: 1px solid #eee; color: #2c3e50; font-size: 1rem; display: flex; justify-content: space-between; max-width: 400px; margin: 0 auto;">
+                                <span>5-7 años</span>
+                                <span style="font-weight: 600;">Pre-Infantil</span>
+                            </li>
+                            <li
+                                style="padding: 0.8rem 0; border-bottom: 1px solid #eee; color: #2c3e50; font-size: 1rem; display: flex; justify-content: space-between; max-width: 400px; margin: 0 auto;">
+                                <span>8-9 años</span>
+                                <span style="font-weight: 600;">Infantil A</span>
+                            </li>
+                            <li
+                                style="padding: 0.8rem 0; border-bottom: 1px solid #eee; color: #2c3e50; font-size: 1rem; display: flex; justify-content: space-between; max-width: 400px; margin: 0 auto;">
+                                <span>10-11 años</span>
+                                <span style="font-weight: 600;">Infantil B</span>
+                            </li>
+                            <li
+                                style="padding: 0.8rem 0; color: #2c3e50; font-size: 1rem; display: flex; justify-content: space-between; max-width: 400px; margin: 0 auto;">
+                                <span>12-13 años</span>
+                                <span style="font-weight: 600;">Infantil C</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tab Juvenil -->
+                    <div class="tab-pane" id="juvenil" style="display: none;">
+                        <h4
+                            style="color: #2c3e50; text-align: center; margin-bottom: 1.5rem; font-size: 1.3rem; font-weight: 600;">
+                            🟡 Categoría Juvenil</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; text-align: center;">
+                            <li
+                                style="padding: 0.8rem 0; border-bottom: 1px solid #eee; color: #2c3e50; font-size: 1rem; display: flex; justify-content: space-between; max-width: 400px; margin: 0 auto;">
+                                <span>14-15 años</span>
+                                <span style="font-weight: 600;">Cadetes</span>
+                            </li>
+                            <li
+                                style="padding: 0.8rem 0; color: #2c3e50; font-size: 1rem; display: flex; justify-content: space-between; max-width: 400px; margin: 0 auto;">
+                                <span>16-17 años</span>
+                                <span style="font-weight: 600;">Juvenil</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tab Mayores -->
+                    <div class="tab-pane" id="mayores" style="display: none;">
+                        <h4
+                            style="color: #2c3e50; text-align: center; margin-bottom: 1.5rem; font-size: 1.3rem; font-weight: 600;">
+                            🔴 Categoría Mayores</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; text-align: center;">
+                            <li
+                                style="padding: 0.8rem 0; border-bottom: 1px solid #eee; color: #2c3e50; font-size: 1rem; display: flex; justify-content: space-between; max-width: 400px; margin: 0 auto;">
+                                <span>18-32 años</span>
+                                <span style="font-weight: 600;">Senior</span>
+                            </li>
+                            <li
+                                style="padding: 0.8rem 0; color: #2c3e50; font-size: 1rem; display: flex; justify-content: space-between; max-width: 400px; margin: 0 auto;">
+                                <span>+33 años</span>
+                                <span style="font-weight: 600;">Máster</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tab Especial -->
+                    <div class="tab-pane" id="especial" style="display: none;">
+                        <h4
+                            style="color: #2c3e50; text-align: center; margin-bottom: 1.5rem; font-size: 1.3rem; font-weight: 600;">
+                            ⚫ Categoría Especial</h4>
+                        <ul
+                            style="list-style: none; padding: 0; margin: 0; text-align: center; max-width: 400px; margin: 0 auto;">
+                            <li
+                                style="padding: 0.8rem 0; border-bottom: 1px solid #eee; color: #2c3e50; font-size: 1rem;">
+                                Poomsae Individual
+                            </li>
+                            <li
+                                style="padding: 0.8rem 0; border-bottom: 1px solid #eee; color: #2c3e50; font-size: 1rem;">
+                                Poomsae por Equipos
+                            </li>
+                            <li style="padding: 0.8rem 0; color: #2c3e50; font-size: 1rem;">
+                                Exhibición de Demostración
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // Tab functionality
+                document.addEventListener('DOMContentLoaded', function () {
+                    const tabButtons = document.querySelectorAll('.tab-button');
+                    const tabPanes = document.querySelectorAll('.tab-pane');
+
+                    tabButtons.forEach(button => {
+                        button.addEventListener('click', function () {
+                            // Remove active class from all buttons and panes
+                            tabButtons.forEach(btn => btn.classList.remove('active'));
+                            tabPanes.forEach(pane => pane.style.display = 'none');
+
+                            // Add active class to clicked button
+                            this.classList.add('active');
+
+                            // Show corresponding pane
+                            const tabId = this.getAttribute('data-tab');
+                            document.getElementById(tabId).style.display = 'block';
+                        });
+                    });
+                });
+            </script>
+
+            <!-- Sliders Container -->
+            <div class="row" style="margin: 0 auto; max-width: 1100px; display: none;">
+                <div class="column large-12">
+                    <div class="row" style="justify-content: center;">
+                        <!-- Age Categories Slider -->
+                        <div class="column large-6 medium-12" style="padding: 0 15px; margin-bottom: 2.5rem;">
+                            <div
+                                style="background: #fff; border-radius: 8px; padding: 1.5rem; height: 100%; box-shadow: 0 2px 15px rgba(0,0,0,0.04);">
+                                <h4
+                                    style="color: #B8860B; margin: 0 0 1.5rem 0; text-align: center; font-size: 1.5rem; font-weight: 600; position: relative; padding-bottom: 0.8rem;">
+                                    <span style="display: inline-block; position: relative;">
+                                        Categorías por Edad
+                                        <span
+                                            style="position: absolute; bottom: -8px; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #B8860B, #f5d76e); border-radius: 3px; margin: 0 auto; width: 60px;"></span>
+                                    </span>
+                                </h4>
+                                <div class="age-categories-slider" style="height: 100%;">
+                                    <!-- Slide 1 -->
+                                    <div style="padding: 10px; outline: none; height: 100%;">
+                                        <div
+                                            style="background: #f8fafc; border-radius: 8px; padding: 25px; height: 100%; box-shadow: 0 3px 12px rgba(0,0,0,0.04); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 3px solid #B8860B;">
+                                            <div
+                                                style="background: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                                                <i class="fas fa-child" style="color: #B8860B; font-size: 1.5rem;"></i>
+                                            </div>
+                                            <h4
+                                                style="color: #2c3e50; text-align: center; margin: 0 0 1.5rem 0; font-size: 1.3rem; font-weight: 600;">
+                                                Categorías Infantiles</h4>
+                                            <ul class="list-bullets" style="margin: 0; padding: 0 0 0 1.2rem;">
+                                                <li style="margin-bottom: 0.8rem; color: #444;">
+                                                    <strong>Pre-infantil:</strong> 4-5 años (nacidos en 2020-2021)</li>
+                                                <li style="margin-bottom: 0.8rem; color: #444;"><strong>Precadetes
+                                                        A:</strong> 6-7 años (2018-2019)</li>
+                                                <li style="margin-bottom: 0.8rem; color: #444;"><strong>Precadetes
+                                                        B:</strong> 8-9 años (2016-2017)</li>
+                                                <li style="color: #444;"><strong>Precadetes C:</strong> 10-11 años
+                                                    (2014-2015)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 2 -->
+                                    <div style="padding: 0 10px; outline: none;">
+                                        <div
+                                            style="background: #f8fafc; border-radius: 8px; padding: 25px; border-left: 4px solid #2c3e50; height: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                                            <div
+                                                style="background: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                                                <i class="fas fa-user-friends"
+                                                    style="color: #2c3e50; font-size: 1.5rem;"></i>
+                                            </div>
+                                            <h4
+                                                style="color: #2c3e50; text-align: center; margin: 0 0 1.5rem 0; font-size: 1.3rem; font-weight: 600;">
+                                                Categorías Juveniles y Adultos</h4>
+                                            <ul class="list-bullets" style="margin: 0; padding: 0 0 0 1.2rem;">
+                                                <li style="margin-bottom: 0.8rem; color: #444;">
+                                                    <strong>Cadetes:</strong> 12-14 años (2011-2013)</li>
+                                                <li style="margin-bottom: 0.8rem; color: #444;"><strong>Junior:</strong>
+                                                    15-17 años (2008-2010)</li>
+                                                <li style="color: #444;"><strong>Senior:</strong> 17-22 años</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- Close age-categories-slider -->
+
+                        <!-- Participation Levels Slider -->
+                        <div class="column large-6 medium-12" style="padding: 0 15px; margin-bottom: 2.5rem;">
+                            <div
+                                style="background: #fff; border-radius: 8px; padding: 1.5rem; height: 100%; box-shadow: 0 2px 15px rgba(0,0,0,0.04);">
+                                <h4
+                                    style="color: #B8860B; margin: 0 0 1.5rem 0; text-align: center; font-size: 1.5rem; font-weight: 600; position: relative; padding-bottom: 0.8rem;">
+                                    <span style="display: inline-block; position: relative;">
+                                        Niveles de Participación
+                                        <span
+                                            style="position: absolute; bottom: -8px; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #B8860B, #f5d76e); border-radius: 3px; margin: 0 auto; width: 60px;"></span>
+                                    </span>
+                                </h4>
+                                <div class="participation-levels-slider" style="height: 100%;">
+                                    <!-- Slide 1 -->
+                                    <div style="padding: 0 10px; outline: none; height: 100%;">
+                                        <div
+                                            style="background: #f8fafc; border-radius: 8px; padding: 25px; border-left: 4px solid #B8860B; height: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                                            <div
+                                                style="background: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                                                <i class="fas fa-baby" style="color: #B8860B; font-size: 1.5rem;"></i>
+                                            </div>
+                                            <h4
+                                                style="color: #2c3e50; text-align: center; margin: 0 0 1.5rem 0; font-size: 1.3rem; font-weight: 600;">
+                                                Categorías Iniciales</h4>
+                                            <ul class="list-bullets" style="margin: 0; padding: 0 0 0 1.2rem;">
+                                                <li style="margin-bottom: 0.8rem; color: #444;"><strong>Pre infantil y
+                                                        Pre-cadetes A:</strong> Categoría UNIFICADA (cualquier cinturón)
+                                                </li>
+                                                <li style="color: #444;"><strong>Pre cadetes B y C (Novatos):</strong>
+                                                    Hasta cinturón verde/azul</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2 -->
+                            <div style="padding: 10px; outline: none; height: 100%;">
+                                <div
+                                    style="background: #f8fafc; border-radius: 8px; padding: 25px; height: 100%; box-shadow: 0 3px 12px rgba(0,0,0,0.04); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 3px solid #2c3e50;">
+                                    <div
+                                        style="background: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                                        <i class="fas fa-medal" style="color: #2c3e50; font-size: 1.5rem;"></i>
+                                    </div>
+                                    <h4
+                                        style="color: #2c3e50; text-align: center; margin: 0 0 1.5rem 0; font-size: 1.3rem; font-weight: 600;">
+                                        Categorías Avanzadas</h4>
+                                    <ul class="list-bullets" style="margin: 0; padding: 0 0 0 1.2rem;">
+                                        <li style="margin-bottom: 0.8rem; color: #444;"><strong>Pre cadetes B y C
+                                                (Clasificados):</strong> Hasta cinturón negro</li>
+                                        <li style="margin-bottom: 0.8rem; color: #444;"><strong>Cadetes y Junior
+                                                (Novatos):</strong> Hasta cinturón verde/azul</li>
+                                        <li style="color: #444;"><strong>Cadetes y Junior (Clasificados):</strong> Hasta
+                                            cinturón negro</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 - Senior -->
+                    <div style="padding: 0 10px; outline: none; height: 100%;">
+                        <div
+                            style="background: #f8fafc; border-radius: 8px; padding: 25px; border-left: 4px solid #B8860B; height: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                            <div
+                                style="background: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                                <i class="fas fa-trophy" style="color: #B8860B; font-size: 1.5rem;"></i>
+                            </div>
+                            <h4
+                                style="color: #2c3e50; text-align: center; margin: 0 0 1.5rem 0; font-size: 1.3rem; font-weight: 600;">
+                                Categoría Senior</h4>
+                            <ul class="list-bullets" style="margin: 0; padding: 0 0 0 1.2rem;">
+                                <li style="margin-bottom: 0.5rem; color: #444;"><strong>Niveles:</strong></li>
+                                <li style="margin-bottom: 0.8rem; color: #444; margin-left: 1rem;">• Novatos</li>
+                                <li style="margin-bottom: 0.8rem; color: #444; margin-left: 1rem;">• Intermedios</li>
+                                <li style="color: #444; margin-left: 1rem;">• Avanzados</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- Close participation-levels-slider -->
+            </div> <!-- Close inner row -->
+        </div> <!-- Close column -->
+        </div> <!-- Close outer row/sliders container -->
+
+        <div style="text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #eee;">
+            <p style="font-style: italic; color: #666; margin: 0 auto; max-width: 800px; font-size: 0.95rem;">
+                Para un detalle completo de categorías y pesos, por favor, refiérase al documento de bases completo del
+                torneo.
+            </p>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        <!-- Premiación y Reclamos -->
+        <div class="row" style="max-width: 1200px; margin: 0 auto 3rem; padding: 0 15px;">
+            <!-- Premiación -->
+            <div class="column large-6 medium-12" style="padding: 0 15px; margin-bottom: 2rem;">
+                <div class="info-card"
+                    style="background: #fff; border-radius: 10px; padding: 2rem; height: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid #B8860B;">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: rgba(184, 134, 11, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                            <i class="fas fa-trophy" style="font-size: 1.8rem; color: #B8860B;"></i>
+                        </div>
+                        <h2
+                            style="color: #2c3e50; margin: 0 0 1rem 0; font-size: 2rem; font-weight: 600; text-align: center; width: 100%;">
+                            Premiación</h2>
+                        <div style="width: 60px; height: 3px; background: #B8860B; margin: 0 auto 1.5rem;"></div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 1.5rem;">
+                        <!-- Medallas -->
+                        <div
+                            style="background: #f8f9fa; padding: 1.2rem; border-radius: 8px; text-align: center; border-left: 3px solid #FFD700;">
+                            <i class="fas fa-medal"
+                                style="font-size: 1.8rem; color: #FFD700; margin-bottom: 0.5rem;"></i>
+                            <h4 style="margin: 0.5rem 0; color: #2c3e50; font-size: 1rem;">Medallas</h4>
+                            <p style="margin: 0; font-size: 0.9rem; color: #555;">1°, 2° y 3° lugar</p>
+                        </div>
+
+                        <!-- Trofeos -->
+                        <div
+                            style="background: #f8f9fa; padding: 1.2rem; border-radius: 8px; text-align: center; border-left: 3px solid #C0C0C0;">
+                            <i class="fas fa-award"
+                                style="font-size: 1.8rem; color: #C0C0C0; margin-bottom: 0.5rem;"></i>
+                            <h4 style="margin: 0.5rem 0; color: #2c3e50; font-size: 1rem;">Trofeos</h4>
+                            <p style="margin: 0; font-size: 0.9rem; color: #555;">Campeones absolutos</p>
+                        </div>
+
+                        <!-- Reconocimientos -->
+                        <div
+                            style="background: #f8f9fa; padding: 1.2rem; border-radius: 8px; text-align: center; border-left: 3px solid #CD7F32;">
+                            <i class="fas fa-star"
+                                style="font-size: 1.8rem; color: #CD7F32; margin-bottom: 0.5rem;"></i>
+                            <h4 style="margin: 0.5rem 0; color: #2c3e50; font-size: 1rem;">Reconocimientos</h4>
+                            <p style="margin: 0; font-size: 0.9rem; color: #555;">Mejor técnica</p>
+                        </div>
+
+                        <!-- Premios Especiales -->
+                        <div
+                            style="background: #f8f9fa; padding: 1.2rem; border-radius: 8px; text-align: center; border-left: 3px solid #B8860B;">
+                            <i class="fas fa-gem" style="font-size: 1.8rem; color: #B8860B; margin-bottom: 0.5rem;"></i>
+                            <h4 style="margin: 0.5rem 0; color: #2c3e50; font-size: 1rem;">Premios Especiales</h4>
+                            <p style="margin: 0; font-size: 0.9rem; color: #555;">Mejor competidor/a</p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: #f8f5ee; padding: 1rem; border-radius: 8px; margin-top: 1rem; border-right: 3px solid #B8860B;">
+                        <p
+                            style="margin: 0; color: #5d4a1a; font-size: 0.95rem; display: flex; align-items: flex-start;">
+                            <i class="fas fa-calendar-alt"
+                                style="color: #B8860B; margin-right: 0.5rem; margin-top: 0.2rem; min-width: 20px;"></i>
+                            <span>La ceremonia de premiación se realizará inmediatamente después de finalizada cada
+                                categoría en el área designada.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inscripciones -->
+            <div class="column large-6 medium-12" style="padding: 0 15px; margin-bottom: 2rem;">
+                <div class="info-card"
+                    style="background: #fff; border-radius: 10px; padding: 2rem; height: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid #2c3e50;">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: rgba(44, 62, 80, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                            <i class="fas fa-clipboard-check" style="font-size: 1.8rem; color: #2c3e50;"></i>
+                        </div>
+                        <h2
+                            style="color: #2c3e50; margin: 0 0 1rem 0; font-size: 2rem; font-weight: 600; text-align: center; width: 100%;">
+                            Inscripciones</h2>
+                        <div style="width: 60px; height: 3px; background: #2c3e50; margin: 0 auto 1.5rem;"></div>
+                    </div>
+
+                    <!-- Tarjeta de Costos -->
+                    <div
+                        style="background: #f8f9fa; border-radius: 8px; padding: 1.2rem; margin-bottom: 1.5rem; border-left: 3px solid #2c3e50;">
+                        <h4 style="margin-top: 0; color: #2c3e50; display: flex; align-items: center;">
+                            <i class="fas fa-tag" style="margin-right: 0.5rem; color: #2c3e50;"></i>
+                            Costos de Inscripción
+                        </h4>
+                        <div style="margin-top: 1rem;">
+                            <div
+                                style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                <span>1 Evento:</span>
+                                <strong>$20</strong>
+                            </div>
+                            <div
+                                style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                <span>2 Eventos:</span>
+                                <strong>$30</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                                <span>3 Eventos:</span>
+                                <strong>$35</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Requisitos -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4
+                            style="margin: 0 0 0.8rem 0; color: #2c3e50; font-size: 1.1rem; display: flex; align-items: center;">
+                            <i class="fas fa-file-alt" style="margin-right: 0.5rem; color: #2c3e50;"></i>
+                            Documentos Requeridos
+                        </h4>
+                        <ul style="list-style: none; padding: 0; margin: 0 0 0 1.8rem;">
+                            <li
+                                style="position: relative; padding: 0.3rem 0 0.3rem 1.8rem; color: #2c3e50; font-size: 0.95rem;">
+                                <i class="fas fa-check" style="position: absolute; left: 0; color: #27ae60;"></i>
+                                Cédula o Pasaporte
+                            </li>
+                            <li
+                                style="position: relative; padding: 0.3rem 0 0.3rem 1.8rem; color: #2c3e50; font-size: 0.95rem;">
+                                <i class="fas fa-check" style="position: absolute; left: 0; color: #27ae60;"></i>
+                                Carnet de afiliación
+                            </li>
+                            <li
+                                style="position: relative; padding: 0.3rem 0 0.3rem 1.8rem; color: #2c3e50; font-size: 0.95rem;">
+                                <i class="fas fa-check" style="position: absolute; left: 0; color: #27ae60;"></i>
+                                Certificado médico
+                            </li>
+                            <li
+                                style="position: relative; padding: 0.3rem 0 0.3rem 1.8rem; color: #2c3e50; font-size: 0.95rem;">
+                                <i class="fas fa-check" style="position: absolute; left: 0; color: #27ae60;"></i>
+                                Foto carné digital
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Contactos -->
+                    <div
+                        style="background: #f0f7ff; padding: 1.2rem; border-radius: 8px; border-left: 3px solid #3498db;">
+                        <h4
+                            style="margin-top: 0; color: #2c3e50; font-size: 1.1rem; display: flex; align-items: center;">
+                            <i class="fas fa-phone-alt" style="margin-right: 0.5rem; color: #3498db;"></i>
+                            Contactos para Inscripciones
+                        </h4>
+                        <ul style="list-style: none; padding: 0; margin: 0.8rem 0 0 0;">
+                            <li style="display: flex; align-items: center; margin-bottom: 0.5rem; color: #2c3e50;">
+                                <i class="fas fa-user" style="width: 20px; color: #3498db; margin-right: 0.5rem;"></i>
+                                <strong>Frank Simbaña:</strong>
+                                <a href="tel:+593999271397"
+                                    style="color: #B8860B; text-decoration: none; margin-left: 0.3rem; font-weight: 600;">099
+                                    927 1397</a>
+                                <a href="https://wa.me/593999271397" target="_blank"
+                                    style="margin-left: 0.8rem; background: #25D366; color: white; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease;">
+                                    <i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i>
+                                </a>
+                            </li>
+                            <li style="display: flex; align-items: center; color: #2c3e50;">
+                                <i class="fas fa-user" style="width: 20px; color: #3498db; margin-right: 0.5rem;"></i>
+                                <strong>Rene Ramos:</strong>
+                                <a href="tel:+593968016713"
+                                    style="color: #3498db; text-decoration: none; margin-left: 0.3rem;">096 801 6713</a>
+                                <a href="https://wa.me/593968016713" target="_blank"
+                                    style="margin-left: 0.5rem; color: #25D366; font-size: 1.2rem;">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Llamada a la Acción Final -->
+        <div class="row">
+            <div class="column large-12" style="text-align: center; margin: 3rem 0;">
+                <h2 style="color: #B8860B; margin-bottom: 1.5rem;">¡No Te Quedes Fuera del OPEN ZAMORA 2025!</h2>
+                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem auto; line-height: 1.6;">
+                    Prepara a tus atletas y sé parte de la competencia más emocionante del año. ¡Te esperamos para
+                    forjar juntos el futuro del Taekwondo!
+                </p>
+                <a href="https://wa.me/593999271397?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20el%20Torneo%20Open%20Zamora%202025"
+                    class="btn-primary"
+                    style="display: inline-block; margin-top: 1rem; background: #B8860B; color: white; text-decoration: none; padding: 0.8rem 2rem; border-radius: 4px; font-weight: 600; transition: all 0.3s ease; border: 2px solid #B8860B;"
+                    target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp" style="margin-right: 8px;"></i> Contáctanos por WhatsApp
+                </a>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+
+
+    <!-- Llamada a la Acción Final -->
+    <section id="inscripciones" class="s-cta"
+        style="background:linear-gradient(135deg, #1a1a1a 0%, #333 100%); padding:6rem 0; color:#fff; text-align:center;">
+        <div class="row">
+            <div class="column" style="grid-column: 1 / -1;">
+                <div class="cta-content" style="max-width: 800px; margin: 0 auto;">
+                    <h2 class="section-header-allcaps"
+                        style="color:#fff; margin-bottom:1.5rem; font-size: 2.5rem; line-height: 1.2;">¡Inscríbete al
+                        Torneo Open Zamora 2025!</h2>
+                    <p style="font-size:1.2rem; margin:0 auto 2.5rem; line-height:1.7; color: rgba(255,255,255,0.9);">
+                        No pierdas la oportunidad de ser parte de este gran evento deportivo.
+                        Demuestra tu talento en la lona de competencia y vive una experiencia inolvidable.
+                    </p>
+
+                    <div class="cta-buttons"
+                        style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem;">
+                        <a href="https://wa.me/593999271397?text=Hola,%20estoy%20interesado%20en%20inscribirme%20al%20Torneo%20Open%20Zamora%202025"
+                            class="btn btn--primary" style="font-size:1.1rem; padding:0.9rem 2.2rem; border-radius:4px; font-weight:600; 
+                                  background:#FFD700; color:#000; text-decoration:none; transition: all 0.3s ease; 
+                                  display: inline-flex; align-items: center; justify-content: center; min-width: 220px;
+                                  box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
+                            onmouseover="this.style.background='#ffea00'; this.style.transform='translateY(-2px)';"
+                            onmouseout="this.style.background='#FFD700'; this.style.transform='translateY(0)';"
+                            target="_blank">
+                            <i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 1.2em;"></i> Inscríbete por
+                            WhatsApp
+                        </a>
+
+                        <a href="tel:+593999271397" class="btn btn--secondary" style="font-size:1.1rem; padding:0.9rem 2.2rem; border-radius:4px; font-weight:600; 
+                                  background:transparent; color:#fff; border:2px solid #fff; text-decoration:none; 
+                                  transition: all 0.3s ease; display: inline-flex; align-items: center; 
+                                  justify-content: center; min-width: 220px;"
+                            onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(-2px)';"
+                            onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)';">
+                            <i class="fas fa-phone" style="margin-right: 10px; font-size: 1.1em;"></i> Llámanos Ahora
+                        </a>
+                    </div>
+
+                    <div class="contact-methods"
+                        style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <div
+                            style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+                            <a href="mailto:centrodeportivoloja@hotmail.com" style="color: #FFD700; text-decoration: none; display: inline-flex; align-items: center;
+                                      transition: all 0.3s ease; padding: 0.5rem 1rem; border-radius: 4px;"
+                                onmouseover="this.style.background='rgba(255,255,255,0.1)';"
+                                onmouseout="this.style.background='transparent';">
+                                <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                                centrodeportivoloja@hotmail.com
+                            </a>
+                            <div style="color: rgba(255,255,255,0.8); display: flex; align-items: center;">
+                                <i class="fas fa-map-marker-alt" style="margin-right: 8px; color: #FFD700;"></i> Quito
+                                entre Av. Universitaria y 18 de noviembre
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2rem;">
+                            <a href="index.html" style="color: #fff; text-decoration: none; display: inline-flex; align-items: center;
+                                      padding: 0.8rem 1.5rem; border-radius: 4px; background: rgba(255,255,255,0.1);
+                                      transition: all 0.3s ease; font-size: 0.95rem;"
+                                onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateX(-3px)';"
+                                onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateX(0)';">
+                                <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Volver al Inicio
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="s-footer">
+        <div class="row">
+            <div class="column large-4 medium-6 w-1000-stack s-footer__social-block">
+                <ul class="s-footer__social">
+                    <li><a href="https://www.facebook.com/share/16Foo7m463/" target="_blank"><i
+                                class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.instagram.com/club_golden2020/?igsh=MXR0YzBuMjRnOGI0bw%3D%3D#"
+                            target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"
+                                aria-hidden="true"></i> Síguenos en Instagram</a></li>
+                </ul>
+            </div>
+            <div class="column large-7 medium-6 w-1000-stack ss-copyright">
+                <span>Diseñado por <a href="https://www.cesarreyesjaramillo.com/" target="_blank">Cesar Reyes</a> |
+                    Frank Simbaña 2026</span>
+                <span>Academia Club Golden Loja</span>
+                <span>Quito entre Av universitaria y 18 de noviembre</span>
+                <span>0999271397</span>
+            </div>
+        </div>
+        <div class="ss-go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z" />
+                </svg>
+            </a>
+            <!-- Java Script
+    ================================================== -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script type="text/javascript"
+                src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+            <link rel="stylesheet" type="text/css"
+                href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+            <link rel="stylesheet" type="text/css"
+                href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script type="text/javascript"
+                src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+            <script src="js/plugins.js"></script>
+            <script src="js/main.js"></script>
+
+            <!-- Inicialización de los sliders -->
+            <script>
+                $(document).ready(function () {
+                    // Slider de Información del Torneo
+                    $('.info-slider').slick({
+                        dots: true,
+                        infinite: true,
+                        speed: 300,
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        autoplay: true,
+                        autoplaySpeed: 5000,
+                        arrows: true,
+                        responsive: [
+                            {
+                                breakpoint: 992,
+                                settings: {
+                                    slidesToShow: 2,
+                                    slidesToScroll: 1
+                                }
+                            },
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    arrows: false
+                                }
+                            }
+                        ]
+                    });
+
+                    // Slider de Modalidades de Competencia
+                    $('.modalidades-slider').slick({
+                        dots: true,
+                        infinite: true,
+                        speed: 300,
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        autoplay: true,
+                        autoplaySpeed: 5000,
+                        arrows: true,
+                        responsive: [
+                            {
+                                breakpoint: 1200,
+                                settings: {
+                                    slidesToShow: 3,
+                                    slidesToScroll: 1
+                                }
+                            },
+                            {
+                                breakpoint: 992,
+                                settings: {
+                                    slidesToShow: 2,
+                                    slidesToScroll: 1
+                                }
+                            },
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    arrows: false
+                                }
+                            }
+                        ]
+                    });
+                });
+            </script>
+
+
+            <!-- JavaScript para menú hamburguesa móvil -->
+            <script>
+                // Función para compartir por WhatsApp
+                function shareOnWhatsApp() {
+                    const text = encodeURIComponent("¡Mira toda la información del Torneo Open Zamora 2025! Inscríbete en este torneo de Taekwondo, no te lo pierdas. " + window.location.href);
+                    window.open(`https://wa.me/?text=${text}`, '_blank');
+                }
+
+                // Funcionalidad del menú hamburguesa
+                document.addEventListener('DOMContentLoaded', function () {
+                    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+                    const mobileMenu = document.getElementById('mobileMenu');
+
+                    // Inicializar sliders Swiper solo en móvil
+                    if (window.innerWidth <= 768) {
+                        // Slider de Hitos y Reconocimientos
+                        const hitosSwiper = new Swiper('.hitosSwiper', {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                            loop: true,
+                            autoplay: {
+                                delay: 5000,
+                                disableOnInteraction: false,
+                            },
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            },
+                            navigation: {
+                                nextEl: '.swiper-button-next',
+                                prevEl: '.swiper-button-prev',
+                            },
+                        });
+
+                        // Slider de Galería de Campeones
+                        const galeriaSwiper = new Swiper('.galeriaSwiper', {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                            loop: true,
+                            autoplay: {
+                                delay: 4000,
+                                disableOnInteraction: false,
+                            },
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            },
+                            navigation: {
+                                nextEl: '.swiper-button-next',
+                                prevEl: '.swiper-button-prev',
+                            },
+                        });
+                    }
+
+                    if (mobileMenuToggle && mobileMenu) {
+                        mobileMenuToggle.addEventListener('click', function () {
+                            mobileMenuToggle.classList.toggle('active');
+                            mobileMenu.classList.toggle('active');
+                        });
+
+                        // Cerrar menú al hacer clic fuera de él
+                        mobileMenu.addEventListener('click', function (e) {
+                            if (e.target === mobileMenu) {
+                                closeMobileMenu();
+                            }
+                        });
+                    }
+                });
+
+                // Función para cerrar el menú móvil
+                function closeMobileMenu() {
+                    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+                    const mobileMenu = document.getElementById('mobileMenu');
+
+                    if (mobileMenuToggle && mobileMenu) {
+                        mobileMenuToggle.classList.remove('active');
+                        mobileMenu.classList.remove('active');
+                    }
+
+                    // Cerrar submenú si está abierto
+                    const submenu = document.getElementById('disciplinasSubmenu');
+                    if (submenu) {
+                        submenu.style.display = 'none';
+                    }
+                }
+
+                // Función para alternar submenú
+                function toggleSubmenu(event) {
+                    event.preventDefault();
+                    const submenu = document.getElementById('disciplinasSubmenu');
+
+                    if (submenu) {
+                        if (submenu.style.display === 'none' || submenu.style.display === '') {
+                            submenu.style.display = 'block';
+                        } else {
+                            submenu.style.display = 'none';
+                        }
+                    }
+                }
+            </script>
+
+            <script>
+                $(document).ready(function () {
+                    // Initialize age categories slider
+                    $('.age-categories-slider').slick({
+                        dots: true,
+                        infinite: true,
+                        speed: 300,
+                        slidesToShow: 1,
+                        adaptiveHeight: true,
+                        autoplay: true,
+                        autoplaySpeed: 5000,
+                        arrows: true,
+                        prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
+                        nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    arrows: false
+                                }
+                            }
+                        ]
+                    });
+
+                    // Initialize participation levels slider
+                    $('.participation-levels-slider').slick({
+                        dots: true,
+                        infinite: true,
+                        speed: 300,
+                        slidesToShow: 1,
+                        adaptiveHeight: true,
+                        autoplay: true,
+                        autoplaySpeed: 5000,
+                        arrows: true,
+                        prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
+                        nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    arrows: false
+                                }
+                            }
+                        ]
+                    });
+
+                    // Style the slider navigation arrows
+                    $('.slick-prev, .slick-next').css({
+                        'position': 'absolute',
+                        'top': '50%',
+                        'transform': 'translateY(-50%)',
+                        'z-index': '10',
+                        'background': 'rgba(255, 255, 255, 0.9)',
+                        'border': 'none',
+                        'border-radius': '50%',
+                        'width': '40px',
+                        'height': '40px',
+                        'display': 'flex',
+                        'align-items': 'center',
+                        'justify-content': 'center',
+                        'cursor': 'pointer',
+                        'box-shadow': '0 2px 5px rgba(0,0,0,0.2)',
+                        'transition': 'all 0.3s ease',
+                        'color': '#2c3e50'
+                    });
+
+                    $('.slick-prev:hover, .slick-next:hover').css({
+                        'background': '#B8860B',
+                        'color': 'white'
+                    });
+
+                    $('.slick-prev').css('left', '10px');
+                    $('.slick-next').css('right', '10px');
+
+                    // Style the dots
+                    $('.slick-dots li button:before').css({
+                        'color': '#B8860B',
+                        'opacity': '0.5',
+                        'font-size': '10px'
+                    });
+
+                    $('.slick-dots li.slick-active button:before').css({
+                        'color': '#B8860B',
+                        'opacity': '1'
+                    });
+                });
+            </script>
+
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Más allá de la Romería: Vive una experiencia auténtica de Taekwondo o MMA en Loja con Frank Simbana</title>
+    <meta name="description" content="Descubre una experiencia única de artes marciales en Loja con Frank Simbana. Entrenamientos de Taekwondo y MMA para todas las edades y niveles.">
+    <meta name="author" content="Frank Simbana">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+    <!-- script -->
+    <script defer src="../js/vendor/fontawesome/all.min.js"></script>
+
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <meta property="og:image" content="../images/imagen%20destacada.jpg">
+    <meta property="og:description" content="Más allá de la Romería: Vive una experiencia auténtica de Taekwondo o MMA en Loja con Frank Simbana">
+</head>
+
+<body id="top" class="ss-preload" style="padding-top: 80px;">
+
+    <!-- Header -->
+    <style>
+        @media (max-width: 768px) {
+            .s-header {
+                display: none !important;
+            }
+            .mobile-menu-toggle {
+                display: block !important;
+            }
+        }
+        @media (min-width: 769px) {
+            .mobile-menu-toggle {
+                display: none !important;
+            }
+        }
+    </style>
+    
+    <header class="s-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #000000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); padding: 1rem 0;">
+        <div class="row s-header__nav-wrap">
+            <nav class="s-header__nav">
+                <ul style="margin: 0;">
+                    <li><a href="../index.html" style="color: #FFFFFF !important;">Inicio</a></li>
+                    <li><a href="../blog.html" style="color: #FFFFFF !important;">Blog</a></li>
+                    <li><a href="../logros.html" style="color: #FFFFFF !important;">Logros</a></li>
+                    <li class="has-children"><a href="#" style="color: #FFFFFF !important;">Disciplinas</a>
+                        <ul class="submenu" style="background: #000000; border: 1px solid #333;">
+                            <li><a href="../mma.html" style="color: #FFFFFF !important;">MMA</a></li>
+                            <li><a href="../taekwondo.html" style="color: #FFFFFF !important;">Taekwondo</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Menú hamburguesa móvil -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" style="position: fixed; top: 20px; right: 20px; z-index: 9999; background: #000000; border: none; padding: 12px; border-radius: 6px; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.3); display: none;">
+        <span style="display: block; width: 25px; height: 3px; background: #FFFFFF; margin: 5px 0; transition: 0.3s;"></span>
+        <span style="display: block; width: 25px; height: 3px; background: #FFFFFF; margin: 5px 0; transition: 0.3s;"></span>
+        <span style="display: block; width: 25px; height: 3px; background: #FFFFFF; margin: 5px 0; transition: 0.3s;"></span>
+    </button>
+    
+    <nav class="mobile-menu" id="mobileMenu" style="position: fixed; top: 70px; right: 15px; left: 15px; max-width: 300px; margin: 0 auto; background: rgba(0, 0, 0, 0.95); border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); z-index: 9998; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; padding: 15px 0; border: 1px solid rgba(255,255,255,0.1);">
+        <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
+            <li style="margin: 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><a href="../index.html" style="color: #FFFFFF; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: all 0.3s; display: block; padding: 12px 20px;" onclick="closeMobileMenu()">Inicio</a></li>
+            <li style="margin: 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><a href="../blog.html" style="color: #FFFFFF; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: all 0.3s; display: block; padding: 12px 20px;" onclick="closeMobileMenu()">Blog</a></li>
+            <li style="margin: 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <a href="#" style="color: #FFFFFF; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: all 0.3s; display: block; padding: 12px 20px;" onclick="toggleSubmenu(event)">Disciplinas</a>
+                <ul class="mobile-submenu" id="disciplinasSubmenu" style="margin: 0; padding: 0; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.1); display: none;">
+                    <li style="margin: 0; border-bottom: 1px solid rgba(255,255,255,0.05);"><a href="../mma.html" style="color: #CCCCCC; font-size: 1rem; padding: 10px 30px; display: block; text-decoration: none;" onclick="closeMobileMenu()">MMA</a></li>
+                    <li style="margin: 0;"><a href="../taekwondo.html" style="color: #CCCCCC; font-size: 1rem; padding: 10px 30px; display: block; text-decoration: none;" onclick="closeMobileMenu()">Taekwondo</a></li>
+                </ul>
+            </li>
+            <li style="margin: 0;"><a href="../contact.html" style="color: #FFFFFF; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: all 0.3s; display: block; padding: 12px 20px;" onclick="closeMobileMenu()">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido del Artículo -->
+    <article class="s-content" style="padding: 8rem 0 4rem 0;">
+        <div class="row">
+            <div class="column large-12">
+                <h1 class="page-title" style="text-align: center; margin-bottom: 3rem; color: #343A40;">
+                    Más allá de la Romería: Vive una experiencia auténtica de Taekwondo o MMA en Loja con Frank Simbana
+                </h1>
+                
+                <div class="s-content__media" style="margin-bottom: 4rem;
+                    <img src="../images/Blog/romeria-taekwondo-mma.jpg" alt="Clase de Taekwondo y MMA en Loja" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                </div>
+
+                <div class="s-content__primary" style="max-width: 800px; margin: 0 auto;">
+                    <div class="s-content__page-content" style="line-height: 1.8; color: #333; font-size: 1.1rem;">
+                        <!-- Contenido del artículo irá aquí -->
+                        <p>¡Bienvenidos a una experiencia única en artes marciales en el corazón de Loja! Mientras la ciudad se prepara para la tradicional Romería, te invitamos a descubrir una alternativa emocionante que combina disciplina, condición física y crecimiento personal.</p>
+                        
+                        <h2 style="color: #B8860B; margin-top: 2.5rem;">¿Por qué elegir nuestras clases?</h2>
+                        <p>En un ambiente familiar y profesional, ofrecemos:</p>
+                        <ul style="margin-bottom: 2rem;">
+                            <li>Clases de Taekwondo para todas las edades</li>
+                            <li>Entrenamiento de MMA adaptado a diferentes niveles</li>
+                            <li>Instructores certificados con amplia experiencia</li>
+                            <li>Instalaciones modernas y seguras</li>
+                            <li>Horarios flexibles para adaptarnos a tu rutina</li>
+                        </ul>
+                        
+                        <h2 style="color: #B8860B; margin-top: 2.5rem;">Beneficios de practicar artes marciales</h2>
+                        <p>Las artes marciales ofrecen beneficios que van más allá de la condición física:</p>
+                        <ul>
+                            <li>Mejora la concentración y disciplina</li>
+                            <li>Fomenta el respeto y la confianza en uno mismo</li>
+                            <li>Excelente para liberar estrés</li>
+                            <li>Promueve un estilo de vida saludable</li>
+                        </ul>
+                        
+                        <div style="background: #F8F8F8; padding: 2rem; border-radius: 8px; margin: 3rem 0; text-align: center;">
+                            <h3 style="color: #343A40; margin-bottom: 1rem;">¡Inscríbete hoy mismo!</h3>
+                            <p>Obtén tu clase de prueba gratuita y descubre por qué somos la mejor opción en Loja para aprender artes marciales.</p>
+                            <a href="../contact.html" class="btn btn--primary" style="margin-top: 1rem; display: inline-block; background: #B8860B; color: white; padding: 0.8rem 2rem; border-radius: 4px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Solicitar Clase de Prueba</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="s-footer" style="background: #343A40; color: #F8F8F8; padding: 4rem 0 2rem 0;">
+        <div class="row">
+            <div class="column large-4 medium-6 w-1000-stack s-footer__social-block">
+                <ul class="s-footer__social" style="display: flex; justify-content: center; margin: 0 0 2rem 0; padding: 0; list-style: none;">
+                    <li style="margin: 0 10px;"><a href="https://www.facebook.com/share/16Foo7m463/" target="_blank" style="color: #F8F8F8; font-size: 1.5rem;"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li style="margin: 0 10px;"><a href="https://www.instagram.com/club_golden2020/" target="_blank" style="color: #F8F8F8; font-size: 1.5rem;"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="column large-7 medium-6 w-1000-stack ss-copyright" style="text-align: center; margin-bottom: 2rem;">
+                <span style="display: block; margin-bottom: 0.5rem;">© Copyright Frank Simbana 2024</span>
+                <span style="display: block; margin-bottom: 0.5rem;">Academia Club Golden Loja</span>
+                <span style="display: block; margin-bottom: 0.5rem;">Quito entre Av universitaria y 18 de noviembre</span>
+                <span style="display: block; margin-bottom: 0.5rem;">centrodeportivoloja@hotmail.com</span>
+                <span style="display: block;">0999271397</span>
+            </div>
+        </div>
+        <div class="ss-go-top" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 999;">
+            <a class="smoothscroll" title="Volver arriba" href="#top" style="display: block; width: 3.5rem; height: 3.5rem; background: #B8860B; border-radius: 50%; text-align: center; line-height: 3.5rem; color: #FFFFFF; text-decoration: none; transition: background 0.3s ease;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 1.5rem; height: 1.5rem; vertical-align: middle; fill: currentColor;"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/plugins.js"></script>
+    <script src="../js/main.js"></script>
+    
+    <!-- JavaScript para menú móvil -->
+    <script>
+        // Funcionalidad del menú hamburguesa
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (mobileMenuToggle && mobileMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    mobileMenu.classList.toggle('active');
+                    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+                });
+                
+                // Cerrar menú al hacer clic en un enlace
+                document.querySelectorAll('.mobile-menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                        mobileMenuToggle.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+        });
+        
+        // Función para cerrar el menú móvil
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            if (mobileMenu && mobileMenuToggle) {
+                mobileMenu.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // Función para alternar submenú
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const submenu = document.getElementById('disciplinasSubmenu');
+            if (submenu) {
+                const isDisplayed = submenu.style.display === 'block';
+                submenu.style.display = isDisplayed ? 'none' : 'block';
+            }
+        }
+    </script>
+</body>
+</html>

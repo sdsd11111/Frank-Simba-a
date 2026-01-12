@@ -1,0 +1,67 @@
+[
+  {
+    "title": "Más allá de la Romería: Vive una experiencia auténtica de Taekwondo o MMA en Loja con Frank Simbaña",
+    "slug": "mas-alla-de-la-romeria",
+    "excerpt": "Descubre cómo el Taekwondo y el MMA pueden transformar tu viaje a Loja en una experiencia inolvidable de superación personal y conexión cultural.",
+    "image_url": "images/Blog/Blog 1.webp",
+    "category": {
+      "id": 1,
+      "name": "Taekwondo",
+      "slug": "taekwondo"
+    },
+    "published_at": "2025-08-10T10:00:00.000Z",
+    "url": "blog/más-allá-de-la-romería-vive-una-experiencia-auténtica-de-taekwondo-o-mma-en-loja-con-frank-simbana.html"
+  },
+  {
+    "title": "De turista a atleta: Claves para no perder tu rutina de Taekwondo o MMA en Loja",
+    "slug": "de-turista-a-atleta",
+    "excerpt": "Mantén tu entrenamiento de artes marciales mientras viajas por Ecuador con estos consejos prácticos.",
+    "image_url": "images/Blog/Blog 2.webp",
+    "category": {
+      "id": 1,
+      "name": "Taekwondo",
+      "slug": "taekwondo"
+    },
+    "published_at": "2025-08-12T15:30:00.000Z",
+    "url": "blog/de-turista-a-atleta-claves-para-no-perder-tu-rutina-de-taekwondo-o-mma-en-loja.html"
+  },
+  {
+    "title": "Guía rápida para visitantes: Dónde encontrar las mejores clases de Taekwondo y MMA en Loja",
+    "slug": "guia-clases-taekwondo-mma-loja",
+    "excerpt": "Descubre los mejores lugares para practicar artes marciales en Loja, con información sobre horarios, costos y estilos de enseñanza.",
+    "image_url": "images/Blog/Blog 3.webp",
+    "category": {
+      "id": 1,
+      "name": "Taekwondo",
+      "slug": "taekwondo"
+    },
+    "published_at": "2025-08-08T09:15:00.000Z",
+    "url": "blog/guia-rapida-para-visitantes-donde-encontrar-las-mejores-clases-de-taekwondo-y-mma-en-loja.html"
+  },
+  {
+    "title": "¿Por qué entrenar Taekwondo o MMA es el antídoto perfecto para el estrés del viaje a Loja?",
+    "slug": "antidoto-estres-viaje",
+    "excerpt": "Descubre cómo las artes marciales pueden ayudarte a combatir el estrés del viaje y mejorar tu experiencia en Loja.",
+    "image_url": "images/Blog/Blog 4.webp",
+    "category": {
+      "id": 2,
+      "name": "MMA",
+      "slug": "mma"
+    },
+    "published_at": "2025-08-05T14:20:00.000Z",
+    "url": "blog/por-que-entrenar-taekwondo-o-mma-es-el-antidoto-perfecto-para-el-estres-del-viaje-a-loja.html"
+  },
+  {
+    "title": "Cómo Mantener tu Disciplina (o Encontrarla) con Taekwondo y MMA en tu Viaje a Loja",
+    "slug": "mantener-disciplina-viaje",
+    "excerpt": "Consejos prácticos para mantener tu rutina de entrenamiento mientras viajas por Ecuador y disfrutas de Loja.",
+    "image_url": "images/Blog/Blog 6.webp",
+    "category": {
+      "id": 1,
+      "name": "Taekwondo",
+      "slug": "taekwondo"
+    },
+    "published_at": "2025-08-03T11:45:00.000Z",
+    "url": "blog/como-mantener-tu-disciplina-o-encontrarla-con-taekwondo-y-mma-en-tu-viaje-a-loja.html"
+  }
+]

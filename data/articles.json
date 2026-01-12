@@ -1,0 +1,11 @@
+﻿{
+    "category":  "General",
+    "slug":  "bienvenida",
+    "id":  1,
+    "excerpt":  "Bienvenida al blog oficial de Taekwondo",
+    "content":  "\u003cp\u003e¡Bienvenido a nuestro blog de Taekwondo! Aquí encontrarás artículos, consejos y noticias.\u003c/p\u003e",
+    "status":  "published",
+    "image_url":  "/images/Blog/blog 1.webp",
+    "published_at":  "2025-08-13T09:00:00.000Z",
+    "title":  "Bienvenido al Blog de Taekwondo"
+}

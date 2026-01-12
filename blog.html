@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Blog de Artes Marciales | Frank Simbaña - Club Golden Loja</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <meta name="description"
+        content="Artículos sobre Taekwondo, MMA, nutrición y disciplina deportiva. Aprende con los consejos de Frank Simbaña, experto en artes marciales en Loja.">
+    <meta name="author" content="Frank Simbaña">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.min.css">
+    <link rel="stylesheet" href="css/vendor.min.css">
+
+    <!-- script -->
+    <script defer src="js/vendor/fontawesome/all.min.js"></script>
+
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta property="og:image" content="images/imagen destacada.jpg">
+    <meta property="og:description" content="Bienvenido a Golden Club Taekwondo.">
+</head>
+
+<body id="top" class="ss-preload">
+
+    <!-- preloader -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+    <!-- header -->
+    <style>
+        /* Estilos responsivos */
+        @media (max-width: 1024px) {
+            .s-content .row {
+                flex-direction: column;
+            }
+
+            .s-content .column.large-8,
+            .s-content .column.large-4 {
+                width: 100%;
+                padding: 0 15px;
+            }
+
+            .sidebar {
+                padding-left: 0 !important;
+                margin-top: 3rem;
+                position: static !important;
+            }
+
+            .widget--categories ul {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+
+            .entry {
+                padding: 2rem !important;
+            }
+
+            /* Ensure desktop menu is always visible */
+            .s-header {
+                display: block !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .widget--categories ul {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            .entry {
+                padding: 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .widget--categories ul {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* Desktop styles - Hide mobile menu elements */
+        @media (min-width: 1025px) {
+
+            .mobile-menu-toggle,
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1000;
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: #FFD700;
+            /* Amarillo dorado */
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            right: 15px;
+            background: #000000;
+            /* Fondo negro */
+            width: 200px;
+            padding: 15px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            border: 1px solid #333;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .mobile-menu li {
+            margin: 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .mobile-menu li a {
+            color: #FFD700 !important;
+            /* Amarillo dorado */
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px !important;
+            font-weight: 500;
+            text-decoration: none;
+            display: block;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .mobile-menu li a:hover {
+            background: #f8f8f8;
+            color: #B8860B !important;
+        }
+
+        .mobile-menu li:last-child {
+            border-bottom: none;
+        }
+
+        /* Submenú */
+        .mobile-submenu {
+            display: none;
+            padding-left: 20px;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-submenu li a {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px !important;
+            padding: 10px 20px !important;
+            color: #FFD799 !important;
+        }
+
+        .mobile-submenu li a:hover {
+            background: #f0f0f0;
+            color: #B8860B !important;
+        }
+
+        .mobile-submenu li {
+            margin: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .mobile-submenu li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-submenu a {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: #CCCCCC;
+        }
+
+        .mobile-submenu a {
+            padding-left: 30px !important;
+        }
+
+        /* Tarjeta del Torneo - Diseño Simple */
+        .torneo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .torneo-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .btn-tournament:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-tournament:hover i {
+            transform: translateX(3px);
+        }
+
+        @media (max-width: 768px) {
+            .torneo-card {
+                margin: 0 auto 2rem;
+                max-width: 400px;
+            }
+
+            .menu-item-has-children.active>.menu-link .submenu-indicator {
+                transform: rotate(45deg);
+            }
+    </style>
+    <header class="s-header"
+        style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #000000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); padding: 1rem 0;">
+        <div class="row s-header__nav-wrap">
+            <nav class="s-header__nav">
+                <ul style="margin: 0;">
+                    <li><a href="index.html" style="color: #FFFFFF !important;">Inicio</a></li>
+                    <li class="current"><a href="blog.html" style="color: #B8860B !important;">Blog</a></li>
+                    <li><a href="logros.html" style="color: #FFFFFF !important;">Logros</a></li>
+                    <li class="has-children"><a href="#" style="color: #FFFFFF !important;">Disciplinas</a>
+                        <ul class="submenu" style="background: #000000; border: 1px solid #333;">
+                            <li><a href="mma.html" style="color: #FFFFFF !important;">MMA</a></li>
+                            <li><a href="taekwondo.html" style="color: #FFFFFF !important;">Taekwondo</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header> <!-- end s-header -->
+
+    <!-- Menú hamburguesa móvil -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="logros.html">Logros</a></li>
+            <li>
+                <a href="#" onclick="toggleSubmenu(event)">Disciplinas</a>
+                <ul class="mobile-submenu" id="disciplinasSubmenu" style="display: none;">
+                    <li><a href="taekwondo.html">Taekwondo</a></li>
+                    <li><a href="mma.html">MMA</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- blog hero -->
+    <section class="s-hero target-section"
+        style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/Blog/Hero Background.webp'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 60vh; padding: 8rem 0;">
+        <div class="row s-hero__content">
+            <div class="column">
+                <div class="s-hero__content-about" style="text-align: center;">
+                    <h1 style="color: #F8F8F8; font-size: 4rem; margin-bottom: 2rem;">Blog de Artes Marciales</h1>
+                    <h2 style="color: #F8F8F8; font-weight: 300; margin-bottom: 3rem;">Taekwondo, MMA y Desarrollo
+                        Personal</h2>
+                    <p style="color: #F8F8F8; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                        Descubre técnicas, consejos y experiencias del mundo de las artes marciales con Frank Simbaña
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- blog content -->
+    <section class="s-content" style="padding: 8rem 0;">
+        <div class="row" style="display: flex; flex-wrap: wrap;">
+            <!-- Main Content -->
+            <div class="column large-8 medium-12" style="order: 1;">
+                <!-- Loading Indicator -->
+                <div id="loadingIndicator" style="text-align: center; padding: 4rem 0;">
+                    <div class="spinner"
+                        style="width: 50px; height: 50px; margin: 0 auto 1.5rem; border: 5px solid #f3f3f3; border-top: 5px solid #B8860B; border-radius: 50%; animation: spin 1s linear infinite;">
+                    </div>
+                    <p style="color: #6C757D; font-size: 1.1rem;">Cargando artículos...</p>
+                </div>
+
+                <!-- Articles Container -->
+                <div id="articlesContainer" class="entries" style="opacity: 0; transition: opacity 0.3s ease-in-out;">
+                    <!-- Articles will be loaded here by blog-new.js -->
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="column large-4 medium-12" style="order: 2;">
+                <aside class="sidebar"
+                    style="padding-left: 2rem; position: sticky; top: 100px; align-self: flex-start;">
+                    <!-- Tarjeta del Torneo - Diseño Simple -->
+                    <div class="widget"
+                        style="background: linear-gradient(135deg, #B8860B 0%, #8a5f08 100%); color: white; padding: 2rem; margin-bottom: 3rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.1);">
+                        <h3
+                            style="color: #FFD700; margin: 0 0 1rem 0; font-size: 1.5rem; text-align: center; font-weight: 700;">
+                            Torneo Open Zamora 2025
+                        </h3>
+
+                        <p
+                            style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; text-align: center; font-size: 1rem; line-height: 1.5;">
+                            Inscríbete en este torneo de Taekwondo, no te lo pierdas
+                        </p>
+
+                        <a href="torneo-open-zamora-2025.html" class="btn-tournament"
+                            style="display: block; text-align: center; background: #FFD700; color: #000; font-weight: 700; padding: 12px; border-radius: 8px; text-decoration: none; transition: all 0.3s ease; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px; box-shadow: 0 4px 0 rgba(0,0,0,0.1);">
+                            Ver Detalles <i class="fas fa-arrow-right"
+                                style="margin-left: 8px; transition: transform 0.3s ease;"></i>
+                        </a>
+                    </div>
+
+                    <style>
+                        .torneo-card:hover {
+                            transform: translateY(-5px);
+                            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+                        }
+
+                        .torneo-card:hover img {
+                            transform: scale(1.05);
+                        }
+
+                        .btn-tournament:hover {
+                            background: #fff;
+                            transform: translateY(-2px);
+                            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+                        }
+
+                        .btn-tournament:hover i {
+                            transform: translateX(3px);
+                        }
+
+                        @media (max-width: 768px) {
+                            .torneo-card {
+                                margin: 0 auto 2rem;
+                                max-width: 400px;
+                            }
+                        }
+                        }
+                    </style>
+            </div>
+        </div>
+
+
+
+        <!-- Artículos Recientes -->
+        <div class="widget" style="background: #F8F8F8; padding: 3rem; margin-bottom: 3rem; border-radius: 8px;">
+            <h4 style="color: #343A40; margin-bottom: 2rem; border-bottom: 2px solid #B8860B; padding-bottom: 1rem;">
+                Artículos Recientes</h4>
+            <ul id="recent-posts-list" style="list-style: none; padding: 0;">
+                <!-- Los artículos recientes se cargarán aquí dinámicamente -->
+            </ul>
+        </div>
+
+        <!-- Categorías -->
+        <div class="widget" style="background: #F8F8F8; padding: 2rem; margin-bottom: 3rem; border-radius: 8px;">
+            <h4 style="color: #343A40; margin: 0 0 1.5rem 0; padding: 0; font-size: 1.4rem;">Categorías</h4>
+            <div style="color: #B8860B; font-size: 1.1rem; margin-bottom: 0.8rem; line-height: 1.6;">
+                Taekwondo (3)
+            </div>
+            <div style="color: #800020; font-size: 1.1rem; line-height: 1.6;">
+                MMA (2)
+            </div>
+        </div>
+
+        <!-- Panel Admin - Oculto por defecto -->
+        <div id="adminPanel" class="widget"
+            style="display: none; background: linear-gradient(135deg, #343A40 0%, #B8860B 100%); padding: 3rem; border-radius: 8px;">
+            <h4 style="color: #F8F8F8; margin-bottom: 2rem; text-align: center;">Panel de Administración</h4>
+            <p style="color: #F8F8F8; text-align: center; margin-bottom: 2rem; font-size: 0.9rem;">Acceso exclusivo para
+                administradores</p>
+            <div style="text-align: center;">
+                <a href="admin-login.html" class="btn"
+                    style="background: #F8F8F8; color: #343A40; border: none; padding: 1rem 2rem; border-radius: 4px; text-decoration: none; display: inline-block; font-weight: 600; margin-bottom: 1rem;">Iniciar
+                    Sesión</a>
+                <button id="logoutBtn"
+                    style="background: transparent; color: #F8F8F8; border: 1px solid #F8F8F8; padding: 1rem 2rem; border-radius: 4px; cursor: pointer; font-weight: 600; width: 100%; display: none;">Cerrar
+                    Sesión</button>
+            </div>
+        </div>
+
+        <!-- Enlace de inicio de sesión para administradores (siempre visible) -->
+        <div class="widget"
+            style="background: #F8F8F8; padding: 1.5rem; margin-top: 2rem; border-radius: 8px; text-align: center;">
+            <a href="#" id="showAdminLogin" style="color: #343A40; text-decoration: none; font-size: 0.9rem;">
+                <i class="fas fa-lock"></i> Acceso Administrativo
+            </a>
+        </div>
+
+        </aside>
+        </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="s-footer" style="background: #343A40; color: #F8F8F8; padding: 4rem 0;">
+        <div class="row">
+            <div class="column large-4 medium-6 w-1000-stack">
+                <h4 style="color: #B8860B; margin-bottom: 2rem;">Frank Simbaña</h4>
+                <p style="color: #6C757D;">Maestro de Taekwondo y MMA en Loja, Ecuador. Transformando vidas a través de
+                    las artes marciales.</p>
+            </div>
+            <div class="column large-4 medium-6 w-1000-stack">
+                <h4 style="color: #B8860B; margin-bottom: 2rem;">Contacto</h4>
+                <p style="color: #6C757D;">
+                    Quito entre Av universitaria y 18 de noviembre<br>
+                    Loja, Ecuador<br>
+                    <a href="tel:0999271397" style="color: #F8F8F8;">0999271397</a><br>
+                    <a href="mailto:centrodeportivoloja@hotmail.com"
+                        style="color: #F8F8F8;">centrodeportivoloja@hotmail.com</a>
+                </p>
+            </div>
+            <div class="column large-4 medium-12 w-1000-stack">
+                <h4 style="color: #B8860B; margin-bottom: 2rem;">Síguenos</h4>
+                <div>
+                    <a href="https://www.facebook.com/share/16Foo7m463/" target="_blank"
+                        style="color: #F8F8F8; font-size: 1.5rem; margin-right: 1rem;"><i
+                            class="fab fa-facebook-square"></i></a>
+                    <a href="https://www.instagram.com/club_golden2020/?igsh=MXR0YzBuMjRnOGI0bw%3D%3D#" target="_blank"
+                        rel="noopener noreferrer" style="color: #F8F8F8; font-size: 1.5rem;"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row"
+            style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #6C757D; text-align: center;">
+            <div class="column">
+                <p style="color: #6C757D; margin: 0;">Diseñado por <a href="https://www.cesarreyesjaramillo.com/"
+                        target="_blank" style="color: #6C757D; text-decoration: underline;">Cesar Reyes</a> | Frank
+                    Simbaña 2026</p>
+
+                <!-- Java Script
+    ================================================== -->
+                <script defer src="js/jquery-3.2.1.min.js"></script>
+                <script defer src="js/plugins.js"></script>
+                <script defer src="js/main.js"></script>
+                <!-- Blog Scripts -->
+                <!-- blog.js eliminado para evitar conflictos - usando blog-new.js -->
+                <style>
+                    @keyframes spin {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+
+                    /* Contenedor principal de artículos */
+                    #articlesContainer {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                        gap: 2rem;
+                        width: 100%;
+                    }
+
+                    /* Estilos para las tarjetas de artículos */
+                    .blog-item {
+                        border: 1px solid #e0e0e0;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+
+                    .blog-item:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .blog-item__thumb {
+                        width: 100%;
+                        height: 200px;
+                        overflow: hidden;
+                    }
+
+                    .blog-item__thumb img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: transform 0.5s ease;
+                    }
+
+                    .blog-item__text {
+                        padding: 1.5rem;
+                        flex-grow: 1;
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    .blog-item__title {
+                        font-size: 1.25rem;
+                        margin: 1rem 0;
+                        line-height: 1.4;
+                    }
+
+                    .blog-item__excerpt {
+                        color: #666;
+                        margin-bottom: 1.5rem;
+                        flex-grow: 1;
+                    }
+
+                    .blog-item__link {
+                        display: inline-block;
+                        color: #B8860B;
+                        font-weight: 600;
+                        text-decoration: none;
+                        margin-top: auto;
+                    }
+
+                    .entry {
+                        opacity: 0;
+                        animation: fadeIn 0.5s ease-out forwards;
+                        background: #ffffff;
+                        border-radius: 12px;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                        margin-bottom: 0;
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        border: 1px solid #eaeaea;
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                    }
+
+                    .entry:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+                    }
+
+                    .entry__img {
+                        width: 100%;
+                        height: 200px;
+                        object-fit: cover;
+                    }
+
+                    .entry__content {
+                        padding: 1.5rem;
+                        flex-grow: 1;
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    .entry__title {
+                        font-size: 1.4rem;
+                        margin-bottom: 0.75rem;
+                        color: #2c3e50;
+                    }
+
+                    .entry__meta {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 1rem;
+                        font-size: 0.9rem;
+                        color: #7f8c8d;
+                    }
+
+                    .entry__category {
+                        display: inline-block;
+                        padding: 0.25rem 0.75rem;
+                        background: #f8f9fa;
+                        border-radius: 20px;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        color: #B8860B;
+                        margin-right: 0.75rem;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+
+                    .entry__excerpt {
+                        color: #555;
+                        line-height: 1.6;
+                        margin-bottom: 1.25rem;
+                    }
+
+                    .entry__read-more {
+                        display: inline-flex;
+                        align-items: center;
+                        color: #B8860B;
+                        font-weight: 600;
+                        text-decoration: none;
+                        transition: color 0.3s ease;
+                    }
+
+                    .entry__read-more:hover {
+                        color: #8a5f08;
+                    }
+
+                    .entry__read-more i {
+                        margin-left: 0.5rem;
+                        transition: transform 0.3s ease;
+                    }
+
+                    .entry__read-more:hover i {
+                        transform: translateX(3px);
+                    }
+
+                    @keyframes fadeIn {
+                        to {
+                            opacity: 1;
+                        }
+                    }
+
+                    /* Estilos para el contador de artículos en categorías */
+                    .categories-widget .cat-count {
+                        background: #e9ecef;
+                        color: #6c757d;
+                        padding: 0.15rem 0.5rem;
+                        border-radius: 10px;
+                        font-size: 0.75rem;
+                        margin-left: auto;
+                    }
+
+                    /* Estilos para artículos recientes */
+                    .popular-posts-widget .popular-posts__item {
+                        display: flex;
+                        margin-bottom: 1rem;
+                        padding-bottom: 1rem;
+                        border-bottom: 1px solid #eee;
+                    }
+
+                    .popular-posts__img {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 8px;
+                        object-fit: cover;
+                        margin-right: 1rem;
+                    }
+
+                    .popular-posts__title {
+                        font-size: 0.9rem;
+                        margin: 0 0 0.25rem 0;
+                        line-height: 1.4;
+                    }
+
+                    .popular-posts__date {
+                        font-size: 0.8rem;
+                        color: #7f8c8d;
+                    }
+                </style>
+
+                <script>
+                    // Función para alternar el menú móvil
+                    function toggleMobileMenu() {
+                        const mobileMenu = document.getElementById('mobileMenu');
+                        const menuToggle = document.getElementById('mobileMenuToggle');
+
+                        if (mobileMenu.style.display === 'block') {
+                            mobileMenu.style.display = 'none';
+                            menuToggle.classList.remove('active');
+                            document.body.style.overflow = 'auto';
+                        } else {
+                            mobileMenu.style.display = 'block';
+                            menuToggle.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    }
+
+                    // Función para alternar submenús
+                    function toggleSubmenu(event) {
+                        event.preventDefault();
+                        const submenu = event.target.nextElementSibling;
+                        if (submenu && submenu.classList.contains('mobile-submenu')) {
+                            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                        }
+                    }
+
+                    // Cerrar menú al hacer clic fuera
+                    document.addEventListener('click', function (event) {
+                        const mobileMenu = document.getElementById('mobileMenu');
+                        const menuToggle = document.getElementById('mobileMenuToggle');
+
+                        if (!menuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+                            mobileMenu.style.display = 'none';
+                            menuToggle.classList.remove('active');
+                            document.body.style.overflow = 'auto';
+
+                            // Cerrar todos los submenús
+                            document.querySelectorAll('.mobile-submenu').forEach(submenu => {
+                                submenu.style.display = 'none';
+                            });
+                        }
+                    });
+
+                    // Cerrar menú al hacer clic en un enlace
+                    document.querySelectorAll('.mobile-menu > ul > li > a:not([href="#"])').forEach(menuItem => {
+                        menuItem.addEventListener('click', function () {
+                            const mobileMenu = document.getElementById('mobileMenu');
+                            const menuToggle = document.getElementById('mobileMenuToggle');
+                            if (mobileMenu) {
+                                mobileMenu.style.display = 'none';
+                                menuToggle.classList.remove('active');
+                                document.body.style.overflow = 'auto';
+                            }
+                        });
+                    });
+
+                    // Cerrar el menú al cambiar el tamaño de la ventana
+                    window.addEventListener('resize', function () {
+                        const mobileMenu = document.getElementById('mobileMenu');
+                        const menuToggle = document.getElementById('mobileMenuToggle');
+
+                        if (window.innerWidth >= 769) {
+                            mobileMenu.style.display = 'none';
+                            menuToggle.classList.remove('active');
+                            document.body.style.overflow = 'auto';
+                        }
+                    });
+                </script>
+
+                <!-- Cargar scripts del blog -->
+                <script defer src="js/blog-data.js"></script>
+                <script defer src="js/blog-fixed-v2.js"></script>
+</body>
+
+</html>
