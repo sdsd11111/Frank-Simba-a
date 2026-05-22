@@ -10,15 +10,7 @@
     { "src": "*.{css,js,png,jpg,jpeg,svg,webp,ico,webmanifest}", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/sitemap.xml", "dest": "/sitemap.xml", "headers": { "Content-Type": "application/xml" } },
-    { "src": "/(.*\\.(js|css|png|jpg|jpeg|svg|webp|ico|webmanifest))$", "dest": "/$1" },
-    { "src": "^/blog$", "dest": "/blog.html", "status": 301 },
-    { "src": "^/logros$", "dest": "/logros.html", "status": 301 },
-    { "src": "^/taekwondo$", "dest": "/taekwondo.html", "status": 301 },
-    { "src": "^/mma$", "dest": "/mma.html", "status": 301 },
-    { "src": "^/blog/([^/]+)$", "dest": "/blog/$1.html" },
-    { "src": "^/blog/([^/]+\\.html)$", "dest": "/blog/$1" },
-    { "src": "^/([^/]+\\.html)$", "dest": "/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/(.*\\.(js|css|png|jpg|jpeg|svg|webp|ico|webmanifest|xml|json|txt))$", "dest": "/$1" },
+    { "src": "/(.*)", "dest": "/pago.html" }
   ]
 }

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pago Pendiente</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #000;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      font-family: 'Arial Black', 'Impact', sans-serif;
+    }
+
+    .layer {
+      position: fixed;
+      /* Lo hacemos grande para cubrir toda la pantalla en diagonal */
+      width: 500vmax;
+      height: 500vmax;
+      top: 50%;
+      left: 50%;
+    }
+
+    /* ── CAPA PRINCIPAL: +45° — totalmente opaca y legible ── */
+    .layer-1 {
+      z-index: 2;
+      animation: slide1 18s linear infinite;
+    }
+
+    /* ── CAPA CRUZADA: -45° — muy tenue, solo da el efecto de cinta cruzada ── */
+    .layer-2 {
+      z-index: 1;
+      opacity: 0.18;
+      animation: slide2 24s linear infinite;
+    }
+
+    /* STRIP_HEIGHT = 90px  DIVIDER_HEIGHT = 16px  TOTAL = 106px → translateY a 106px */
+    @keyframes slide1 {
+      from { transform: translate(-50%, -50%) rotate(45deg)  translateY(0);      }
+      to   { transform: translate(-50%, -50%) rotate(45deg)  translateY(106px);  }
+    }
+
+    @keyframes slide2 {
+      from { transform: translate(-50%, -50%) rotate(-45deg) translateY(0);      }
+      to   { transform: translate(-50%, -50%) rotate(-45deg) translateY(-106px); }
+    }
+
+    /* ── STRIP PRINCIPAL (capa 1) ── */
+    .layer-1 .strip {
+      width: 100%;
+      height: 90px;
+      background: #FFD700;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .layer-1 .strip-text {
+      white-space: nowrap;
+      font-size: 34px;
+      font-weight: 900;
+      color: #111;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      /* Texto con sombra para que destaque */
+      text-shadow: 1px 1px 0 rgba(0,0,0,0.25);
+      will-change: transform;
+      padding: 0 60px;
+    }
+
+    /* ── STRIP CAPA 2 (secundaria, cruzada) ── */
+    .layer-2 .strip {
+      width: 100%;
+      height: 90px;
+      background: #FFD700;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .layer-2 .strip-text {
+      white-space: nowrap;
+      font-size: 34px;
+      font-weight: 900;
+      color: #111;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      will-change: transform;
+      padding: 0 60px;
+    }
+
+    /* ── SCROLL SIN CORTE ──
+       Para que no se note el corte: el texto es UNIT+UNIT (doble),
+       y animamos exactamente -50% → queda en el inicio perfecto.
+    */
+    .layer-1 .strip:nth-child(odd)  .strip-text { animation: scrollL 22s linear infinite; }
+    .layer-1 .strip:nth-child(even) .strip-text { animation: scrollR 22s linear infinite; }
+    .layer-2 .strip:nth-child(odd)  .strip-text { animation: scrollL 28s linear infinite; }
+    .layer-2 .strip:nth-child(even) .strip-text { animation: scrollR 28s linear infinite; }
+
+    @keyframes scrollL {
+      from { transform: translateX(0);    }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes scrollR {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0);    }
+    }
+
+    /* ── Separador negro ── */
+    .divider {
+      width: 100%;
+      height: 16px;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="layer layer-1" id="layer1"></div>
+  <div class="layer layer-2" id="layer2"></div>
+
+  <script>
+    // Separador visual entre frases
+    const SEP  = '\u00a0\u00a0\u00a0\u00a0\u2605\u00a0\u00a0\u00a0\u00a0';
+    const WORD = 'FRANK SIMBA\u00d1A \u2014 AC\u00c9RQUESE A PAGAR SU SITIO WEB';
+
+    // UNIT = una frase con separadores. TEXT = UNIT+UNIT para loop seamless.
+    // Al animar -50%, el texto regresa exactamente al inicio sin salto.
+    const UNIT = (WORD + SEP).repeat(6);
+    const TEXT = UNIT + UNIT; // duplicado para el loop perfecto
+
+    function buildLayer(id) {
+      const layer = document.getElementById(id);
+      for (let i = 0; i < 50; i++) {
+        const d = document.createElement('div');
+        d.className = 'divider';
+        layer.appendChild(d);
+
+        const strip = document.createElement('div');
+        strip.className = 'strip';
+
+        const span = document.createElement('span');
+        span.className = 'strip-text';
+        span.textContent = TEXT;
+        strip.appendChild(span);
+        layer.appendChild(strip);
+      }
+    }
+
+    buildLayer('layer1');
+    buildLayer('layer2');
+  </script>
+
+</body>
+</html>
